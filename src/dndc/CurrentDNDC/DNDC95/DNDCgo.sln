@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DNDCgo", "DNDCgo.vcxproj", "{CAEA1FC6-A428-6E42-0E4A-911FF65EA288}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dndc71", "..\DndcGraphics\dndc71.vcxproj", "{11A6D6C0-BEC0-E7CB-0FA6-7587DD9462B6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CAEA1FC6-A428-6E42-0E4A-911FF65EA288} = {CAEA1FC6-A428-6E42-0E4A-911FF65EA288}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		Template|Win32 = Template|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAEA1FC6-A428-6E42-0E4A-911FF65EA288}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CAEA1FC6-A428-6E42-0E4A-911FF65EA288}.Debug|Win32.Build.0 = Debug|Win32
+		{CAEA1FC6-A428-6E42-0E4A-911FF65EA288}.Release|Win32.ActiveCfg = Release|Win32
+		{CAEA1FC6-A428-6E42-0E4A-911FF65EA288}.Release|Win32.Build.0 = Release|Win32
+		{CAEA1FC6-A428-6E42-0E4A-911FF65EA288}.Template|Win32.ActiveCfg = Release|Win32
+		{CAEA1FC6-A428-6E42-0E4A-911FF65EA288}.Template|Win32.Build.0 = Release|Win32
+		{11A6D6C0-BEC0-E7CB-0FA6-7587DD9462B6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{11A6D6C0-BEC0-E7CB-0FA6-7587DD9462B6}.Debug|Win32.Build.0 = Debug|Win32
+		{11A6D6C0-BEC0-E7CB-0FA6-7587DD9462B6}.Release|Win32.ActiveCfg = Release|Win32
+		{11A6D6C0-BEC0-E7CB-0FA6-7587DD9462B6}.Release|Win32.Build.0 = Release|Win32
+		{11A6D6C0-BEC0-E7CB-0FA6-7587DD9462B6}.Template|Win32.ActiveCfg = Template|Win32
+		{11A6D6C0-BEC0-E7CB-0FA6-7587DD9462B6}.Template|Win32.Build.0 = Template|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

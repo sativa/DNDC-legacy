@@ -1,0 +1,4 @@
+Annual water budget for site: FarmTest1
+Year,Initial water pools (mm),,,,,Input (mm/yr),,,Output (mm/yr),,,,,,,,End water pools (mm)
+,Soil,Snow,Leaf,Pond,Deep,Precipitation,Irrigation,Interception,Snow evap,Leaf evap,Pond evap,Soil evap,Tranpiration,Leaching,Runoff,Soil,Snow,Leaf,Pond,Deep
+  1, 11.4,  0.0,  0.0,  0.0, 15.3,1058.4,  0.0,  0.0, 80.1,  0.0,  0.0, 15.5,269.4,530.6,254.6, 11.8, 55.0,  0.0, 31.2, 15.1

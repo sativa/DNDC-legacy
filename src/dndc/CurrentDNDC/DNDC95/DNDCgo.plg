@@ -1,0 +1,62 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DNDCgo - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CHANGS~1\LOCALS~1\Temp\RSP1D.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/DNDCgo.pdb" /debug /machine:I386 /def:".\DNDCgo.def" /out:"C:\DNDC95\Debug\DNDCgo.exe" /implib:"Debug/DNDCgo.lib" /pdbtype:sept /out:"/dndc95/debug/DNDCgo.dll" 
+.\Debug\CreateInputFiles.obj
+.\Debug\Dndc_balance.obj
+.\Debug\Dndc_balloon.obj
+.\Debug\Dndc_CH4.obj
+.\Debug\Dndc_CH4peat.obj
+.\Debug\Dndc_crop0.obj
+.\Debug\Dndc_data.obj
+.\Debug\Dndc_Eh.obj
+.\Debug\Dndc_farming.obj
+.\Debug\Dndc_hydrology.obj
+.\Debug\Dndc_main.obj
+.\Debug\Dndc_manure0.obj
+.\Debug\Dndc_manure1.obj
+.\Debug\Dndc_manure10.obj
+.\Debug\Dndc_manure2.obj
+.\Debug\Dndc_manure3.obj
+.\Debug\Dndc_manure5.obj
+.\Debug\Dndc_manure6.obj
+.\Debug\Dndc_manure7.obj
+.\Debug\Dndc_manure9.obj
+.\Debug\Dndc_ManureComponent.obj
+.\Debug\Dndc_ManureFeedlot.obj
+.\Debug\Dndc_ManureTreatment.obj
+.\Debug\Dndc_mapping.obj
+.\Debug\Dndc_output.obj
+.\Debug\Dndc_P.obj
+.\Debug\Dndc_paint.obj
+.\Debug\Dndc_regiondaily.obj
+.\Debug\Dndc_RegionOutput.obj
+.\Debug\Dndc_shell.obj
+.\Debug\Dndc_SoilChemistry.obj
+.\Debug\Dndc_SoilPhysics.obj
+.\Debug\Dndc_summary.obj
+.\Debug\Dndc_tool.obj
+.\Debug\Dndc_VOCs.obj
+.\Debug\Dndc_WT.obj
+.\Debug\DNDCgo.obj
+.\Debug\StdAfx.obj
+.\Debug\DNDCgo.res
+]
+Creating command line "link.exe @C:\DOCUME~1\CHANGS~1\LOCALS~1\Temp\RSP1D.tmp"
+<h3>Output Window</h3>
+Linking...
+
+
+
+<h3>Results</h3>
+DNDCgo.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

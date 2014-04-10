@@ -1,0 +1,217 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DNDCgo - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\CHANGS~1\AppData\Local\Temp\RSP1CB3.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS" /D "_USRDLL" /Fp"Debug/DNDCgo.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\DNDC95\Dndc_SoilChemistry.cpp"
+]
+Creating command line "cl.exe @C:\Users\CHANGS~1\AppData\Local\Temp\RSP1CB3.tmp" 
+Creating temporary file "C:\Users\CHANGS~1\AppData\Local\Temp\RSP1CB4.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/DNDCgo.pdb" /debug /machine:I386 /def:".\DNDCgo.def" /out:"C:\DNDC95\Debug\DNDCgo.dll" /implib:"Debug/DNDCgo.lib" /pdbtype:sept /out:"/dndc95/debug/DNDCgo.dll" 
+.\Debug\CreateInputFiles.obj
+.\Debug\Dndc_balance.obj
+.\Debug\Dndc_balloon.obj
+.\Debug\Dndc_CH4.obj
+.\Debug\Dndc_CH4peat.obj
+.\Debug\Dndc_crop0.obj
+.\Debug\Dndc_data.obj
+.\Debug\Dndc_Eh.obj
+.\Debug\Dndc_farming.obj
+.\Debug\Dndc_hydrology.obj
+.\Debug\Dndc_main.obj
+.\Debug\Dndc_manure0.obj
+.\Debug\Dndc_manure1.obj
+.\Debug\Dndc_manure10.obj
+.\Debug\Dndc_manure2.obj
+.\Debug\Dndc_manure3.obj
+.\Debug\Dndc_manure5.obj
+.\Debug\Dndc_manure6.obj
+.\Debug\Dndc_manure7.obj
+.\Debug\Dndc_manure9.obj
+.\Debug\Dndc_ManureComponent.obj
+.\Debug\Dndc_ManureFeedlot.obj
+.\Debug\Dndc_ManureTreatment.obj
+.\Debug\Dndc_mapping.obj
+.\Debug\Dndc_output.obj
+.\Debug\Dndc_P.obj
+.\Debug\Dndc_paint.obj
+.\Debug\Dndc_regiondaily.obj
+.\Debug\Dndc_RegionOutput.obj
+.\Debug\Dndc_shell.obj
+.\Debug\Dndc_SoilChemistry.obj
+.\Debug\Dndc_SoilPhysics.obj
+.\Debug\Dndc_summary.obj
+.\Debug\Dndc_tool.obj
+.\Debug\Dndc_VOCs.obj
+.\Debug\Dndc_WT.obj
+.\Debug\DNDCgo.obj
+.\Debug\StdAfx.obj
+.\Debug\DNDCgo.res
+]
+Creating command line "link.exe @C:\Users\CHANGS~1\AppData\Local\Temp\RSP1CB4.tmp"
+<h3>Output Window</h3>
+Compiling...
+Dndc_SoilChemistry.cpp
+c:\dndc95\source_main.h(560) : warning C4518: 'float ' : storage-class or type specifier(s) unexpected here; ignored
+c:\dndc95\source_main.h(560) : warning C4228: nonstandard extension used : qualifiers after comma in declarator list are ignored
+C:\DNDC95\Dndc_SoilChemistry.cpp(81) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(87) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(88) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(91) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(208) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(210) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(211) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(282) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(283) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(286) : warning C4244: '*=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(442) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(444) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(508) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(509) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(511) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(512) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(518) : warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(531) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(536) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(538) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(554) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(556) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(561) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(567) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(589) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(593) : warning C4305: '*=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(594) : warning C4305: '*=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(609) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(529) : warning C4101: 'Fpeat' : unreferenced local variable
+C:\DNDC95\Dndc_SoilChemistry.cpp(624) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(626) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(628) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(640) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(641) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(659) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(660) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(678) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(679) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(747) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(749) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(759) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(769) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(771) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(798) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(808) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(860) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(861) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(870) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(881) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(882) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(903) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(909) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(914) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(962) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(968) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(969) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(997) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1006) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1007) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1035) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1036) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1038) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1039) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1062) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1072) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1074) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1075) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1079) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1088) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1090) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1091) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1099) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1027) : warning C4101: 'fhc' : unreferenced local variable
+C:\DNDC95\Dndc_SoilChemistry.cpp(1131) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1132) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1136) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1138) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1143) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1145) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1146) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1148) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1149) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1187) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1217) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1218) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1221) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1222) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1228) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1340) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1341) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1346) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1350) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1354) : warning C4305: '*=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1380) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1413) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1414) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1326) : warning C4101: 'eff_temp' : unreferenced local variable
+C:\DNDC95\Dndc_SoilChemistry.cpp(1446) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1569) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1571) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1572) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1576) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1577) : warning C4305: '*=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1578) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1638) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1658) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1662) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1663) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1667) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1705) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1706) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1708) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1709) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1717) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1776) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1785) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1786) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1797) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1798) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1806) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1833) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1771) : warning C4101: 'dlhc' : unreferenced local variable
+C:\DNDC95\Dndc_SoilChemistry.cpp(1841) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1849) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1852) : warning C4305: '*=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1854) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1870) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1874) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1875) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1876) : warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1896) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1901) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1921) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1926) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1927) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1934) : warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1949) : warning C4305: 'initializing' : truncation from 'const double' to 'float'
+C:\DNDC95\Dndc_SoilChemistry.cpp(1954) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1955) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1957) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\DNDC95\Dndc_SoilChemistry.cpp(1949) : warning C4101: 'Tph' : unreferenced local variable
+Linking...
+<h3>
+--------------------Configuration: dndc71 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+DNDC95.exe - 0 error(s), 143 warning(s)
+</pre>
+</body>
+</html>
