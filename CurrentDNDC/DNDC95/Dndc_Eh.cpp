@@ -92,7 +92,7 @@ void class_model::saturation_Eh(void) //Eh dynamics under flooding
 				SO4[l]=0.0;
 			}*/
 
-			float Fdoc = pow(MicrobioIndex, 2.0) * soc[l] / mmm[l];
+			float Fdoc = pow(MicrobioIndex, (float)2.0) * soc[l] / mmm[l];
 			
 			if(O2[l]>0.0000001)
 			{
@@ -117,7 +117,7 @@ void class_model::saturation_Eh(void) //Eh dynamics under flooding
 				float Vmax_Mn = 0.108; //! Vmax (mol/kg/day) of Mn reduction at 30C.
 				float Km_DOC_Mn = 0.0005; //! Km (mol/L) with respct to DOC.
 					
-				dMn = 300.0 * Fdoc * Vmax_Mn * Mn4[l]/(Km_Mn + Mn4[l]) * pow(Q10Mn, (temp[l] - 30.0)/10.0 ); //! DOC effect is provisionally assumed as 0.5.
+				dMn = 300.0 * Fdoc * Vmax_Mn * Mn4[l]/(Km_Mn + Mn4[l]) * pow(Q10Mn, (float)((temp[l] - 30.0)/10.0 )); //! DOC effect is provisionally assumed as 0.5.
 				Mn4[l] -= dMn;
 				Mn4[l] = max(0.0, Mn4[l]);
 				Mn2[l] += dMn;
@@ -134,7 +134,7 @@ void class_model::saturation_Eh(void) //Eh dynamics under flooding
 				float Vmax_Fe = 0.108; //! Vmax (mol/kg/day) of Fe reduction at 30C.
 				float Km_DOC_Fe = 0.0005; //! Km (mol/L) with respct to DOC.
 					
-				dFe = 300.0 * Fdoc * Vmax_Fe * Fe3[l]/(Km_Fe + Fe3[l]) * pow(Q10Fe, (temp[l] - 30.0)/10.0 ); //! DOC effect is provisionally assumed as 0.5.
+				dFe = 300.0 * Fdoc * Vmax_Fe * Fe3[l]/(Km_Fe + Fe3[l]) * pow(Q10Fe, (float)( (temp[l] - 30.0)/10.0 ) ); //! DOC effect is provisionally assumed as 0.5.
 				Fe3[l] -= dFe;
 				Fe3[l] = max(0.0, Fe3[l]);
 				Fe2[l] += dFe;

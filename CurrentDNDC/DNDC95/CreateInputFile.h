@@ -12,7 +12,7 @@ class NewCropofEachYear
 {
 public:
     int   CropID, WCFlag;
-	int   GeneID;
+    int   GeneID;
     int   Left;
     float Yield;
     int   HarYr;
@@ -21,10 +21,10 @@ public:
     float LeftPrec;
     float MaxPlanN;
     int   CropOrder, CoverCrop;
-	int   jdtrans;
-	int   seed_trans, PerennialCrop;
-	float InitialBiomass, GrowthVegetative, GrowthReproductive, PsnEfficiency,PsnMax, TreeAge;
-	float Grain, Leaf, Straw, Root;    
-	float GrainCN, RootCN, LeafCN, ShootCN;
+    int   jdtrans;
+    int   seed_trans, PerennialCrop;
+    float InitialBiomass, GrowthVegetative, GrowthReproductive, PsnEfficiency,PsnMax, TreeAge;
+    float Grain, Leaf, Straw, Root;    
+    float GrainCN, RootCN, LeafCN, ShootCN;
     float CropTDD, WRuq, OptT, CropNFix, Vascularity;
 };

@@ -5,7 +5,7 @@
 #include "DNDCgo.h"
 #include "Source_main.h"
 #include <direct.h>
-#include <iostream.h>
+#include <iostream>
 
 //#ifdef _DEBUG
 //#define new DEBUG_NEW

@@ -308,7 +308,7 @@ float class_model::CH4_peat(int MODE, int GN, float *temp, float *clay, int floo
 			 Q10CH4 = 4.6;//! Q10 for CH4 production (van Bodegom and Stams,1999, Chemosphere 39:167-182)
 
 			 if (temp[l] <= 0.0) ch4_max = 0.0;
-		     else if (temp[l] < 40.0) ch4_max = ch4_max_30 * pow(Q10CH4, (temp[l] - 0.0)/10.0); //!
+		     else if (temp[l] < 40.0) ch4_max = ch4_max_30 * pow(Q10CH4, (float)( (temp[l] - 0.0)/10.0) ); //!
 			 else ch4_max = ch4_max_30 * Q10CH4 ;//! fixed Vmax over 40C
 
 			 ch4_max_h2 = ch4_max * 0.5;//! Vmax of CH4 production from H2

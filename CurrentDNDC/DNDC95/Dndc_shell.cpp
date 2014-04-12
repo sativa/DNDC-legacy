@@ -5,7 +5,7 @@
 #include "Dndc_shell.h"
 #include "CreateInputFile.h"
 #include <direct.h>
-#include <iostream.h>
+#include <iostream>
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
