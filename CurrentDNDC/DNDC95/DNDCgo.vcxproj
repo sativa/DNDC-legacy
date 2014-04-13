@@ -47,8 +47,8 @@
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>.\Debug\</OutDir>
-    <IntDir>.\Debug\</IntDir>
+    <OutDir>C:\dev\leaf-models-public\CurrentDNDC\DNDC95\Debug\</OutDir>
+    <IntDir>C:\dev\leaf-models-public\CurrentDNDC\DNDC95\Debug\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -132,10 +132,13 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <ModuleDefinitionFile>.\DNDCgo.def</ModuleDefinitionFile>
-      <OutputFile>C:\DNDC95\Debug\DNDCgo.dll</OutputFile>
+      <OutputFile>C:\dev\leaf-models-public\CurrentDNDC\DNDC95\Debug\DNDCgo.dll</OutputFile>
       <ImportLibrary>.\Debug\DNDCgo.lib</ImportLibrary>
-      <AdditionalOptions> /out:"/dndc95/debug/DNDCgo.dll"</AdditionalOptions>
+      <AdditionalOptions> </AdditionalOptions>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CreateInputFiles.cpp" />
