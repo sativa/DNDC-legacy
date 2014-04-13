@@ -1,0 +1,72 @@
+  -------------------------------------------------------------------------------------
+  ANNUAL REPORT:   Site webster_41B     Year 1     Tue Mar 25 09:58:04 2014
+
+  -------------------------------------------------------------------------------------
+  SOIL SECTION: Unit kg C or N/ha 
+  -------------------------------------------------------------------------------------
+  SOM pools       -----Litter-----  -----Humads-----  -----Humus------  -----Total-----
+                    C        N        C        N        C        N        C        N   
+  Day 1          371.10     3.71  2783.27   278.33 33955.88  3395.59  37110.25  3677.63
+  Day 365        325.84     3.26     1.#R     1.#R    1.#R     1.#R     1.#R     1.#R
+  -------------------------------------------------------------------------------------
+  Inorganic N pools in kg N/ha
+
+                   NO3-     NH4+    NH3(w)   Urea     NO(w)    clay-NH4   N2O+N2   Total
+  Day 1           30.93     4.33     0.00     0.00     0.00     2.87     0.00    38.13
+  Day 365          1.#R     1.#R     0.00    33.17     1.#R     1.#R     1.#R     1.#R
+  -------------------------------------------------------------------------------------
+  Fluxes                         C (kg C/ha/yr)              N (kg N/ha/yr)
+
+  Inputs -------------------------------------------------------------------------------
+  Manure                               0.00			     0.00
+  Shoot litter                         0.00			     0.00
+  Root litter			       0.00                          0.00
+  Root exudation		       0.00							
+  Rain-N deposit                                                     3.85
+  Irrigation N input                                                 0.00
+  Fertilizer-N                                                     220.00
+  Soil N fixation                                                    0.00
+  NH3 deposition                                                     0.00
+
+  Outputs ------------------------------------------------------------------------------
+  Soil-CO2 emission                    1.#R
+  CH4 emission                        -1.#J
+  DOM leaching                         0.13                          0.01
+  Crop N uptake from soil                                            1.#R
+  ION runoff                                                         1.#R
+  ION leaching                                                       2.96
+  NH3 volatilization                                                 5.81
+  N2O                                                               -1.#J
+  NO                                                                 1.#R
+  N2                                                                 1.#R
+  -------------------------------------------------------------------------------------
+  Mineralization:    1.$ kg C/ha and    1.$ kg N/ha;   Soil C/N ratio:  1.$
+  --------------------------------------------------------------------------------------
+  Depth (cm)         kg C/kg           kg C/ha		Soil_weight_kg/ha
+    0 - 10           1.#QNB                 1.#R		1277014
+   10 - 20           1.#QNB                 1.#R		1277014
+   20 - 30           1.#QNB                 1.#R		1277014
+   30 - 40           0.0032              4059.10		1277014
+   40 - 50           0.0016              2057.88		1277014
+  -------------------------------------------------------------------------------------
+  CROP SECTION 1: Unit kg C or N/ha 
+  -------------------------------------------------------------------------------------
+  Cropping season	           1 
+  Crop name			Corn         
+  Planting date		         140 
+  Growing days		         143 
+  Growing season TDD	        2899 
+  Water demand (mm)	        0.00 
+  Water uptake (mm)	        0.00 
+  Water stress		        0.99 
+  Crop N demand		       73.63 
+  Crop N from soil	        1.#R 
+  Crop N from air NH3	        0.00 
+  Crop N fixation	        0.00 
+  Nitrogen stress	        0.01 
+
+  Annual crop biomass production:
+  Crop N (kg N/ha)	        1.#R 
+  Crop C (kg C/ha)	        1.#R 
+  -- Grain C		        0.00 
+  -- Leaf C		    
