@@ -1,4 +1,0 @@
-Annual water budget for site: test_site
-Year,Initial water pools (mm),,,,,Input (mm/yr),,,Output (mm/yr),,,,,,,,End water pools (mm)
-,Soil,Snow,Leaf,Pond,Deep,Precipitation,Irrigation,Interception,Snow evap,Leaf evap,Pond evap,Soil evap,Tranpiration,Leaching,Runoff,Soil,Snow,Leaf,Pond,Deep
-  1, 44.1,  0.0,  0.0,  0.0, 90.0,575.1,  0.0,  0.0, 44.9,  0.0,  0.0,232.9,154.9,230.7, 41.8, 64.0,  0.0,  0.0,  0.0,  0.1
