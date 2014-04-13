@@ -59,8 +59,6 @@ set( PRIVATE_SOURCES ${SOURCES} )
 add_definitions(-D_AFXDLL)
 set(CMAKE_MFC_FLAG 2)
 
-set( -D_CRT_SECURE_NO_WARNINGS )
-
 add_library( ${TARGET_NAME} SHARED ${PRIVATE_SOURCES} ${PRIVATE_HEADERS} )
 
 install( 

@@ -95,6 +95,8 @@ void class_model::N2O_balloon(int GN, float till_fact,
     dn_co2 = 0.0;
     assim_N = 0.0;
 
+    air_poro_max = 0.0;
+
     if(GN>q) ave_anvf[GN] = 1.0;
     else for(l=1; l<=q; l++) ave_anvf[l] = 0.0;
 

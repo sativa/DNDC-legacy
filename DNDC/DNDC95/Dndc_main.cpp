@@ -66,7 +66,7 @@ int class_model::DNDC100go(MODEL_LINK_INFO* pLinkInfo, int MODE, int SoilYear, f
     float  whumus01, wno201, wno301, wnh401, wnh301, wurea01, day_clay_n01;
     float till_fact, w_no2, w_nh3, w_n2o, w_n2, ttoo[90];
     float w_no3, w_nh4, wurea, wpool_no, OverT, wpool_no2, day_clayn;
-    float dby_flux, jf, hrPE0, hrPT0, S_CO2IncreaseRate, AddC1, AddC2, AddC3, litco22, litco23, FM_C[7], FM_N[7], FM_H2O[7];;
+    float dby_flux, jf, hrPE0, hrPT0, S_CO2IncreaseRate, AddC1, AddC2, AddC3, litco22, litco23, FM_C[7], FM_N[7], FM_H2O[7];
     float FarmCropArea[10]={0.0,0.0}, FarmCropManureFraction[10]={0.0,0.0};
     
     int i, l, err_no, TTTFlag, tilq, junkd, ShallowFlood, SelectedCrops, SC[150], GlobeData, StartGridID;
@@ -413,7 +413,7 @@ int class_model::DNDC100go(MODEL_LINK_INFO* pLinkInfo, int MODE, int SoilYear, f
 #else
     if(scale==0)
     {	
-        if(Monitor==0) frame(pLinkInfo, "None", "None", site, scale, year);
+        //if(Monitor==0) frame(pLinkInfo, "None", "None", site, scale, year);
     }
     else
     {
@@ -421,11 +421,11 @@ int class_model::DNDC100go(MODEL_LINK_INFO* pLinkInfo, int MODE, int SoilYear, f
 
         if(MonteCarlo==1) 
         {
-            if(Monitor==0) frame(pLinkInfo, countryName, stateName, site, scale, LandOrder);
+            //if(Monitor==0) frame(pLinkInfo, countryName, stateName, site, scale, LandOrder);
         }
         else 
         {
-            if(Monitor==0) frame(pLinkInfo, countryName, stateName, site, scale, year);//+
+            //if(Monitor==0) frame(pLinkInfo, countryName, stateName, site, scale, year);//+
         }
     }
 #endif
@@ -1297,6 +1297,7 @@ for(jday=1; jday<=365; jday++)
     //if(DayPE<0.0) DayPE = 0.0;
     yr_PE += act_DayPE;
     hrPE0 = act_DayPE / 24.0;
+    hrPT0 = 0.0;
 
     hour_loop(hrPE0, hrPT0, DayFlux, &dby_flux, DroughtID, YieldToday, drc, scale, ha, livestock);
 
@@ -1598,7 +1599,7 @@ for(jday=1; jday<=365; jday++)
 
 #ifdef DEGUI
 #else
-    if(Monitor==0) paint(pLinkInfo, scale, ViewMode, cropping_system);//++
+    //if(Monitor==0) paint(pLinkInfo, scale, ViewMode, cropping_system);//++
 #endif
 
     // Annual accumulation 
