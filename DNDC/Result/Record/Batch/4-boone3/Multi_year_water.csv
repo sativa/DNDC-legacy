@@ -1,4 +1,0 @@
-Annual water budget for site: boone3
-Year,Initial water pools (mm),,,,,Input (mm/yr),,,Output (mm/yr),,,,,,,,End water pools (mm)
-,Soil,Snow,Leaf,Pond,Deep,Precipitation,Irrigation,Interception,Snow evap,Leaf evap,Pond evap,Soil evap,Tranpiration,Leaching,Runoff,Soil,Snow,Leaf,Pond,Deep
-  1, 34.6,  0.0,  0.0,  0.0, 71.6,1390.0,  0.0,  0.0, 77.8,  0.0,  0.0,220.5,174.0,370.1,422.6, 71.3, 83.7,  0.0,  0.0, 70.9
