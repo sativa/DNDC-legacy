@@ -1,0 +1,197 @@
+Input_Parameters:
+----------------------------------------
+Site_info:
+	Site_name:                  FarmTest1
+	Simulated_Year:             1
+	Latitude:                   45.000
+	Daily_Record:                    1
+----------------------------------------
+Livestock_data:
+SimulatedYears				1
+TotalFeedlots				1
+Feedlot					1
+   FeedlotInputFormat			0
+   LivestockType			1
+   LivestockType_ID			4
+   Herd_heads				500.000000
+   Feed:	
+      Rate				12.000000
+      CrudeProtein_percent		18.000000
+      Phosphorus_percent		0.080000
+   Floor:	
+      SurfaceArea			2000.000000
+      SurfaceType			0
+   Bedding:	
+      MaterialType			0
+      Material_C/N			0.000000
+      ApplyFrequency			0.000000
+      Amount				0.000000
+   Ventilation:	
+      Type				0
+      Ven_rate				0.000000
+      IndoorClimateFile			None
+   ManureRemoval:	
+      Frequency				1.000000
+      Liquid_to_compost			0.000000
+      Liquid_to_lagoon			1.000000
+      Liquid_to_digester		0.000000
+      Liquid_to_field			0.000000
+      Liquid_remain			0.000000
+      Solid_to_compost			1.000000
+      Solid_to_lagoon			0.000000
+      Solid_to_digester			0.000000
+      Solid_to_field			0.000000
+      Solid_remain 			0.000000
+   Flushing:	
+      FlushingLiquidType		0
+Lagoon				
+   Capacity				2000.000000
+   SurfaceArea				400.000000
+   Coverage				1
+   RainfallReceival		0
+   SlurryRemovalTimes		2
+   Slurry_drain_month		6
+   Slurry_drain_day		1
+   Slurry_to_field			1.000000
+   Slurry_to_digester		0.000000
+   Slurry_remain			0.000000
+   Slurry_drain_month		11
+   Slurry_drain_day		15
+   Slurry_to_field			1.000000
+   Slurry_to_digester		0.000000
+   Slurry_remain			0.000000
+Compost				
+   Porosity				0.500000
+   Coverage				1
+   RemovalTimes			3
+   AdditiveAmount			0.000000
+   Additive_C/N				0.000000
+   Remove_month			4
+   Remove_Day				1
+   Manure_to_field			1.000000
+   Manure_to_market		0.000000
+   Manure_remain			0.000000
+   Remove_month			8
+   Remove_Day				1
+   Manure_to_field			1.000000
+   Manure_to_market		0.000000
+   Manure_remain			0.000000
+   Remove_month			11
+   Remove_Day				1
+   Manure_to_field			1.000000
+   Manure_to_market		0.000000
+   Manure_remain			0.000000
+AnaerobicDigester				
+   Thermo_type				0
+   MethaneProductivity			0.000000
+   RetentionDays			0.000000
+   Manure_to_field			0.000000
+   Manure_to_lagoon			0.000000
+   Manure_remain			0.000000
+LandApplication				
+   Land_area				5.000000
+   CroppingSystems			1
+      CroppingSystem			1
+      CropType				1
+      FieldArea				5.000000
+      ManureShareFraction		1.000000
+----------------------------------------
+Climate_data:
+	Climate_Data_Type:          1
+	NO3NH4_in_Rainfall            1.0000
+	NH3_of_Atmosphere             0.0600
+	BaseCO2_of_Atmosphere       350.0000
+	Climate_file_count=         1
+    1   C:\ManureDNDC\Library\Lib_input_examples\Outdoor_climate_example.txt
+	Climate_file_mode                0
+	CO2_increase_rate           0.000000
+----------------------------------------
+Soil_data:
+	Soil_Texture              5
+	Landuse_Type              1
+	Density                   1.26014
+	Soil_pH                   6.50000
+	SOC_at_Surface            0.01500
+	Clay_fraction             0.19000
+	BypassFlow                0.00000
+	Litter_SOC                0.01000
+	Humads_SOC                0.02072
+	Humus_SOC                 0.96928
+	Soil_NO3(-)(mgN/kg)       0.50000
+	Soil_NH4(+)(mgN/kg)       0.05000
+	Soil_PassiveCN           500.00000
+	Lateral_influx_index      1.00000
+	Field_capacity           0.490000
+	Wilting_point            0.220000
+	Hydro_conductivity       0.025020
+	Soil_porosity            0.451000
+	SOC_profile_A            0.200000
+	SOC_profile_B            2.000000
+	DC_litter_factor         1.000000
+	DC_humads_factor         1.000000
+	DC_humus_factor          1.000000
+	Humad_CN                 10.000000
+	Humus_CN                 10.000000
+	Soil_PassiveC            0.000000
+	Soil_microbial_index     1.000000
+	Highest_WT_depth         1.000000
+	Depth_WRL_m              9.990000
+	Slope                    0.000000
+	Salinity                    0.000000
+	SCS_curve_use               0
+----------------------------------------
+Crop_data:
+Rotation_Number=            1
+  Rotation_ID=              1
+  Totalyear=                1
+  Years_Of_A_Cycle=         1
+    YearID_of_a_cycle=      1
+    Crop_total_Number=      1
+      Crop_ID=              1
+        Crop_Type=          1
+        Plant_time=         5 1
+        Harvest_time=       10 1
+        Year_of_harvest=    1
+        Ground_Residue=     0.200000
+        Yield=              4123.600098
+        Leaf_fraction=      0.220000
+        Leaf_CN=            80.000000
+        Psn_efficiency=     0.000000
+        Psn_maximum=        0.000000
+        TreeAge=            -107374000.000000
+        Cover_crop=         0
+        Perennial_crop=     0
+        Grain_fraction=     0.400000
+        Stem_fraction=      0.220000
+        Root_fraction=      0.160000
+        Grain_CN=           50.000000
+        Stem_CN=            80.000000
+        Root_CN=            80.000000
+        TDD=                3550.000000
+        Water_requirement=  150.000000
+        Optimum_temp=       25.000000
+        N_fixation=         1.000000
+        Vascularity=        0.000000
+    Tillage_number=         1
+      Tillage_ID=           1
+        Month/Day/method=   12 1 4
+    Fertil_number=          0
+      FertilizationOption=  0
+    Manure_number=          0
+    Plastic_film=            0
+    Ventilation=             0
+    Flood_number=           0
+    FloodWaterN=            1.000000
+    Water_control=          0
+    Leak_rate=              0.000000
+        Water_gather=       1.000000
+        WT_file=            None
+        Empirical_parameters= 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+    Irrigation_number=      0
+    Irrigation_type=        0
+    Irrigation_Index=       0.000000
+    Irrigation_Method=       0
+    Grazing_number=           0
+    Cut_number=           0
+Crop_model_approach         0
+Unit:			0

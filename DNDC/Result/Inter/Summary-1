@@ -1,5 +1,5 @@
 0	Site_ID:	
-test_site	Site_name:	
+webster_41B	Site_name:	
 8.98	Mean annual temperature (degree C):	
 1.30	Soil_bulk_density (g/cm3):	
 0.01	Initial_SOC (kg C/kg soil):	
@@ -16,54 +16,54 @@ None	Crop_type:
 0.00	Manure_N (kg N/ha/yr):	
 0.00	Irrigation_N (kg N/ha/yr):	
 0.00	Root_N (kg N/ha/yr):	
-8.20	Crop_residue_N (kg N/ha/yr):	
+7.76	Crop_residue_N (kg N/ha/yr):	
 0.00	Soil_fixed_N (kg N/ha/yr):	
 0.00	N_fixation1 (kg N/ha/yr):	
 0.00	N_fixation2 (kg N/ha/yr):	
 0.00	N_fixation3 (kg N/ha/yr):	
-63.34	N_uptaken_by_crop1 (kg N/ha/yr):	
+59.82	N_uptaken_by_crop1 (kg N/ha/yr):	
 0.00	N_uptaken_by_crop2 (kg N/ha/yr):	
 0.00	N_uptaken_by_crop3 (kg N/ha/yr):	
-0.69	Runoff N (kg N/ha/yr):	
-48.69	Nitrate_leached (kg N/ha/yr):	
-55.11	NH3_volatilization (kg N/ha/yr):	
-2.54	N2O_emission (kg N/ha/yr):	
-0.30	NO_emission (kg N/ha/yr):	
+0.68	Runoff N (kg N/ha/yr):	
+47.69	Nitrate_leached (kg N/ha/yr):	
+67.71	NH3_volatilization (kg N/ha/yr):	
+2.55	N2O_emission (kg N/ha/yr):	
+0.31	NO_emission (kg N/ha/yr):	
 0.00	N2_emission (kg N/ha/yr):	
-655.73	C_input_from_crop_root (kg C/ha/yr):	
-99.42	C_input_from_crop_shoot (kg C/ha/yr):	
-222.71	C_input_from_roots (kg C/ha/yr):	
+621.11	C_input_from_crop_root (kg C/ha/yr):	
+94.18	C_input_from_crop_shoot (kg C/ha/yr):	
+250.99	C_input_from_roots (kg C/ha/yr):	
 0.00	C_input_from_manure (kg C/ha/yr):	
-582.44	Soil_heterotrophic_CO2 (kg C/ha/yr):	
--1.77	CH4_emission (kg C/ha/yr):	
+604.90	Soil_heterotrophic_CO2 (kg C/ha/yr):	
+-2.18	CH4_emission (kg C/ha/yr):	
 7.59	SOC_leaching (kg C/ha/yr):	
 
-176.40	Change_in_SOC (kg C/ha/yr):	
+142.59	Change_in_SOC (kg C/ha/yr):	
 
 575.10	Annual precipitation (mm):	
 0	Irrigation			
-155	Transpiration1			
+153	Transpiration1			
 0	Transpiration2			
 0	Transpiration3			
-233	Soil evaporation		
+228	Soil evaporation		
 0	Surface water evaporation	
-42	Run off			
-231	Leaching			
+41	Run off			
+223	Leaching			
 0	Groundwater suply		
 
-4098.31	Crop_biomass1 (kg C/ha):	
+3881.95	Crop_biomass1 (kg C/ha):	
 0.00	Crop_biomass2 (kg C/ha):	
 0.00	Crop_biomass3 (kg C/ha):	
-1639.33	Crop_grain1 (kg C/ha):	
+1552.78	Crop_grain1 (kg C/ha):	
 0.00	Crop_grain1 (kg C/ha):	
 0.00	Crop_grain1 (kg C/ha):	
-1803.26	Crop_shoot1 (kg C/ha):	
+1708.06	Crop_shoot1 (kg C/ha):	
 0.00	Crop_shoot1 (kg C/ha):	
 0.00	Crop_shoot1 (kg C/ha):	
-655.73	Crop_root1 (kg C/ha):	
+621.11	Crop_root1 (kg C/ha):	
 0.00	Crop_root1 (kg C/ha):	
 0.00	Crop_root1 (kg C/ha):	
-63.52	Crop_N1 (kg N/ha):	
+60.17	Crop_N1 (kg N/ha):	
 0.00	Crop_N1 (kg N/ha):	
 0.00	Crop_N1 (kg N/ha):	
 1900.00	Optimum_grain1 (kg C/ha):	
@@ -75,16 +75,16 @@ None	Crop_type:
 760.00	Optimum_root1 (kg C/ha):	
 0.00	Optimum_root1 (kg C/ha):	
 0.00	Optimum_root1 (kg C/ha):	
-183.35	Crop_water_demand1 (mm):	
+180.62	Crop_water_demand1 (mm):	
 0.00	Crop_water_demand1 (mm):	
 0.00	Crop_water_demand1 (mm):	
 73.63	Crop_N_demand1 (kg N/ha):	
 0.00	Crop_N_demand1 (kg N/ha):	
 0.00	Crop_N_demand1 (kg N/ha):	
-1900.00	Crop_T_demand1 (degree):	
+3000.00	Crop_T_demand1 (degree):	
 0.00	Crop_T_demand1 (degree):	
 0.00	Crop_T_demand1 (degree):	
-1912.85	TDD (degree):	
+2898.70	TDD (degree):	
 0.00	TDD (degree):	
 0.00	TDD (degree):	
 140 283	Crop1 plant/harvest dates:	
