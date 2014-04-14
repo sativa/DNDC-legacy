@@ -5,4 +5,4 @@ project( DNDC )
 set( VC_VERSION 11 )
 
 add_subdirectory( DNDC95 )
-add_subdirectory( dndc_test )
+#add_subdirectory( dndc_test )

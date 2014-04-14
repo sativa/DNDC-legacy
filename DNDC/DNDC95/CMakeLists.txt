@@ -61,6 +61,8 @@ set(CMAKE_MFC_FLAG 2)
 
 add_library( ${TARGET_NAME} SHARED ${PRIVATE_SOURCES} ${PRIVATE_HEADERS} )
 
-install( 
-    TARGETS ${TARGET_NAME}
+install( TARGETS ${TARGET_NAME}
     DESTINATION ../install-32-bit )
+
+install( TARGETS ${TARGET_NAME}
+    DESTINATION "C:/dev/leaf/install-32-bit/bin/" )
