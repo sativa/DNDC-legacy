@@ -413,20 +413,25 @@ int class_model::DNDC100go(MODEL_LINK_INFO* pLinkInfo, int MODE, int SoilYear, f
 #else
     if(scale==0)
     {	
-        //if(Monitor==0) frame(pLinkInfo, "None", "None", site, scale, year);
+#ifdef DLL_MODE
+#else
+        if(Monitor==0) frame(pLinkInfo, "None", "None", site, scale, year);
+#endif
     }
     else
     {
         sprintf(site, "%d", CountyIDX);
-
+#ifdef DLL_MODE
+#else
         if(MonteCarlo==1) 
         {
-            //if(Monitor==0) frame(pLinkInfo, countryName, stateName, site, scale, LandOrder);
+            if(Monitor==0) frame(pLinkInfo, countryName, stateName, site, scale, LandOrder);
         }
         else 
         {
-            //if(Monitor==0) frame(pLinkInfo, countryName, stateName, site, scale, year);//+
+            if(Monitor==0) frame(pLinkInfo, countryName, stateName, site, scale, year);//+
         }
+#endif
     }
 #endif
 
@@ -507,8 +512,11 @@ int class_model::DNDC100go(MODEL_LINK_INFO* pLinkInfo, int MODE, int SoilYear, f
     {
         if (scale == 0 && day_file ==1)
         {
+#ifdef DEGUI
+            if(Batch==1) sprintf(FCT20, "%s", Pass);
+#else
             if(Batch==1) sprintf(FCT20, "%s", PassC1);
-
+#endif
             sprintf(DAYclim, "%s\\Day_Climate_%d.%s", FCT20, year, CSV);
             fclim = sopen( DAYclim, 0 );
             if ( fclim == NULL ) note(1,DAYclim);
@@ -1599,7 +1607,10 @@ for(jday=1; jday<=365; jday++)
 
 #ifdef DEGUI
 #else
-    //if(Monitor==0) paint(pLinkInfo, scale, ViewMode, cropping_system);//++
+#ifdef DLL_MODE
+#else
+    if(Monitor==0) paint(pLinkInfo, scale, ViewMode, cropping_system);//++
+#endif
 #endif
 
     // Annual accumulation 

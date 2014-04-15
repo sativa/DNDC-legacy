@@ -8,7 +8,7 @@
 #include "DNDCgo.h"
 #include "dndc_tool.h"
 
-#define BASE 
+//#define BASE 
 //#define MANURE
 //#define DROUGHT
 //define HYDRO
