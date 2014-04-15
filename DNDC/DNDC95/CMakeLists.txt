@@ -28,9 +28,6 @@ set(CMAKE_MFC_FLAG 2)
 add_library( ${TARGET_NAME} SHARED ${PRIVATE_SOURCES} ${PRIVATE_HEADERS} )
 
 install( TARGETS ${TARGET_NAME}
-    DESTINATION "../install-32-bit" )
-
-if( DNDC_BATCH_MODE OR DNDC_DLL_MODE )
-    install( TARGETS ${TARGET_NAME}
-        DESTINATION "C:/dev/leaf/install-32-bit/bin/" )
-endif()
+    DESTINATION "." )
+install( FILES "../build-32-bit/DNDC95/Debug/${TARGET_NAME}.pdb"
+    DESTINATION "." )
