@@ -20,11 +20,11 @@
 
 #ifdef DEGUI
 
-    #define ROOTDIR ""
-    #define OUTPUT "RESULT"
-    #define INTER "RESULT\\INTER"
-    #define INPUTS "RESULT\\INPUTS"
-    #define INTERMANAGE "RESULT\\INTER\\Management"
+    #define ROOTDIR "C:\\dev\\leaf-models-public\\DNDC\\"
+    #define OUTPUT "C:\\dev\\leaf-models-public\\DNDC\\RESULT"
+    #define INTER "C:\\dev\\leaf-models-public\\DNDC\\RESULT\\INTER"
+    #define INPUTS "C:\\dev\\leaf-models-public\\DNDC\\RESULT\\INPUTS"
+    #define INTERMANAGE "C:\\dev\\leaf-models-public\\DNDC\\RESULT\\INTER\\Management"
 
 #else
 

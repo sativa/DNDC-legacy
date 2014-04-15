@@ -65,7 +65,7 @@ int WINAPI OpenSesame(void)
 	CString Fregion;
 	FILE *region, *FileRun;
 	
-	sprintf(BatchFileName, "C:\\DNDC\\webster\\batch_test.txt");
+	sprintf(BatchFileName, "C:\\dev\\leaf-models-public\\DNDC\\test_data\\batch_test.txt");
 		
 	Fregion.Format("%s", BatchFileName);
 	region = fopen(Fregion, "r");
