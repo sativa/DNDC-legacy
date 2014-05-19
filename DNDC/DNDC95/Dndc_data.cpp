@@ -838,7 +838,7 @@ if(facility==1)//storage/treatment
 void class_model::read_in_site(int MODE, int Batch)
 {
     int junk_d;
-    char site_file[80];
+    char site_file[200];
     FILE *fp;
 
     sprintf(site_file, "%s\\INPUTS\\SITE", OUTPUT);
@@ -864,7 +864,7 @@ void class_model::read_in_site(int MODE, int Batch)
 int class_model::read_in_soil_parm(int MODE, int SoilYear, int MonteCarlo)
 {
     FILE *fp;
-    char  SOIL_YEAR[80];
+    char  SOIL_YEAR[200];
     int   i, IniYr=1;
     float jf, SOCa, SOCb, SoilIniP;
     float LayerDepth = 0.0;//, Tttoo[100]={0.0, 0.0};
@@ -1297,7 +1297,7 @@ int class_model::read_in_soil_parm(int MODE, int SoilYear, int MonteCarlo)
 void class_model::read_in_cropini(int MODE, int GlobeData, CString FCT40)
 {    
     int iii, crop_code;
-    char F_CROP[80], js[50];
+    char F_CROP[200], js[50];
     float BiomassC, MaxLAI, MaxHeight, jf;
     FILE *fp;
 
@@ -1448,7 +1448,7 @@ void class_model::read_in_cropini(int MODE, int GlobeData, CString FCT40)
 void class_model::read_in_crop(int MODE, int GlobeData, CString FCT40)
 {
     FILE *fp, *fpp;
-    char crop_file[80], F_CROP[200];
+    char crop_file[200], F_CROP[200];
     int i, indi, NewCropNumbers, IniCropNumbers, NEWPerennialFlag[8]={0,0}, NEWcrop[8]={0,0};
     float jf;
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -1727,7 +1727,7 @@ void class_model::read_in_crop(int MODE, int GlobeData, CString FCT40)
 int class_model::read_in_vege(int MODE, int CU, int ccwc)
 {
     FILE *fp;
-    char  VEGE[80], Wd[160], WW[100];
+    char  VEGE[200], Wd[160], WW[100];
     float jf;
     int jd;
 
@@ -1828,7 +1828,7 @@ int class_model::read_in_vege(int MODE, int CU, int ccwc)
 void class_model::read_in_LAI(void)
 {
     FILE *fp;
-    char  FLOOD[80], LaiFile[200];
+    char  FLOOD[200], LaiFile[200];
     int   i;
 
     sprintf(FLOOD, "%s\\Inter\\Observed_LAI.txt", OUTPUT);
@@ -1890,7 +1890,7 @@ void class_model::read_in_LAI(void)
 int class_model::read_in_clim(int DroughtID)
 {
     FILE  *fp;
-    char   CLIM[80];
+    char   CLIM[200];
  
     sprintf(CLIM, "%s\\INPUTS\\clim-%d", OUTPUT, year);
     
@@ -1918,7 +1918,7 @@ int class_model::read_in_climy(int MODE, int drc, int DroughtID)
 {
     FILE *fp;
     int   mon, ETM=1;
-    char F_CLIM[80];
+    char F_CLIM[200];
 
     if(year==2&&DroughtID==1)
     {
@@ -1949,7 +1949,7 @@ int class_model::read_in_climy(int MODE, int drc, int DroughtID)
         int YY, Y;
         float new_CO2;
         FILE  *fp;
-        char   CLIM[80]; 
+        char   CLIM[200]; 
         sprintf(CLIM, "%s\\Inter\\MultiYear_AirCO2.txt", OUTPUT);    
         fp = fopen(CLIM, "r");
         if ( fp == NULL ) note(0, CLIM);
@@ -2000,7 +2000,7 @@ int class_model::read_in_climy(int MODE, int drc, int DroughtID)
 void class_model::read_in_irri(int MODE, int IrriType, CString FCT40)
 {
     FILE *fp;
-    char  IRRI[80];
+    char  IRRI[200];
     int   csl;
 
     sprintf(IRRI, "%s\\irri-%d", FCT40, year);
@@ -2045,7 +2045,7 @@ void class_model::read_in_irri(int MODE, int IrriType, CString FCT40)
 int class_model::read_in_till(CString FCT40)
 {
     FILE *fp;
-    char  TILL[80];
+    char  TILL[200];
     int   csl;
 
     sprintf(TILL, "%s\\till-%d", FCT40, year);
@@ -2094,7 +2094,7 @@ int class_model::read_in_till(CString FCT40)
 int class_model::read_in_fert(int MODE, CString FCT40)
 {
     FILE *fp;
-    char  FERT[80];
+    char  FERT[200];
     int   csl, FertMethod;
     float jf;
 
@@ -2190,7 +2190,7 @@ int class_model::read_in_fert(int MODE, CString FCT40)
 int class_model::read_in_manu(CString FCT40)
 {
     FILE *fp;
-    char  MANU[80];
+    char  MANU[200];
     int   csl;
 
     sprintf(MANU, "%s\\manu-%d", FCT40, year);
@@ -2223,7 +2223,7 @@ int class_model::read_in_manu(CString FCT40)
 int class_model::read_in_cut(CString FCT40)
 {
     FILE *fp;
-    char  GRAZ[80];
+    char  GRAZ[200];
     int   csl;
 
     sprintf(GRAZ, "%s\\cut-%d", FCT40, year);
@@ -2258,7 +2258,7 @@ int class_model::read_in_graz(CString FCT40)
     //The default average weights refered: cattle 753 kg; finishing steers 640 kg; cows 725 kg, and Bulls 1090 kg.
 
     FILE *fp;
-    char  GRAZ[80];
+    char  GRAZ[200];
     int   csl;
 
     sprintf(GRAZ, "%s\\graz-%d", FCT40, year);
@@ -2353,7 +2353,7 @@ int class_model::read_in_graz(CString FCT40)
 int class_model::read_in_plastic(CString FCT40)
 {
     FILE *fp;
-    char  WEED[80];
+    char  WEED[200];
     int   sef, PlasM1, PlasD1, PlasM2, PlasD2;
 
     sprintf(WEED, "%s\\plastic-%d", FCT40, year);
@@ -2801,7 +2801,7 @@ void class_model::zero_DayFlux(void)
 int class_model::read_in_flood(int MODE, CString FCT40)
 {
     FILE *fp;
-    char  FLOOD[80];
+    char  FLOOD[200];
     int   i, junkd;
 
     sprintf(FLOOD, "%s\\flood-%d", FCT40, year);
