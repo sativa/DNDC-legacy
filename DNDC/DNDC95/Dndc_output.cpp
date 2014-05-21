@@ -765,8 +765,8 @@ int class_model::write_out_wb(int Batch, char *BatchFileName, char *PassC1)
         }
 
         fprintf(fout, "Annual water budget for site: %s\n", site);
-        fprintf(fout, "Year,Initial water pools (mm),,,,,Input (mm/yr),,,Output (mm/yr),,,,,,,,End water pools (mm)\n");
-        fprintf(fout, ",Soil,Snow,Leaf,Pond,Deep,Precipitation,Irrigation,Interception,Snow evap,Leaf evap,Pond evap,Soil evap,Tranpiration,Leaching,Runoff,Soil,Snow,Leaf,Pond,Deep\n");
+        fprintf(fout, "Initial water pools (mm),,,,,Input (mm/yr),,,Output (mm/yr),,,,,,,,End water pools (mm)\n");
+        fprintf(fout, "Year,Soil,Snow,Leaf,Pond,Deep,Precipitation,Irrigation,Interception,Snow evap,Leaf evap,Pond evap,Soil evap,Tranpiration,Leaching,Runoff,Soil,Snow,Leaf,Pond,Deep\n");
     }
     else
     {
