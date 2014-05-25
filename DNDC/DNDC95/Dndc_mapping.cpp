@@ -8,7 +8,7 @@ void class_model::map_county(MODEL_LINK_INFO* pLinkInfo, char *CountryName, char
 {
 	float qq, xx, yy;
 	int RR, GG, BB;
-	char map_address[200];
+	char map_address[300];
 	FILE *Fmap;
 
 // changed by liujm
@@ -900,7 +900,7 @@ void class_model::map_state(MODEL_LINK_INFO* pLinkInfo, char *CountryName, char 
 
 void class_model::MappingCountry(MODEL_LINK_INFO* pLinkInfo, char *CountryName, char *ProvinceName, int RegionCode, int country_code, int state_code)
 {
-	char File5[200], map_address[200];
+	char File5[300], map_address[300];
 	FILE *Findex, *Fdata;
 	int gridID, mapID, fID, pairs, mm;
 	float Da, Db, qq, xx, yy;

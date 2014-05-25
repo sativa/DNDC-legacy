@@ -840,7 +840,7 @@ if(facility==1)//storage/treatment
 void class_model::read_in_site(int MODE, int Batch)
 {
     int junk_d, jjd;
-    char site_file[200];
+    char site_file[300];
     FILE *fp;
 
     sprintf(site_file, "%s\\INPUTS\\SITE", OUTPUT);
@@ -866,7 +866,7 @@ void class_model::read_in_site(int MODE, int Batch)
 int class_model::read_in_soil_parm(int MODE, int SoilYear, int MonteCarlo)
 {
     FILE *fp;
-    char  SOIL_YEAR[200];
+    char  SOIL_YEAR[300];
     int   i, IniYr=1;
     float jf, SOCa, SOCb, SoilIniP;
     float LayerDepth = 0.0;//, Tttoo[100]={0.0, 0.0};
@@ -1446,7 +1446,7 @@ void class_model::read_in_cropini(int MODE, int GlobeData, CString FCT40)
 void class_model::read_in_crop(int MODE, int GlobeData, CString FCT40)
 {
     FILE *fp, *fpp;
-    char crop_file[200], F_CROP[200];
+    char crop_file[300], F_CROP[300];
     int i, indi, NewCropNumbers, IniCropNumbers, NEWPerennialFlag[8]={0,0}, NEWcrop[8]={0,0};
     float jf;
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -1833,7 +1833,7 @@ int class_model::read_in_vege(int MODE, int CU, int ccwc)
 void class_model::read_in_LAI(void)
 {
     FILE *fp;
-    char  FLOOD[200], LaiFile[200];
+    char  FLOOD[300], LaiFile[300];
     int   i;
 
     sprintf(FLOOD, "%s\\Inter\\Observed_LAI.txt", OUTPUT);
@@ -1895,7 +1895,7 @@ void class_model::read_in_LAI(void)
 int class_model::read_in_clim(int DroughtID)
 {
     FILE  *fp;
-    char   CLIM[200];
+    char   CLIM[300];
  
     sprintf(CLIM, "%s\\INPUTS\\clim-%d", OUTPUT, year);
     
@@ -1923,7 +1923,7 @@ int class_model::read_in_climy(int MODE, int drc, int DroughtID)
 {
     FILE *fp;
     int   mon, ETM=1;
-    char F_CLIM[200];
+    char F_CLIM[300];
 
     if(year==2&&DroughtID==1)
     {
@@ -1954,7 +1954,7 @@ int class_model::read_in_climy(int MODE, int drc, int DroughtID)
         int YY, Y;
         float new_CO2;
         FILE  *fp;
-        char   CLIM[200]; 
+        char   CLIM[300]; 
         sprintf(CLIM, "%s\\Inter\\MultiYear_AirCO2.txt", OUTPUT);    
         fp = fopen(CLIM, "r");
         if ( fp == NULL ) note(0, CLIM);

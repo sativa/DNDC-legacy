@@ -531,7 +531,7 @@ int class_model::write_out_cropini(int MODE )
 {
     int i, KK=0, LeftDays[8];
     FILE *fp;
-    char F_INI[80];
+    char F_INI[300];
     
     {
     for(int i=1; i<=CropNumbers; i++)
@@ -626,7 +626,7 @@ int class_model::write_out_cropini(int MODE )
 int class_model::write_out_soil_parm(int MODE, int SoilYear, int SimuYears)
 {
     FILE *fp;
-    char  SoilYr[200], SOIL[80];
+    char  SoilYr[200], SOIL[300];
     int   l;
     float wrcvl=0.0, wrcl=0.0, wrcr=0.0, wcrb=0.0, wcrhl=0.0, wcrhr=0.0; 
     float whumus=0.0, wtcavai=0.0, winertC=0.0, wFreezedoc=0.0;
@@ -718,7 +718,7 @@ int class_model::write_out_soil_parm(int MODE, int SoilYear, int SimuYears)
 
         if(SimuYears==year)
         {
-            char FileB[200];
+            char FileB[300];
             sprintf(FileB, "%s\\Inter\\%s-%s.txt", OUTPUT, SoilYr, site);
             File_Copy(SOIL, FileB);
         }
@@ -804,7 +804,7 @@ int File_Copy(char *source, char *dest)
 int class_model::write_out_wb(int Batch, char *BatchFileName, char *PassC1)
 {
     FILE *fout;
-    char  junkc[100];
+    char  junkc[300];
 
     if(Batch==1) 
     {
@@ -992,7 +992,7 @@ int class_model::write_out_annual_report(int MODE, float ha, int Batch, int live
                                          float *FarmCropManureFraction, int drc, char *Pass, char *PassC1, char *PassL1)
 {
     //FILE  *fout;
-    char  YR[80], date_time[80];
+    char  YR[300], date_time[300];
     
     time_t  t;
     float CNRatio, GrainC, LeafC, StemC, RootC;

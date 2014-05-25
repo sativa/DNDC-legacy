@@ -36,13 +36,12 @@
     #define INPUTS "\\ManureDNDC\\RESULT\\INPUTS"
     #define INTERMANAGE "\\ManureDNDC\\RESULT\\INTER\\Management"
 #else 
-    #define ROOTDIR "C:\\dev\\leaf-models-public\\DNDC\\"
-    #define OUTPUT "C:\\dev\\leaf-models-public\\DNDC\\RESULT"
-    #define INTER "C:\\dev\\leaf-models-public\\DNDC\\RESULT\\INTER"
-    #define INPUTS "C:\\dev\\leaf-models-public\\DNDC\\RESULT\\INPUTS"
-    #define INTERMANAGE "C:\\dev\\leaf-models-public\\DNDC\\RESULT\\INTER\\Management"
+    #define ROOTDIR "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\"
+    #define OUTPUT "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT"
+    #define INTER "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT\\INTER"
+    #define INPUTS "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT\\INPUTS"
+    #define INTERMANAGE "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT\\INTER\\Management"
 #endif
-
 
 #endif
 

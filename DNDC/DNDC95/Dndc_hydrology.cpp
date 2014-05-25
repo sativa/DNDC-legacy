@@ -68,7 +68,7 @@ void class_model::SCS_MUSLE(int scale, float ha, int livestock)
         //read_in_sitemusle();
         if(scale==1) 
         {
-            char site_file[80];
+            char site_file[300];
             FILE *fp;
 
             sprintf(site_file, "%sResult\\Inputs\\muslesite", ROOTDIR);
@@ -81,7 +81,7 @@ void class_model::SCS_MUSLE(int scale, float ha, int livestock)
             fclose( fp );
 
      //    read_in_soilmusle();   
-            char soil_file[80];
+            char soil_file[300];
             FILE *fps;
 
             sprintf(soil_file, "%sResult\\Inputs\\muslesoil", ROOTDIR);
@@ -122,7 +122,7 @@ void class_model::SCS_MUSLE(int scale, float ha, int livestock)
             MUSLEC = 1.0 - TotalBiomass / 5000.0;
             MUSLEC = max(0.0, min(1.0, MUSLEC));
             
-            char scs_para[80];
+            char scs_para[300];
             FILE *fscs;
             sprintf(scs_para, "%sResult\\Inputs\\scspara", ROOTDIR);
             fscs = fopen(scs_para, "r");

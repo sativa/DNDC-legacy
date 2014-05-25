@@ -180,7 +180,7 @@ void CreateBlankFiles(void)
 #endif
 
     FILE *db;
-    char DCB[200];
+    char DCB[300];
     for(int k=1; k<=10; k++)
     {
         sprintf(DCB, "%s_1\\CropRotation_%d.txt", INTERMANAGE, k);
@@ -533,7 +533,7 @@ void ReadInputDatafromDND(char *InputFileName)
     // Read crop parameter
     int ri, temp, yc, db_CycleYear[20], FCTT=0;
     int db_Rotation_Number, FarmMode=0, FarmCropNumber;
-    char DB[200], FCT60[200], CropDB[200];
+    char DB[300], FCT60[300], CropDB[300];
     FILE *db, *cropdb;
 
     FCTT++;
@@ -918,7 +918,7 @@ void ReadInputDatafromDND(char *InputFileName)
         
         fscanf(fp, "%f %f %f %f %f %f\n", &m_CN, &m_RoughLand, &m_RoughChannel, &m_ChannelSlope, &m_ChannelLength, &m_LandManage);
         
-        char scs[120];
+        char scs[300];
         FILE *scspara;
         sprintf(scs,"%s\\Inputs\\scspara", OUTPUT);
         scspara = fopen(scs, "w");
@@ -931,7 +931,7 @@ void ReadInputDatafromDND(char *InputFileName)
     if(Unit==0||Unit==1) Unit = Unit;
     else Unit = 0;
 
-    char LB[200], CM[200];
+    char LB[300], CM[300];
     FILE* ddb, *cm;
 
     sprintf(LB,"%s\\UnitSystem", INTER);
@@ -976,7 +976,7 @@ void CreateInputFiles(int DaymetFlag, int UseID, char *r_Country, char *BatchPas
 
 void SaveSite(void)
 {
-    char fname[255];
+    char fname[300];
     FILE *fpo;
 
     sprintf(fname,"%s\\site", INPUTS);
@@ -1026,7 +1026,7 @@ void SaveClimateFileOfAYear(int id,char *ch, float lat, int ClimateFileType, flo
     if(UseID==10)//drought option
     {
         //////////////////////////////////////////////////////////////////////////
-            char YF[200];
+            char YF[300];
             FILE* yf;
             sprintf(YF, "%s\\YieldPrediction", INTER);
             yf=fopen(YF, "r");
@@ -1113,7 +1113,7 @@ void CreateDailyClimateFile(char *Pname, char *Dname, char *Yname, int UseID, in
                             int DMW, char *r_Country)
 {
     int tn, j, k;
-    char fname[256],cn[256], cjunk[200], junkcc[300], ch[256];
+    char fname[300],cn[256], cjunk[200], junkcc[300], ch[256];
     char CurrentClim[300], junkc[200];
     
     FILE* fpo, *fpi, *fcc;
@@ -1159,8 +1159,8 @@ void CreateDailyClimateFile(char *Pname, char *Dname, char *Yname, int UseID, in
         fcc=fopen(CurrentClim, "r");
         if(fcc==NULL) note(0, CurrentClim);
         fscanf(fcc,"%s", cjunk);
-    }    
-   
+    }
+
     tn = 0;
     AveYrT = 0.0;
     TotalYrRain = 0.0;
@@ -1518,7 +1518,7 @@ int SaveSoilParas(int id)//1
     s_N2[1] = 0.;
     s_NO2[1]= 0.;
             
-    char fname[255];
+    char fname[300];
     FILE *fpo;
     sprintf(fname,"%s\\soil-%d", INPUTS, abs(id));
     fpo=fopen(fname,"w");
@@ -1580,7 +1580,7 @@ int SaveSoilParas(int id)//1
 
     //if (id<0) return 0;
 
-    char SYF[200];
+    char SYF[300];
     FILE* sni;
     sprintf(SYF, "%s\\SoilNewIni", INPUTS);
     sni=fopen(SYF, "w");
@@ -2211,7 +2211,7 @@ for(int MFFC=1; MFFC<=FarmCrops; MFFC++)
         }
     }
     
-    char F_INI[200];
+    char F_INI[300];
     FILE *fpp;
     sprintf(F_INI, "%s\\INPUTS\\cropini-1", OUTPUT);    
     fpp = fopen(F_INI, "w");

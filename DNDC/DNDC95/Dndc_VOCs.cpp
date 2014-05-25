@@ -212,7 +212,7 @@ void VOC_EMSN(int FEED,float &DM, int NSTR, float SILDAT[6][5], int SILTYP, char
       for (i=1; i<4; i++) CCN[i] = 0.0;//Concentration of remaining VOC, fraction of DM
 
       //daily climate data
-      char Passs[100];
+      char Passs[300];
       sprintf(Passs, "%s\\RECORD\\Site", OUTPUT);
 
       char DAYvoc[120];

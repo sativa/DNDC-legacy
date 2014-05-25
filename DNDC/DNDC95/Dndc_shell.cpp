@@ -116,7 +116,7 @@ int WINAPI OpenSesame(void)
 		if(option==10) DroughtID = 1;
 
 		///////////////////////////
-		char site_file[80], site[200];
+		char site_file[300], site[300];
 		FILE *fp;
 
 		sprintf(site_file, "%s\\INPUTS\\SITE", OUTPUT);

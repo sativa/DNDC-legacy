@@ -116,7 +116,7 @@ int WINAPI Model_link(MODEL_LINK_INFO* pLinkInfo,
 			DNDC->year = ThisYear;
 
 			int FSF=0;
-			char SYF[200];
+			char SYF[300];
 			FILE* sni;
 			sprintf(SYF, "%s\\Inter\\SoilNewIni", OUTPUT);
 			sni=fopen(SYF, "r");
@@ -153,7 +153,7 @@ int WINAPI Model_link(MODEL_LINK_INFO* pLinkInfo,
 		if(scale==0 || (scale==1&&ha>0.0))
 		{
 #ifdef MANURE
-			char WZX[200];
+			char WZX[300];
 			FILE *wzx;
 			sprintf(WZX, "%s\\ManureFieldAll.txt", INTER);
 			wzx=fopen(WZX, "r");

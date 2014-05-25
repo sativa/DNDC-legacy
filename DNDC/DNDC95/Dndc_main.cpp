@@ -75,9 +75,9 @@ int class_model::DNDC100go(MODEL_LINK_INFO* pLinkInfo, int MODE, int SoilYear, f
     int FarmCropID[10], ETM=0, YieldSite=0, YieldCrop=0, YieldYear=0, YieldToday=0, SoilDataUse=0;
     
     char DAYW[90], DAYC[90], DAYN[90], DAYP[90], DAYS[90], DAYM[90],DAYnBalance[90],DAYSP[90],DAYMB[90],DAYIS[90];
-    char js[120],IE[80], F_CLIMD[300], F_WT[150], F_LV[15], Zz[200], DAYclim[90];
+    char js[120],IE[80], F_CLIMD[300], F_WT[300], F_LV[15], Zz[200], DAYclim[90];
     char DAYcBalance[90], DAYG[90];//, BatchFileName[300];
-    char HrSoilMoist[100], YieldCountyName[200], LB[200];
+    char HrSoilMoist[100], YieldCountyName[300], LB[300];
     char Pass[300], PassC1[300],PassL1[300];
 
     FILE *fout, *fout2=NULL;
@@ -141,7 +141,7 @@ int class_model::DNDC100go(MODEL_LINK_INFO* pLinkInfo, int MODE, int SoilYear, f
     char r_Country[120], r_Scenario[240];
 
     int FarmFile, SimuYears, r_NewScenario=0, _ShallowWater;
-    char Fregion[120];
+    char Fregion[300];
     FILE *region;
     FILE *fertg;
     IFDAILY = 0;
@@ -1781,7 +1781,7 @@ int class_model::DNDC101go(MODEL_LINK_INFO* pLinkInfo, int MODE, int SoilYear, f
     ///////////// Single farm facility simulation
     
     int FSF=0;
-    char SYF[200];
+    char SYF[300]
     FILE* sni;
     sprintf(SYF, "%s\\Inter\\SoilNewIni", OUTPUT);
     sni=fopen(SYF, "r");
