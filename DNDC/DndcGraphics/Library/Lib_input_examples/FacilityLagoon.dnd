@@ -1,8 +1,0 @@
-Lagoon_input_data
-Latitude: 52.000000
-Climate_file_name: C:\ManureDNDC\Library\Lib_input_examples\NovaScotia_outdoor_climate.txt
-Lagoon_climate_file_name: C:\ManureDNDC\Library\Lib_input_examples\NovaScotia_LagoonChamber_ClimateData.txt
-Management_file_name: C:\ManureDNDC\Library\Lib_input_examples\NovaScotia_LagoonChamber_ManageData.txt
-Lagoon_cover_type: 2
-Surface_area: 6.600000
-Lagoon_capacity: 12.000000
