@@ -24,4 +24,4 @@ install( FILES "C:/dev/leaf-models-public/DNDC/build-32-bit/DNDC95/Debug/${TARGE
     install( FILES "C:/dev/leaf-models-public/DNDC/install-32-bit/${TARGET_NAME}.pdb"
     "C:/dev/leaf-models-public/DNDC/install-32-bit/${TARGET_NAME}.dll"
     "C:/dev/leaf-models-public/DNDC/install-32-bit/${TARGET_NAME}.lib"
-    DESTINATION "C:/dev/leaf/external/DNDC_site/DNDC_SITE/Win32/vc11" )
+    DESTINATION "C:/dev/leaf/external/DNDC/DNDC_SITE/Win32/vc11" )
