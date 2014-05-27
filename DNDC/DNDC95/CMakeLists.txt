@@ -25,3 +25,8 @@ install( FILES "C:/dev/leaf-models-public/DNDC/build-32-bit/DNDC95/Debug/${TARGE
     "C:/dev/leaf-models-public/DNDC/install-32-bit/${TARGET_NAME}.dll"
     "C:/dev/leaf-models-public/DNDC/install-32-bit/${TARGET_NAME}.lib"
     DESTINATION "C:/dev/leaf/external/DNDC/DNDC_SITE/Win32/vc11" )
+
+    install( FILES "C:/dev/leaf-models-public/DNDC/DNDC95/DNDCgo.h"
+    "C:/dev/leaf-models-public/DNDC/DNDC95/StdAfx.h"
+    "C:/dev/leaf-models-public/DNDC/DNDC95/Resource.h"
+    DESTINATION "C:/dev/leaf/external/DNDC/DNDC_SITE/Win32/vc11" )
