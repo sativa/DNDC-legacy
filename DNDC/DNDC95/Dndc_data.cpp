@@ -1604,10 +1604,10 @@ void class_model::read_in_crop(int MODE, int GlobeData, CString FCT40)
                 &crop[i], crop_name[i], &WinterCropFlag[i], &WCLeftDays[i], &GrainYield[i], &HarvestYear[i]);
             fscanf(fp, "%d %d %f %f %d", 
                 &jdseed[i], &grow_days[i], &left_perc[i], &maxmn[i], &indi);			
-            fscanf(fp, "%f %d %f %f %f", 
-                &InitialBiomass[i],&Transplant[i],&jf,&jf,&jf);
-                   //&InitialBiomass[i], &GrowthVegetative[i], &GrowthReproductive[i],
-                   //&PsnEfficiency[i], &PsnMax[i]);
+            fscanf(fp, "%f %f %f %f %f", 
+                //&InitialBiomass[i],&Transplant[i],&jf,&jf,&jf);
+                   &InitialBiomass[i], &GrowthVegetative[i], &GrowthReproductive[i],
+                   &PsnEfficiency[i], &PsnMax[i]);
             fscanf(fp, "%d", &CoverCrop[i]);
             fscanf(fp, "%d", &PerennialFlag[i]);
             fscanf(fp, "%f %f %f %f", &grain[i], &leaf[i], &stem[i], &root[i]);
