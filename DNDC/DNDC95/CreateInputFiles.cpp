@@ -46,7 +46,7 @@ int   jday=0,jday0=0,Aday, TotalManureCropss;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void CreateBlankFiles(void);
-void ReadInputDatafromDND(char *InputFileName);
+void ReadInputDatafromDND( const char *InputFileName);
 void CreateInputFiles(int DaymetFlag, int UseID, char *r_Country, char *BatchPass);
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -72,16 +72,16 @@ void RecordManureFiles(void);
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-void CreateDndcInputFiles(char *InputFileName, char *BatchPass)
+void WINAPI CreateDndcInputFiles( const char *InputFileName, char *BatchPass)
 {
     //Create blank files
     CreateBlankFiles();
 
     //Read in DND file
-    ReadInputDatafromDND(InputFileName);
+    ReadInputDatafromDND( InputFileName );
 
     //Create input files
-    CreateInputFiles(0, UseID, r_Country, BatchPass);
+    CreateInputFiles( 0, UseID, r_Country, BatchPass );
     
 }
 
@@ -201,7 +201,7 @@ void CreateBlankFiles(void)
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
 
-void ReadInputDatafromDND(char *InputFileName)
+void ReadInputDatafromDND( const char *InputFileName)
 {
     int  i, j, k;
     int floon, ShallowFlood, WaterControl, FlooMonth1, FlooDay1, FlooMonth2, FlooDay2;
@@ -488,6 +488,13 @@ void ReadInputDatafromDND(char *InputFileName)
     fscanf(fp,"%s",notes);//"-------------------------------"	
     fscanf(fp,"%s",notes);//"Soil data:"	
     fscanf(fp,"%s %d", notes,&Soil_Texture);//"Soil_Texture"
+    
+    FILE *fpi;
+    sprintf(fname, "%s\\Library\\lib_soil\\soil_%d", ROOTDIR,  Soil_Texture);
+    fpi=fopen(fname, "r");
+    fscanf(fpi,"%s %s", &SoilName, notes );// NameNote);
+    fclose( fpi );
+
     fscanf(fp,"%s %d", notes,&Soil_landuse);//"Landuse_Type"
     fscanf(fp,"%s %f", notes,&Soil_Density);//"Density"
     fscanf(fp,"%s %f", notes,&Soil_pH);	 // "Soil_pH"
@@ -526,6 +533,8 @@ void ReadInputDatafromDND(char *InputFileName)
     fscanf(fp,"%s", notes);
     fscanf(fp,"%f", &Soil_Quality);
     fscanf(fp,"%s %d", notes,&SCSuse);
+
+    
     
     if(Sks<0.015) Sks = 0.015;
     if(HighestWT>1.0) HighestWT = 1.0;
@@ -542,7 +551,7 @@ void ReadInputDatafromDND(char *InputFileName)
     
     fscanf(fp,"%s",notes);//"--------------------------------"
     fscanf(fp,"%s", notes);// "Crop_data"
-    fscanf(fp,"%s %d", notes,&db_Rotation_Number);// "Rotation_number"
+    fscanf(fp,"%s %d", notes, &db_Rotation_Number);// "Rotation_number"
         
     sprintf(DB, "%s\\CropRotation.txt", FCT60);
     db=fopen(DB, "w");
@@ -572,7 +581,9 @@ void ReadInputDatafromDND(char *InputFileName)
             char WT_file[200];
             int db_Type, db_Pmonth, db_Pday, db_Hmonth , db_Hday, db_Hyear, db_CoverCrop, db_PerennialCrop;
             float db_Yield, db_Residue;
-            float db_GrowthReproductive, db_GrowthVegetative, db_PsnEfficiency, db_PsnMax, db_TreeAge;
+            float db_GrowthReproductive;
+            float db_GrowthVegetative;
+            float db_PsnEfficiency, db_PsnMax, db_TreeAge;
             float db_GrainFraction, db_LeafFraction, db_ShootFraction, db_RootFraction;
             float db_GrainCN, db_LeafCN, db_ShootCN, db_RootCN;
             float db_TDD, db_Water, db_OptT, db_Nfix, db_Vascularity;
@@ -598,15 +609,74 @@ void ReadInputDatafromDND(char *InputFileName)
                 fscanf(fp,"%s %f",notes,&db_Residue);//Ground_Residue=
                 fscanf(fp,"%s %f",notes,&db_Yield);// Yield=  
                 fscanf(fp,"%s",notes);//Leaf_fraction= 
-                fscanf(fp,"%f", &db_LeafFraction);
+                if(strcmp(notes, "Leaf_fraction=")!=0) 
+                {
+                    fscanf(fp,"%f",&db_GrowthReproductive);
+                    db_LeafFraction = 0.0;
+                }
+                else
+                {
+                    fscanf(fp,"%f", &db_LeafFraction);
+                }
+
                 fscanf(fp,"%s",notes);//Leaf_CN= 
-                fscanf(fp,"%f", &db_LeafCN);
+                if(strcmp(notes, "Leaf_CN=")!=0) 
+                {
+                    fscanf(fp,"%f",&db_GrowthVegetative);
+                    db_LeafCN = 0.0;
+                }
+                else
+                {
+                    fscanf(fp,"%f", &db_LeafCN);
+                }
+
                 fscanf(fp,"%s %f",notes,&db_PsnEfficiency);//Psn_efficiency=
                 fscanf(fp,"%s %f",notes,&db_PsnMax);//Psn_maximum= 
                 fscanf(fp,"%s %f",notes,&db_TreeAge);//TreeAge= 
                 fscanf(fp,"%s %d",notes,&db_CoverCrop);//Cover_crop=
                 fscanf(fp,"%s", notes);//Perennial_crop=
-                fscanf(fp,"%d",&db_PerennialCrop);
+                if(strcmp(notes, "Perennial_crop=")!=0) 
+                { 
+                    //std::cout << "Error in Input data"  << std::endl;
+                    exit(1);
+                
+                }
+                else
+                {
+                    fscanf(fp,"%d",&db_PerennialCrop);
+                    fscanf(fp,"%s %f",notes,&db_GrainFraction);
+                    fscanf(fp,"%s %f",notes,&db_ShootFraction);
+                    fscanf(fp,"%s %f",notes,&db_RootFraction);
+                    fscanf(fp,"%s %f",notes,&db_GrainCN);
+                    fscanf(fp,"%s %f",notes,&db_ShootCN);
+                    fscanf(fp,"%s %f",notes,&db_RootCN);
+                    fscanf(fp,"%s %f",notes,&db_TDD);
+                    fscanf(fp,"%s %f",notes,&db_Water);
+                    fscanf(fp,"%s %f",notes,&db_OptT);
+                    fscanf(fp,"%s %f",notes,&db_Nfix);
+
+                    if(db_LeafFraction==0.0)
+                    {
+                        db_LeafFraction = 0.5 * db_ShootFraction;
+                        db_ShootFraction = db_LeafFraction;
+                    }
+
+                    if(db_LeafCN==0.0)
+                    {
+                        db_LeafCN = db_ShootCN;
+                    }
+
+                    fscanf(fp,"%s",notes);
+                    if(strcmp(notes, "Vascularity=")!=0) 
+                    { 
+                        db_Vascularity = 0.0;
+                        //MissFlag=1;
+                    }
+                    else
+                        fscanf(fp,"%f",&db_Vascularity);
+                    
+                }
+                /*
                 fscanf(fp,"%s %f",notes,&db_GrainFraction);//Grain_fraction=
                 fscanf(fp,"%s %f",notes,&db_ShootFraction);//Stem_fraction=
                 fscanf(fp,"%s %f",notes,&db_RootFraction);//Root_fraction=
@@ -619,9 +689,23 @@ void ReadInputDatafromDND(char *InputFileName)
                 fscanf(fp,"%s %f",notes,&db_Nfix);//N_fixation=
                 fscanf(fp,"%s",notes);//Vascularity= 
                 fscanf(fp,"%f",&db_Vascularity);
+                */
+                fprintf(cropdb, "%d\n", k);
+                fprintf(cropdb, "%d\n", db_Type);
+                fprintf(cropdb, "%d  %d\n", db_Pmonth , db_Pday);
+                fprintf(cropdb, "%d  %d\n", db_Hmonth , db_Hday);
+                fprintf(cropdb, "%d\n", db_Hyear);
+                fprintf(cropdb, "%f\n", db_Residue);
+                fprintf(cropdb, "%f\n", db_Yield);
+                fprintf(cropdb, "%f %f %f %f %f\n", db_GrowthReproductive, db_GrowthVegetative, db_PsnEfficiency, db_PsnMax, db_TreeAge);
+                fprintf(cropdb, "%d\n", db_CoverCrop);
+                fprintf(cropdb, "%d\n", db_PerennialCrop);
+                fprintf(cropdb, "%f %f %f %f\n", db_GrainFraction, db_LeafFraction, db_ShootFraction, db_RootFraction);
+                fprintf(cropdb, "%f %f %f %f\n", db_GrainCN, db_LeafCN, db_ShootCN, db_RootCN);
+                fprintf(cropdb, "%f %f %f %f %f\n", db_TDD, db_Water, db_OptT, db_Nfix, db_Vascularity);
                     
             } //end of crop type loop
-
+            /*
             fprintf(cropdb, "%d\n", k);
             fprintf(cropdb, "%d\n", db_Type);
             fprintf(cropdb, "%d  %d\n", db_Pmonth , db_Pday);
@@ -635,8 +719,10 @@ void ReadInputDatafromDND(char *InputFileName)
             fprintf(cropdb, "%f %f %f %f\n", db_GrainFraction, db_LeafFraction, db_ShootFraction, db_RootFraction);
             fprintf(cropdb, "%f %f %f %f\n", db_GrainCN, db_LeafCN, db_ShootCN, db_RootCN);
             fprintf(cropdb, "%f %f %f %f %f\n", db_TDD, db_Water, db_OptT, db_Nfix, db_Vascularity);					
+            */
+            
             fclose(cropdb);
-
+            
             //Tillage
             sprintf(DB, "%s\\CropTill_%d_%d.txt", FCT60, i, j);
             db=fopen(DB, "w");
@@ -962,7 +1048,7 @@ void CreateInputFiles(int DaymetFlag, int UseID, char *r_Country, char *BatchPas
     
     SaveInterFarmParas();
 
-    SaveCropParas(BatchPass);
+    SaveCropParas( BatchPass );
 
 #ifdef MANURE	
     RecordManureFiles();
@@ -984,7 +1070,7 @@ void SaveSite(void)
     if(fpo==NULL) note(1, fname);
 
     fprintf(fpo,"%s\n", sitename);
-    fprintf(fpo,"%d %d %f %ld %f\n", years, ifdaily, latitude, 365, 100.0);
+    fprintf(fpo,"%d %d %f %ld %f\n", years, ifdaily, latitude, 0, 120.0);
     fprintf(fpo,"%d\n", Soil_landuse);
     fclose (fpo);	
 }
@@ -1531,8 +1617,15 @@ int SaveSoilParas(int id)//1
     for (i=1; i<=Q; i++)
     {
         tt[i] = AveYrT + (Soil_T - AveYrT)/ powf(i*H*100, 0.5);
-        if (Soil_T<0.0 && tt[i] < Soil_T) tt[i] = Soil_T;		
+        if (Soil_T < 0.0 && tt[i] < Soil_T)
+            tt[i] = Soil_T;
     }
+
+
+
+
+
+
 
     fprintf(fpo,"%3d\n", Soil_Texture);
     fprintf(fpo,"%s\n\n", SoilName);
@@ -1634,6 +1727,7 @@ int SaveInterFarmParas()
     fclose(xff);
 #else
     TotalManureCropss = 1;
+    FarmCrops = 3;
 #endif
 
 for(int MFFC=1; MFFC<=FarmCrops; MFFC++)
@@ -1683,7 +1777,7 @@ for(int MFFC=1; MFFC<=FarmCrops; MFFC++)
             fprintf(fp,"%d\n", n);
             for(int i1=1; i1<=n; i1++) 
             {		
-                day = JulianDay(TillMonth[i], TillDay[i1]);
+                day = JulianDay(TillMonth[i1], TillDay[i1]);
                 fprintf(fp,"%d %d\n",day,TillMethod[i1]);
             }
             fclose (fp);
@@ -1938,6 +2032,7 @@ int SaveCropParas(char *BatchPass)
     fclose(xff);	
 #else	
     TotalManureCropss = 1;
+    FarmCrops = 3;
 #endif
 
     char fname[255],outname[255];
@@ -2163,8 +2258,7 @@ for(int MFFC=1; MFFC<=FarmCrops; MFFC++)
                 CYr[1].SeedDay, CYr[1].GrowDays, CYr[1].LeftPrec, 
                 CYr[1].MaxPlanN, CYr[1].CropOrder);
                 fprintf(fcrop, "%f  %f  %f  %f  %f\n", 
-                CYr[1].TreeAge, CYr[1].GrowthVegetative, CYr[1].GrowthReproductive, 
-                CYr[1].PsnEfficiency, CYr[1].PsnMax);
+                CYr[1].TreeAge, CYr[1].PsnMax, CYr[1].GrowthVegetative, CYr[1].PsnEfficiency, CYr[1].GrowthReproductive );
                 fprintf(fcrop, "%d\n", CYr[1].CoverCrop);
                 fprintf(fcrop, "%d\n", CYr[1].PerennialCrop);
                 fprintf(fcrop, "%f %f %f %f\n", CYr[1].Grain, CYr[1].Leaf, CYr[1].Straw, CYr[1].Root);

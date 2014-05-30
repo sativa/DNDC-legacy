@@ -6,7 +6,7 @@
 #include <dos.h>
 #include <io.h>
 
-void CreateDndcInputFiles(char *InputFileName, char *BatchPass);
+//void CreateDndcInputFiles(char *InputFileName, char *BatchPass);
 
 class NewCropofEachYear
 {
