@@ -28,5 +28,5 @@ install( FILES "C:/dev/leaf-models-public/DNDC/build-32-bit/DNDC95/Debug/${TARGE
 
     install( FILES "C:/dev/leaf-models-public/DNDC/DNDC95/DNDCgo.h"
     "C:/dev/leaf-models-public/DNDC/DNDC95/StdAfx.h"
-    "C:/dev/leaf-models-public/DNDC/DNDC95/Resource.h"
+    "C:/dev/leaf-models-public/DNDC/DNDC95/Source_main.h"
     DESTINATION "C:/dev/leaf/external/DNDC/DNDC_SITE/Win32/vc11" )
