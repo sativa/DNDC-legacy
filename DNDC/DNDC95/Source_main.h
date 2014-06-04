@@ -985,7 +985,7 @@ public:
                int sampple, int RRRRR, int IrriType, char* country_ID, int livestock, int Monitor,
                int drc, int DroughtID, char f_region[6][150], char* DroughtYield, int FFN, char* BatchName, int FarmField);
 #else
-    int DNDC100go(MODEL_LINK_INFO* pLinkInfo, int MODE, int SoilYear, float ha, char* cropping_system, 
+    int DNDC100go(int MODE, int SoilYear, float ha, char* cropping_system, 
                int province, int county, int county_ID1, int landuse,
                int MonteCarlo, int scale, int S_ThisYear, char* r_Province, int ZXH, int Batch, 
                int sampple, int RRRRR, int IrriType, char* country_ID, int livestock, int Monitor,

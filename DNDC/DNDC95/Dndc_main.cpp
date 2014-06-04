@@ -51,7 +51,7 @@ int class_model::DNDClinuxgo(int MODE, int SoilYear, float ha,
                         int DroughtID, char f_region[6][150], char* DroughtYield, int FFN,
                         char *BatchName, int FarmField)
 #else
-int class_model::DNDC100go(MODEL_LINK_INFO* pLinkInfo, int MODE, int SoilYear, float ha, 
+int class_model::DNDC100go(int MODE, int SoilYear, float ha, 
                         char* cropping_system, int province, int county, int CountyIDX, 
                         int LandOrder, int MonteCarlo, int scale, int S_ThisYear,
                         char* r_Province, int ZX, int Batch, int sample, int RRRRR, 
@@ -677,6 +677,7 @@ for(jday=1; jday<=365; jday++)
 
 #ifdef DEGUI
 #else
+    /*
     if (pLinkInfo->StopRun==1)//stop
     {
         break;
@@ -704,6 +705,7 @@ for(jday=1; jday<=365; jday++)
             }
         }
     }
+    */
 #endif
 
     day_zero();
@@ -1573,8 +1575,8 @@ for(jday=1; jday<=365; jday++)
 // changed liujm
 #ifdef DEGUI
 #else
-    CWnd* pDC = pLinkInfo->pWnd;
-    CDC& dc = *(pLinkInfo->pDC);
+//    CWnd* pDC = pLinkInfo->pWnd;
+//    CDC& dc = *(pLinkInfo->pDC);
     
     MSG message;
     if (::PeekMessage(&message,NULL,0,0,PM_REMOVE)) {

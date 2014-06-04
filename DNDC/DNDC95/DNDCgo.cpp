@@ -42,7 +42,7 @@
 
 /////////////////////////////////////////////////////////////////////////////
 // CDNDCgoApp
-
+/*
 BEGIN_MESSAGE_MAP(CDNDCgoApp, CWinApp)
 	//{{AFX_MSG_MAP(CDNDCgoApp)
 		// NOTE - the ClassWizard will add and remove mapping macros here.
@@ -63,22 +63,21 @@ CDNDCgoApp::CDNDCgoApp()
 // The one and only CDNDCgoApp object
 
 CDNDCgoApp theApp;
-
+*/
 
 // added by liujm
 #ifdef DEGUI
 int Model_linux(  int scale, char* cropping_system, int S_SoilYear, int S_ThisYear, 
 						int S_SimuYears, char* DatabaseName, char* r_Province, char* ScenarioName, 
-						float ha, int ProvinceOrder, int S_county, int CountyIDX, int landuse,
+						double ha, int ProvinceOrder, int S_county, int CountyIDX, int landuse,
 						int StartYear, int ifdaily, int MonteCarlo, int ZXH, int Batch, 
 						int GlobeData, char* DirRoot, int sample, int RRRRR, int IrriType, 
 						char* country_ID, int livestock, int Monitor, int DroughtID, 
 						char f_region[6][150], char* DroughtYield, int FFN, char* BatchName)
 #else
-int WINAPI Model_link(MODEL_LINK_INFO* pLinkInfo,
-					    int scale, char* cropping_system, int S_SoilYear, int S_ThisYear, 
+int WINAPI Model_link(  int scale, char* cropping_system, int S_SoilYear, int S_ThisYear, 
 						int S_SimuYears, char* DatabaseName, char* r_Province, char* ScenarioName, 
-						float ha, int ProvinceOrder, int S_county, int CountyIDX, int landuse,
+						double ha, int ProvinceOrder, int S_county, int CountyIDX, int landuse,
 						int StartYear, int ifdaily, int MonteCarlo, int ZXH, int Batch, 
 						int GlobeData, char* DirRoot, int sample, int RRRRR, int IrriType, 
 						char* country_ID, int livestock, int Monitor, int DroughtID, 
@@ -91,8 +90,8 @@ int WINAPI Model_link(MODEL_LINK_INFO* pLinkInfo,
 #ifdef DEGUI
 
 #else
-	pLinkInfo->StopRun = -1;		
-	pLinkInfo->DNDC_or_Other = 1;
+//	pLinkInfo->StopRun = -1;		
+//	pLinkInfo->DNDC_or_Other = 1;
 #endif
 
 	if(DroughtID==1) 
@@ -192,7 +191,7 @@ int WINAPI Model_link(MODEL_LINK_INFO* pLinkInfo,
 							r_Province, ZXH, Batch, sample, RRRRR, IrriType, country_ID, livestock,
 							Monitor, drc, DroughtID, f_region, DroughtYield, FFN, BatchName, FarmField);
 #else
-					DNDC->DNDC100go(pLinkInfo, scale, S_SoilYear, ha, cropping_system, ProvinceOrder, 
+					DNDC->DNDC100go(scale, S_SoilYear, ha, cropping_system, ProvinceOrder, 
 							S_county, CountyIDX, landuse, MonteCarlo, scale, ThisYear, 
 							r_Province, ZXH, Batch, sample, RRRRR, IrriType, country_ID, livestock,
 							Monitor, drc, DroughtID, f_region, DroughtYield, FFN, FarmField, BatchPass); 
