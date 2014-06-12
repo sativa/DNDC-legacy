@@ -1,5 +1,7 @@
 // DNDCgo.h : main header file for the DNDCGO DLL
 
+#include <string>
+
 #if !defined(AFX_DNDCGO_H__72AB44DD_ED55_4A14_B8AA_534229DBBBAA__INCLUDED_)
 #define AFX_DNDCGO_H__72AB44DD_ED55_4A14_B8AA_534229DBBBAA__INCLUDED_
 
@@ -25,9 +27,11 @@ typedef struct
 } MODEL_LINK_INFO;
 // commented by liujm
 
-        DLLEXPORT void WINAPI CreateDndcInputFiles( const char *InputFileName, char *BatchPass );
+        DLLEXPORT void WINAPI SetWorkingDir( const char* rootPath );
 
-        DLLEXPORT int WINAPI Model_link(int scale, char* cropping_system, int S_SoilYear, int S_ThisYear, 
+        DLLEXPORT void WINAPI CreateDndcInputFiles( const char* runDir, const char *InputFileName, char *BatchPass );
+
+        DLLEXPORT int WINAPI Model_link( const char* runDir, int scale, char* cropping_system, int S_SoilYear, int S_ThisYear, 
                                         int S_SimuYears, char* DatabaseName, char* r_Province, char* ScenarioName,
                                         double ha, int ProvinceOrder, int S_county, int CountyIDX, int landuse,
                                         int StartYear, int ifdaily, int MonteCarlo, int ZXH, int Batch, int GlobeData, 
@@ -39,7 +43,8 @@ typedef struct
                                         int CountyIDX, int crop_number, char* r_Province, int IrriType, int SoilDataUse);
 
         DLLEXPORT int WINAPI OpenSesame(void);//MODEL_LINK_INFO* pLinkInfo);
-/////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
 // CDNDCgoApp
 // See DNDCgo.cpp for the implementation of this class
 //
@@ -70,7 +75,7 @@ double pow(double n, double e){
     return powf((double) n, e);
 }
 */
-/////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.

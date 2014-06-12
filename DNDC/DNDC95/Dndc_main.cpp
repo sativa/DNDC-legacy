@@ -16,8 +16,18 @@
 #include "Dndc_tool.h"
 #include "direct.h"
 
+///
+void WINAPI SetWorkingDir( const char* rootPath )
+{
+    ROOTDIR = rootPath;
+
+
+}
+
+///
 int Depth_convert_to_layer(float DepthO, float *hh, int q);
 
+///
 class_model::class_model()
 {
 

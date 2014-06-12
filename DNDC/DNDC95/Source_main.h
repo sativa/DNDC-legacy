@@ -1,3 +1,5 @@
+#pragma once
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,6 +9,7 @@
 #include <io.h>
 #include "DNDCgo.h"
 #include "dndc_tool.h"
+#include <string>
 
 #define BASE 
 //#define MANURE
@@ -19,6 +22,24 @@
 //#define VOC
 //#define ISOTOPE
 
+//const char* workDir;
+
+static const char* ROOTDIR;
+
+//static const char* OUTPUT;
+//static const char* INTER;
+//static const char* INPUTS;
+//static const char* INTERMANAGE;
+
+//#define ROOTDIR "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\"
+#define OUTPUT "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT"
+#define INTER "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT\\INTER"
+#define INPUTS "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT\\INPUTS"
+#define INTERMANAGE "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT\\INTER\\Management"
+
+
+
+/*
 #ifdef DEGUI
 
     #define ROOTDIR ""
@@ -44,6 +65,7 @@
 #endif
 
 #endif
+*/
 
 #define CSV "csv"
 #define MAXSOILLAYER		110
@@ -1889,4 +1911,3 @@ int Model_linux(  int scale, char* cropping_system, int S_SoilYear, int S_ThisYe
                         int GlobeData, char* DirRoot, int sample, int RRRRR, int IrriType, 
                         char* country_ID, int livestock, int Monitor, int DroughtID, 
                         char f_region[6][150], char* DroughtYield, int FFN, char *BatchName);
-

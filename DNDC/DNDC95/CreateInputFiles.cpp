@@ -42,14 +42,11 @@ int   Mday[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
 float Day_Hrs,temp=0.0,Rainfall=0.0,maxT=0.0,minT=0.0,solrad,wind_speed=2.0;
 float AveMonthT[13],AveYrT, TotalYrRain, humidity=30.0, CloudIndex=1.0;
 int   jday=0,jday0=0,Aday, TotalManureCropss;
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void CreateBlankFiles(void);
 void ReadInputDatafromDND( const char *InputFileName);
 void CreateInputFiles(int DaymetFlag, int UseID, char *r_Country, char *BatchPass);
 ////////////////////////////////////////////////////////////////////////////////////////////////
-
 void SaveClimateFileOfAYear(int id,char *ch, float lat, int ClimateFileType, float NO3NH4_Rainfall,
 float NH3_Atmosphere, float BaseCO2, int mode, float CO2IncreaseRate, int UseID, char *r_Country);
 void CreateDailyClimateFile(char *Pname, char *Dname, char *Yname, int UseID, int ClimateFileType, float lat,
@@ -67,13 +64,17 @@ int SaveSoilParas(int id);
 int SaveInterFarmParas(void);
 int SaveCropParas(char *BatchPass);
 void RecordManureFiles(void);
-
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
-
-void WINAPI CreateDndcInputFiles( const char *InputFileName, char *BatchPass)
+void WINAPI CreateDndcInputFiles(
+    const char* runDir,
+    const char *InputFileName,
+    char *BatchPass)
 {
+    ROOTDIR = runDir;
+
+
     //Create blank files
     CreateBlankFiles();
 
@@ -82,9 +83,7 @@ void WINAPI CreateDndcInputFiles( const char *InputFileName, char *BatchPass)
 
     //Create input files
     CreateInputFiles( 0, UseID, r_Country, BatchPass );
-    
 }
-
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
@@ -484,7 +483,7 @@ void ReadInputDatafromDND( const char *InputFileName)
     fscanf(fp,"%s",notes);//"-------------------------------"	
     fscanf(fp,"%s",notes);//"Soil data:"	
     fscanf(fp,"%s %d", notes,&Soil_Texture);//"Soil_Texture"
-    
+
     FILE *fpi;
     sprintf(fname, "%s\\Library\\lib_soil\\soil_%d", ROOTDIR,  Soil_Texture);
     fpi=fopen(fname, "r");
