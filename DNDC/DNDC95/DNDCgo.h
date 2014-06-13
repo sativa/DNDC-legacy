@@ -26,14 +26,17 @@ typedef struct
 } MODEL_LINK_INFO;
 // commented by liujm
 
-        DLLEXPORT void WINAPI SetRootDir(
+        DLLEXPORT void WINAPI SetRootDirPaths(
             const char* rootPath,
             const char* outputPath,
             const char* interPath,
             const char* inputsPath,
             const char* intermanPath );
 
-        DLLEXPORT void WINAPI CreateDndcInputFiles(
+        DLLEXPORT void WINAPI SetLibPath(
+            const char* libPath );
+
+        DLLEXPORT void WINAPI CreateInputFiles(
             const char* InputFileName,
             char *BatchPass );
 
