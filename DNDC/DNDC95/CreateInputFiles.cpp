@@ -7,7 +7,15 @@
 #include <direct.h>
 #include <ctype.h>
 #include <stdio.h>
-#include <string.h>
+#include <string>
+
+#include "RunPaths.h"
+
+const char* ROOTDIR;
+const char* OUTPUT;
+const char* INTER;
+const char* INPUTS;
+const char* INTERMANAGE;
 
 float day_par2(int Jday, float LATITUDE, float* Day_Hrs);
 int JulianDay(int month, int day);
@@ -66,15 +74,24 @@ int SaveCropParas(char *BatchPass);
 void RecordManureFiles(void);
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
+void WINAPI SetRootDir(
+    const char* rootPath,
+    const char* outputPath,
+    const char* interPath,
+    const char* inputPath,
+    const char* intermanPath )
+{
+    ROOTDIR = rootPath;
+    OUTPUT = outputPath;
+    INTER = interPath;
+    INPUTS = inputPath;
+    INTERMANAGE = intermanPath;
+}
 //////////////////////////////////////////////////////////////////////////////////////////////
 void WINAPI CreateDndcInputFiles(
-    const char* runDir,
-    const char *InputFileName,
+    const char* InputFileName,
     char *BatchPass)
 {
-    ROOTDIR = runDir;
-
-
     //Create blank files
     CreateBlankFiles();
 
@@ -82,7 +99,11 @@ void WINAPI CreateDndcInputFiles(
     ReadInputDatafromDND( InputFileName );
 
     //Create input files
-    CreateInputFiles( 0, UseID, r_Country, BatchPass );
+    CreateInputFiles(
+        0,
+        UseID,
+        r_Country,
+        BatchPass );
 }
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
