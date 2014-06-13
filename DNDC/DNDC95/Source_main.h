@@ -22,9 +22,10 @@
 //#define VOC
 //#define ISOTOPE
 
-//const char* workDir;
+//const char* ROOTDIR;
 
-static const char* ROOTDIR;
+//extern const std::string ROOTDIR;
+//static const char* OUTPUT;
 
 //static const char* OUTPUT;
 //static const char* INTER;
@@ -32,11 +33,10 @@ static const char* ROOTDIR;
 //static const char* INTERMANAGE;
 
 //#define ROOTDIR "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\"
-#define OUTPUT "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT"
-#define INTER "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT\\INTER"
-#define INPUTS "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT\\INPUTS"
-#define INTERMANAGE "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT\\INTER\\Management"
-
+//#define OUTPUT "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT"
+//#define INTER "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT\\INTER"
+//#define INPUTS "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT\\INPUTS"
+//#define INTERMANAGE "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT\\INTER\\Management"
 
 
 /*
