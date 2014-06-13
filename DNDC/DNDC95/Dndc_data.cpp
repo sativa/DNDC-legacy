@@ -2328,7 +2328,7 @@ int class_model::read_in_graz(CString FCT40)
         {
             if(AnimalHead[a][oz]>0.0)
             {			
-                LiveFile.Format("%sLibrary\\Lib_livestock\\Livestock_%d.txt", ROOTDIR, a);
+                LiveFile.Format("%s\\Lib_livestock\\Livestock_%d.txt", LIBRARY, a);
                 lf=fopen(LiveFile, "r");
                 if(lf==NULL) note(0,LiveFile);
                 
