@@ -16,6 +16,7 @@ const char* OUTPUT;
 const char* INTER;
 const char* INPUTS;
 const char* INTERMANAGE;
+const char* LIBRARY;
 
 float day_par2(int Jday, float LATITUDE, float* Day_Hrs);
 int JulianDay(int month, int day);
@@ -73,8 +74,13 @@ int SaveInterFarmParas(void);
 int SaveCropParas(char *BatchPass);
 void RecordManureFiles(void);
 //////////////////////////////////////////////////////////////////////////////////////////////
+void WINAPI SetLibPath(
+    const char* libPath )
+{
+    LIBRARY = libPath;
+}
 //////////////////////////////////////////////////////////////////////////////////////////////
-void WINAPI SetRootDir(
+void WINAPI SetRootDirPaths(
     const char* rootPath,
     const char* outputPath,
     const char* interPath,
@@ -88,7 +94,7 @@ void WINAPI SetRootDir(
     INTERMANAGE = intermanPath;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-void WINAPI CreateDndcInputFiles(
+void WINAPI CreateInputFiles(
     const char* InputFileName,
     char *BatchPass)
 {
@@ -506,7 +512,7 @@ void ReadInputDatafromDND( const char *InputFileName)
     fscanf(fp,"%s %d", notes,&Soil_Texture);//"Soil_Texture"
 
     FILE *fpi;
-    sprintf(fname, "%s\\Library\\lib_soil\\soil_%d", ROOTDIR,  Soil_Texture);
+    sprintf(fname, "%s\\lib_soil\\soil_%d", LIBRARY,  Soil_Texture);
     fpi=fopen(fname, "r");
     fscanf(fpi,"%s %s", &SoilName, notes );// NameNote);
     fclose( fpi );
@@ -2342,7 +2348,7 @@ void ReadCropPara_2(int *v_CropID, char v_CropName[95][100], float *v_max_biomas
     char text[300];
     char CCrop[300];
     FILE *fCrop;
-    sprintf(CCrop, "%sLibrary\\lib_crop\\Crop_parameters.txt", ROOTDIR);//, CropType);
+    sprintf(CCrop, "%s\\lib_crop\\Crop_parameters.txt", LIBRARY);//, CropType);
     fCrop = fopen(CCrop, "r");
     if(fCrop==NULL) note(0, CCrop);
     else
