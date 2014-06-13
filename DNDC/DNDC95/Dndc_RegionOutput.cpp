@@ -4,6 +4,8 @@
 #include "Dndc_tool.h"
 #include "direct.h"
 
+#include "RunPaths.h"
+
 #ifdef MANURE
 extern class_manure MData;
 CString LOSname[7]={"","Dairy","Beef","Veal","Pig","Sheep","Poultry"};

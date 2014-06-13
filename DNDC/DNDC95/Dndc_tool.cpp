@@ -5,6 +5,8 @@
 #include <fstream>
 #include <stdlib.h>
 
+#include "RunPaths.h"
+
 float Penman_PET(float humidity, float air_temp, float max_temp, float min_temp, float wind_speed, 
                  float Day_Hrs, float PAR, float albedo)
 {	

@@ -7,6 +7,8 @@
 #include <direct.h>
 #include <iostream>
 
+#include "RunPaths.h"
+
 //#ifdef _DEBUG
 //#define new DEBUG_NEW
 //#undef THIS_FILE
@@ -75,7 +77,7 @@ int Model_linux(  int scale, char* cropping_system, int S_SoilYear, int S_ThisYe
                         char* country_ID, int livestock, int Monitor, int DroughtID, 
                         char f_region[6][150], char* DroughtYield, int FFN, char* BatchName)
 #else
-int WINAPI Model_link(  const char* runDir, int scale, char* cropping_system, int S_SoilYear, int S_ThisYear, 
+int WINAPI Model_link(  int scale, char* cropping_system, int S_SoilYear, int S_ThisYear, 
                         int S_SimuYears, char* DatabaseName, char* r_Province, char* ScenarioName, 
                         double ha, int ProvinceOrder, int S_county, int CountyIDX, int landuse,
                         int StartYear, int ifdaily, int MonteCarlo, int ZXH, int Batch, 
@@ -85,7 +87,7 @@ int WINAPI Model_link(  const char* runDir, int scale, char* cropping_system, in
 #endif
 {
 
-    SetWorkingDir( runDir );
+    //SetWorkingDir( runDir );
 
     int ThisYear, DroughtCycle=1, drc=1;
     int FarmFields, FarmField=-99;

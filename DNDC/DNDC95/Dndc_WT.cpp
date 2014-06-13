@@ -3,6 +3,8 @@
 #include "Source_main.h"
 #include "Dndc_tool.h"
 
+#include "RunPaths.h"
+
 void class_model::daily_WT(FILE* fWT)
 {
     int jjday;

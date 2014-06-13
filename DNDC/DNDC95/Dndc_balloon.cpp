@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "Dndcgo.h"
-#include "Source_main.h"
 #include "Dndc_tool.h"
+#include "Source_main.h"
+
 
 #ifdef MANURE 
 extern class_manure MData;

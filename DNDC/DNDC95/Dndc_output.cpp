@@ -4,6 +4,8 @@
 #include "Dndc_tool.h"
 #include <stdio.h>
 
+#include "RunPaths.h"
+
 #ifdef MANURE
 extern class_manure MData;
 #endif

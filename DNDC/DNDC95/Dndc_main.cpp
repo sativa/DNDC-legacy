@@ -13,16 +13,21 @@
 #include "stdafx.h"
 #include "Dndcgo.h"
 #include "Source_main.h"
+
 #include "Dndc_tool.h"
 #include "direct.h"
 
+#include "RunPaths.h"
+
 ///
+/*
 void WINAPI SetWorkingDir( const char* rootPath )
 {
     ROOTDIR = rootPath;
-
+    //OUTPUT = "C:\\dev\\leaf\\install-32-bit\\share\\leaf\\dndc\\RESULT";
 
 }
+*/
 
 ///
 int Depth_convert_to_layer(float DepthO, float *hh, int q);

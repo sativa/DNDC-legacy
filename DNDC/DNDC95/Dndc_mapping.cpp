@@ -3,6 +3,8 @@
 #include "Source_main.h"
 #include "Dndc_tool.h"
 
+#include "RunPaths.h"
+
 void class_model::map_county(MODEL_LINK_INFO* pLinkInfo, char *CountryName, char *ProvinceName, long int map_ID, 
 							 int fill_color, int RegionCode, int CountryCode, int StateCode)
 {

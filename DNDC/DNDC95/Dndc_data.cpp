@@ -3,6 +3,8 @@
 #include "Source_main.h"
 #include "Dndc_tool.h"
 
+#include "RunPaths.h"
+
 
 #ifdef MANURE 
 extern class_manure MData;

@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Dndcgo.h"
 #include "Source_main.h"
+
+
 #include "Dndc_tool.h"
 #include <math.h>
 
