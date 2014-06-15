@@ -1,5 +1,5 @@
 // DNDCgo.h : main header file for the DNDCGO DLL
-#include <string>
+#include "StdAfx.h"
 #if !defined(AFX_DNDCGO_H__72AB44DD_ED55_4A14_B8AA_534229DBBBAA__INCLUDED_)
 #define AFX_DNDCGO_H__72AB44DD_ED55_4A14_B8AA_534229DBBBAA__INCLUDED_
 
@@ -9,9 +9,9 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#ifndef __AFXWIN_H__
-    #error include 'stdafx.h' before including this file for PCH
-#endif
+//#ifndef __AFXWIN_H__
+//    #error include 'stdafx.h' before including this file for PCH
+//#endif
 
 //#include "resource.h"		// main symbols
 
@@ -26,23 +26,21 @@ typedef struct
 } MODEL_LINK_INFO;
 // commented by liujm
 
-        DLLEXPORT void WINAPI SetRootDirPaths(
+        DLLEXPORT void SetRootDirPaths(
             const char* rootPath,
             const char* outputPath,
             const char* interPath,
             const char* inputsPath,
             const char* intermanPath );
 
-        DLLEXPORT void WINAPI SetLibPath(
+        DLLEXPORT void SetLibPath(
             const char* libPath );
 
-        DLLEXPORT void WINAPI CreateInputFiles(
+        DLLEXPORT void WriteInputFiles(
             const char* InputFileName,
             char *BatchPass );
 
-
-
-        DLLEXPORT int WINAPI Model_link(int scale, char* cropping_system, int S_SoilYear, int S_ThisYear, 
+        DLLEXPORT int Model_link(int scale, char* cropping_system, int S_SoilYear, int S_ThisYear, 
                                         int S_SimuYears, char* DatabaseName, char* r_Province, char* ScenarioName,
                                         double ha, int ProvinceOrder, int S_county, int CountyIDX, int landuse,
                                         int StartYear, int ifdaily, int MonteCarlo, int ZXH, int Batch, int GlobeData, 

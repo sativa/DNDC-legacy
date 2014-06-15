@@ -1,3 +1,4 @@
+#include <string>
 #include "stdafx.h"
 #include "Dndcgo.h"
 #include "Source_main.h"
@@ -7,7 +8,6 @@
 #include <direct.h>
 #include <ctype.h>
 #include <stdio.h>
-#include <string>
 
 #include "RunPaths.h"
 
@@ -74,13 +74,13 @@ int SaveInterFarmParas(void);
 int SaveCropParas(char *BatchPass);
 void RecordManureFiles(void);
 //////////////////////////////////////////////////////////////////////////////////////////////
-void WINAPI SetLibPath(
+void SetLibPath(
     const char* libPath )
 {
     LIBRARY = libPath;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-void WINAPI SetRootDirPaths(
+void SetRootDirPaths(
     const char* rootPath,
     const char* outputPath,
     const char* interPath,
@@ -94,7 +94,7 @@ void WINAPI SetRootDirPaths(
     INTERMANAGE = intermanPath;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-void WINAPI CreateInputFiles(
+void WriteInputFiles(
     const char* InputFileName,
     char *BatchPass)
 {
@@ -1232,9 +1232,17 @@ void CreateDailyClimateFile(char *Pname, char *Dname, char *Yname, int UseID, in
     if(UseID==0)
     {
         fpi=fopen(Pname,"r");
-        if (fpi==NULL) note(0, Pname);
-        
-        if (ClimateFileType!=4) fscanf(fpi,"%s", cjunk);	// read climate file dataname
+        if (fpi==NULL)
+            note(0, Pname);
+
+        if (ClimateFileType!=4)
+        {
+            fscanf(fpi,"%s", cjunk);	// read climate file dataname
+            if( cjunk[0] == '1' )
+            {
+                fseek( fpi, 0, SEEK_SET );
+            }
+        }
     }
     else
     {
@@ -1261,6 +1269,10 @@ void CreateDailyClimateFile(char *Pname, char *Dname, char *Yname, int UseID, in
         if (ClimateFileType!=4) 
         {
             fscanf(fpi,"%s", cjunk);	// read climate file dataname
+            if( cjunk == "1" )
+            {
+
+            }
         }
 
         sprintf(CurrentClim, "%sDatabase\\DroughtPrediction\\%s\\%s\\%s_%d", ROOTDIR, r_Country, LocaName, LocaName, YieldYear);
