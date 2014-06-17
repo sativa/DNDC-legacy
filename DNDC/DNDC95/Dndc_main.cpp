@@ -89,9 +89,9 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     int TotalCells=0, SimulatedCells=0, TotalManureCrops=0, ManureCropOrder=0, CropIDID=0, GN=0, FN=0;
     int FarmCropID[10], ETM=0, YieldSite=0, YieldCrop=0, YieldYear=0, YieldToday=0, SoilDataUse=0;
     
-    char DAYW[90], DAYC[90], DAYN[90], DAYP[90], DAYS[90], DAYM[90],DAYnBalance[90],DAYSP[90],DAYMB[90],DAYIS[90];
-    char js[120],IE[80], F_CLIMD[300], F_WT[300], F_LV[15], Zz[200], DAYclim[90];
-    char DAYcBalance[90], DAYG[90];//, BatchFileName[300];
+    char DAYW[200], DAYC[200], DAYN[200], DAYP[200], DAYS[200], DAYM[200],DAYnBalance[200],DAYSP[200],DAYMB[200],DAYIS[200];
+    char js[200],IE[200], F_CLIMD[300], F_WT[300], F_LV[200], Zz[200], DAYclim[200];
+    char DAYcBalance[200], DAYG[200];//, BatchFileName[300];
     char HrSoilMoist[100], YieldCountyName[300], LB[300];
     char Pass[300], PassC1[300],PassL1[300];
 
