@@ -1,6 +1,7 @@
 #include <string>
 #include "stdafx.h"
-#include "Dndcgo.h"
+//#include "Dndcgo.h"
+#include "DNDC_Interface.h"
 #include "Source_main.h"
 #include "Dndc_tool.h"
 #include "CreateInputFile.h"
@@ -54,6 +55,7 @@ int   jday=0,jday0=0,Aday, TotalManureCropss;
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void CreateBlankFiles(void);
 void ReadInputDatafromDND( const char *InputFileName);
+void ReadInputDatafromMemory( Site_BaseInformation* siteData );
 void CreateInputFiles(int DaymetFlag, int UseID, char *r_Country, char *BatchPass);
 ////////////////////////////////////////////////////////////////////////////////////////////////
 void SaveClimateFileOfAYear(int id,char *ch, float lat, int ClimateFileType, float NO3NH4_Rainfall,
@@ -73,27 +75,8 @@ int SaveSoilParas(int id);
 int SaveInterFarmParas(void);
 int SaveCropParas(char *BatchPass);
 void RecordManureFiles(void);
-//////////////////////////////////////////////////////////////////////////////////////////////
-void SetLibPath(
-    const char* libPath )
-{
-    LIBRARY = libPath;
-}
-//////////////////////////////////////////////////////////////////////////////////////////////
-void SetRootDirPaths(
-    const char* rootPath,
-    const char* outputPath,
-    const char* interPath,
-    const char* inputPath,
-    const char* intermanPath )
-{
-    ROOTDIR = rootPath;
-    OUTPUT = outputPath;
-    INTER = interPath;
-    INPUTS = inputPath;
-    INTERMANAGE = intermanPath;
-}
-//////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
 void WriteInputFiles(
     const char* InputFileName,
     char *BatchPass)
@@ -102,7 +85,27 @@ void WriteInputFiles(
     CreateBlankFiles();
 
     //Read in DND file
-    ReadInputDatafromDND( InputFileName );
+    ReadInputDatafromDND(
+        InputFileName );
+
+    //Create input files
+    CreateInputFiles(
+        0,
+        UseID,
+        r_Country,
+        BatchPass );
+}
+///////////////////////////////////////////////////////////////////////////////
+void WriteInputFiles(
+    Site_BaseInformation* siteData,
+    char *BatchPass)
+{
+    //Create blank files
+    CreateBlankFiles();
+
+    //Read in DND file
+    ReadInputDatafromMemory(
+        siteData );
 
     //Create input files
     CreateInputFiles(
@@ -1055,6 +1058,752 @@ void ReadInputDatafromDND( const char *InputFileName)
     fclose(cm);
     
 }
+///////////////////////////////////////////////////////////////////////////////
+void ReadInputDatafromMemory( Site_BaseInformation* siteData )
+{
+    int  i, j, k;
+    int floon, ShallowFlood, WaterControl, FlooMonth1, FlooDay1, FlooMonth2, FlooDay2;
+    float FlooN, WaterGetherIndex, WaterLeakRate;
+    float m_IniWT, m_LWTceasingSurfFlow, m_LWTceasingGroungFlow, m_WatershedIndex,m_SurfOutflowIntensity, m_GroundOutflowIntensity;
+    float FloodWaterN;
+
+    strcpy( sitename, siteData->sitename );
+    years = siteData->years;
+    latitude = siteData->latitude;
+    ifdaily = siteData->ifdaily;
+    //
+
+#ifdef MANURE
+
+    int HouseInputFormat, AnimalTypes, AnimalType[10];
+    char HouseInputFileName[200], IndoorClimateFile[300];
+    float AnimalHeads[10],FeedRate[10],FeedProtein[10],FeedTP[10];
+    float m_FloorArea,m_BedCN, m_VentRate, m_BedRate, m_BedFrequency,PenBedFrequency;
+    int m_FloorSurface, m_BedType, m_Ventilation;
+    int PenInputFormat, PenAnimalTypes, PenAnimalType[15],PenSurface,PenBedMaterial; 
+    char PenInputFileName[200];
+    float PenAnimalHeads[15],PenFeedRate[15],PenFeedProtein[15],PenFeedTP[15],PenArea,PenBedCN,PenBedAmount;
+    int GrazeInputFormat, GrazeAnimalType, GrazeTimes, IniMonth[366],IniDay[366],EndMonth[366],EndDay[366];
+    char GrazeInputFileName[200];
+    float GrazeAnimalHeads[366],GrazeAnimalHrs[366], GrazeArea;
+    float m_LagoonCapacity, m_LagoonSurfaceArea, LagoonToField[10], LagoonToMarket[10], LagoonRemain[10];
+    int m_LagoonCover, m_LagoonRain, m_LagoonDrainTimes, LagoonDrainMonth[10], LagoonDrainDay[10];
+    float m_CompostDensity, m_LitterAmount, m_LitterCN, CompostToField, CompostToMarket, CompostRemain;
+    float m_DigesterCapacity,m_DigesterCH4,m_DigesterDays, DigesterToField;
+    int m_Temp, m_Flash, HouseID, m_CompostCover, m_CompostRemoveTimes, CompostRemoveMonth, CompostRemoveDay;
+    float DigesterToMarket, DigesterRemain;
+    float HouseManureOutDays,m_UC, m_UL, m_UD, m_UF, m_UR, m_FC, m_FL, m_FD, m_FF, m_FR;
+    float PenManureOutDays, PenUC, PenUL,PenUD,PenUR,PenFC, PenFL,PenFD,PenFR;
+    float GrazeManureOutDays, GrazeUF, GrazeUR, GrazeFF, GrazeFR, FieldArea, jf;
+    
+    char MP[200], SF[200];
+    FILE *mp, *sf;
+
+    int m_FeedLots, m_FeedlotYears, NutritionModelX;
+
+    fscanf(fp,"%s", notes);//--------------------------------------
+    fscanf(fp,"%s", notes);//Livestock_data:
+    fscanf(fp,"%s %d",notes, &m_FeedlotYears);//SimulatedYears
+
+    for(int m_FeedlotYear=1; m_FeedlotYear<=m_FeedlotYears; m_FeedlotYear++)
+    {
+        fscanf(fp,"%s %d",notes, &m_FeedLots);//TotalFeedlots
+    
+        char TotalFeedlots[50];
+        FILE *TFL;
+        sprintf(TotalFeedlots, "%s\\TotalFeedLots_%d", INTER, m_FeedlotYear);
+        TFL=fopen(TotalFeedlots, "w");
+        if(TFL==NULL) note(1, TotalFeedlots);
+        fprintf(TFL, "%d", m_FeedLots);
+        fclose(TFL);
+
+        for(int i=1; i<=m_FeedLots; i++)
+        {
+            fscanf(fp,"%s %d",notes,&HouseID);//Feedlot
+            fscanf(fp,"%s %d",notes,&HouseInputFormat);//FeedlotInputFormat
+                        
+            if(HouseInputFormat==1||HouseInputFormat==2)
+                fscanf(fp,"%s %s",notes,HouseInputFileName);
+            else if(HouseInputFormat==3)
+                fscanf(fp,"%s %d",notes,&NutritionModelX);
+            else
+            {
+                fscanf(fp,"%s %d",notes,&AnimalTypes);//LivestockType
+                fscanf(fp,"%s %d",notes,&AnimalType[1]);//LivestockType_ID
+                fscanf(fp,"%s %f",notes,&AnimalHeads[1]);//Herd_heads
+                fscanf(fp,"%s",notes);//feed
+                fscanf(fp,"%s %f",notes,&FeedRate[1]);//Rate
+                fscanf(fp,"%s %f",notes,&FeedProtein[1]);//CrudeProtein_percent
+                fscanf(fp,"%s %f",notes,&FeedTP[1]);//Phosphorus_percent			
+            }
+            fscanf(fp,"%s",notes);//floor
+            fscanf(fp,"%s %f",notes,&m_FloorArea);//SurfaceArea
+            fscanf(fp,"%s %d",notes,&m_FloorSurface);//SurfaceType
+            fscanf(fp,"%s",notes);//Bedding			
+            fscanf(fp,"%s %d",notes,&m_BedType);//MaterialType
+            fscanf(fp,"%s %f",notes,&m_BedCN);//Material_C/N
+            fscanf(fp,"%s %f",notes,&m_BedFrequency);//ApplyFrequency
+            fscanf(fp,"%s %f",notes,&m_BedRate);//Amount
+            fscanf(fp,"%s",notes);//ventilation			
+            fscanf(fp,"%s %d",notes,&m_Ventilation);//Type
+            fscanf(fp,"%s %f",notes,&m_VentRate);//Ven_rate
+            fscanf(fp,"%s %s",notes,IndoorClimateFile);//IndoorClimateFile	
+            fscanf(fp,"%s",notes);//ManureRemoval:			
+            fscanf(fp,"%s %f", notes, &HouseManureOutDays);//Frequency
+            fscanf(fp,"%s %f", notes, &m_UC);//Liquid_to_compost
+            fscanf(fp,"%s %f", notes, &m_UL);//Liquid_to_lagoon	
+            fscanf(fp,"%s %f", notes, &m_UD);//Liquid_to_digester
+            fscanf(fp,"%s %f", notes, &m_UF);//Liquid_to_field
+            fscanf(fp,"%s %f", notes, &m_UR);//Liquid_remain			
+            fscanf(fp,"%s %f", notes, &m_FC);//Solid_to_compost	
+            fscanf(fp,"%s %f", notes, &m_FL);//Solid_to_lagoon	
+            fscanf(fp,"%s %f", notes, &m_FD);//Solid_to_digester	
+            fscanf(fp,"%s %f", notes, &m_FF);//Solid_to_field
+            fscanf(fp,"%s %f", notes, &m_FR);//Solid_remain 
+            fscanf(fp,"%s", notes);//flushing
+            fscanf(fp,"%s %d", notes, &m_Flash);
+
+            sprintf(SF, "%s\\ManureHouse_%d_%d.txt", INTER, m_FeedlotYear, i);//FlushingLiquidType
+            sf=fopen(SF, "w");
+            fprintf(sf, "%d\n", HouseInputFormat);  
+
+            if(HouseInputFormat==1||HouseInputFormat==2)//use a input file name
+                fprintf(sf, "%s\n", HouseInputFileName);
+            else if(HouseInputFormat==3)				//use nutrition model
+                fprintf(sf, "%d\n", NutritionModelX);
+            else										//use average input data
+            {
+                //Type: 1 dairy, 2 beef, 3 veal, 4 swine, 5 sheep, 6 goat, 7 horse, 8 layer, 9 brolier, 10 turkey, 11 duck
+                fprintf(sf, "%d\n", AnimalTypes);
+                //for(int j=1; j<=AnimalTypes; j++)
+                fprintf(sf, "%3d  %8.2f  %8.2f  %8.4f  %8.4f\n", AnimalType[1], AnimalHeads[1], FeedRate[1], FeedProtein[1], FeedTP[1]);
+            }
+                    
+            fprintf(sf, "%f  %d\n", m_FloorArea, m_FloorSurface);//0 slatted floor; 1 conrete floor	
+            fprintf(sf, "%d  %f  %f  %f\n", m_BedType, m_BedCN, m_BedFrequency, m_BedRate);//0 None, 1 straw, 2 sawdust, 3 dry manure solids, 4 sand
+            fprintf(sf, "%d  %f  %s\n", m_Ventilation, m_VentRate, IndoorClimateFile);// 0 natural, 1 fan, -1 IndoorClimateFile
+            fprintf(sf, "%f\n", HouseManureOutDays);
+            fprintf(sf, "%f %f %f %f %f\n", m_UC, m_UL, m_UD, m_UF, m_UR);
+            fprintf(sf, "%f %f %f %f %f\n", m_FC, m_FL, m_FD, m_FF, m_FR);
+            fprintf(sf, "%d\n", m_Flash);
+            fclose(sf);
+        }//end of feedlots loop
+    }//end of year loop
+    
+    fscanf(fp,"%s", notes);//lagoon
+    fscanf(fp,"%s %f",notes, &m_LagoonCapacity);//Capacity
+    fscanf(fp,"%s %f",notes, &m_LagoonSurfaceArea);//SurfaceArea	
+    fscanf(fp,"%s %d",notes, &m_LagoonCover);//Coverage
+    fscanf(fp,"%s %d",notes, &m_LagoonRain);//RainfallReceival
+
+    fscanf(fp,"%s",notes);//SlurryRemovalTimes	
+    fscanf(fp,"%d",&m_LagoonDrainTimes);
+    {
+    for(int i=1; i<=m_LagoonDrainTimes; i++)
+    {
+        fscanf(fp,"%s %d",notes, &LagoonDrainMonth[i]);//Slurry_drain_month
+        fscanf(fp,"%s %d",notes, &LagoonDrainDay[i]);//Slurry_drain_day
+        fscanf(fp,"%s %f",notes, &LagoonToField[i]);//Slurry_to_field
+        fscanf(fp,"%s %f",notes, &LagoonToMarket[i]);//Slurry_to_digester
+        fscanf(fp,"%s %f",notes, &LagoonRemain[i]);//Slurry_remain
+    }
+    }
+    
+    sprintf(SF, "%s\\ManureLagoon.txt", INTER);
+    sf=fopen(SF, "w");
+    fprintf(sf, "%f  %f  %d  %d  %d\n", m_LagoonCapacity, m_LagoonSurfaceArea, m_LagoonCover, m_LagoonRain, m_LagoonDrainTimes); 
+    {
+    for(int i=1; i<=m_LagoonDrainTimes; i++)
+    {
+        fprintf(sf, "%d  %d  %f  %f  %f\n", LagoonDrainMonth[i], LagoonDrainDay[i], LagoonToField[i], LagoonToMarket[i], LagoonRemain[i]);
+    }
+    }
+    fclose(sf);
+    
+    fscanf(fp,"%s", notes);//compost
+    fscanf(fp,"%s %f",notes,&m_CompostDensity);//Porosity
+    fscanf(fp,"%s %d",notes,&m_CompostCover);//Coverage	
+    fscanf(fp,"%s %d",notes,&m_CompostRemoveTimes);//RemovalTimes	
+    fscanf(fp,"%s %f",notes,&m_LitterAmount);//AdditiveAmount
+    fscanf(fp,"%s %f",notes,&m_LitterCN);//Additive_C/N	
+
+    if(m_CompostDensity>0.0)
+    {
+        sprintf(SF, "%s\\ManureCompost.txt", INTER);
+        sf=fopen(SF, "w");
+        fprintf(sf, "%f  %d  %d  %f  %f\n", m_CompostDensity, m_CompostCover, m_CompostRemoveTimes, m_LitterAmount, m_LitterCN);  
+        for(int i=1;i<=m_CompostRemoveTimes;i++)
+        {	
+            fscanf(fp,"%s %d",notes, &CompostRemoveMonth);
+            fscanf(fp,"%s %d",notes, &CompostRemoveDay);
+            fscanf(fp,"%s %f",notes, &CompostToField);
+            fscanf(fp,"%s %f",notes, &CompostToMarket);
+            fscanf(fp,"%s %f",notes, &CompostRemain);
+            fprintf(sf, "%d %d %f %f %f\n", CompostRemoveMonth, CompostRemoveDay, CompostToField, CompostToMarket, CompostRemain);
+        }
+        fclose(sf);
+    }
+    
+    fscanf(fp,"%s", notes);//AnaerobicDigester
+    fscanf(fp,"%s %d",notes, &m_Temp);//Thermo_type	
+    fscanf(fp,"%s %f",notes, &m_DigesterCH4);//MethaneProductivity
+    fscanf(fp,"%s %f",notes, &m_DigesterDays);//RetentionDays
+    fscanf(fp,"%s %f",notes, &DigesterToField);//Manure_to_field
+    fscanf(fp,"%s %f",notes, &DigesterToMarket);//Manure_to_lagoon			
+    fscanf(fp,"%s %f",notes, &DigesterRemain);//Manure_remain
+    
+    if(m_DigesterDays>0.0)
+    {
+        sprintf(SF, "%s\\ManureDigester.txt", INTER);
+        sf=fopen(SF, "w");
+        fprintf(sf, "%d  %f  %f\n", m_Temp,m_DigesterCH4,m_DigesterDays);  
+        fprintf(sf, "%f  %f  %f\n", DigesterToField,  DigesterToMarket, DigesterRemain);
+        fclose(sf);
+    }
+
+    //Land application
+    int CropOrder, FarmCropType, FarmFields;
+    float FarmCropHa, ManuFraction;
+    char XFF[200];
+    FILE *xff;
+
+    char XXX[300];
+    FILE *xxx;		
+    sprintf(XXX, "%s\\ManureFieldCrops", INTER);		
+    xxx=fopen(XXX, "w");
+    if(xxx==NULL) note(1,XXX);
+
+    fscanf(fp,"%s", notes);//LandApplication	
+    fscanf(fp,"%s %f",notes, &FieldArea);//Land_area
+    fscanf(fp,"%s %d",notes, &FarmFields);//Fields in farm
+    fprintf(xxx, "%d\n", FarmFields);
+
+    {
+    for(int i=1;i<=FarmFields;i++)
+    {
+        fscanf(fp,"%s %d",notes, &CropOrder);//CroppingSystem
+        fscanf(fp,"%s %d",notes, &FarmCropType);//CropType
+        fscanf(fp,"%s %f",notes, &FarmCropHa);//FieldArea	
+        fscanf(fp,"%s %f",notes, &ManuFraction);//ManureShareFraction
+
+        sprintf(XFF, "%s\\ManureField_%d", INTER, i);		
+        xff=fopen(XFF, "w");	
+        fprintf(xff, "%d  %d  %f  %f\n", i, FarmCropType, FarmCropHa, ManuFraction);
+        fclose(xff);
+
+        fprintf(xxx, "%d %d %f %f\n", i, FarmCropType, FarmCropHa, ManuFraction);
+    }	
+    }
+
+    fclose(xxx);
+
+    if(FieldArea>0.0)
+    {
+        sprintf(MP, "%s\\ManureFieldAll.txt", INTER);
+        mp=fopen(MP, "w");
+        fprintf(mp, "%d %f\n", FarmFields, FieldArea);
+        fclose(mp);
+    }	
+
+#endif
+
+    ClimateFileType = siteData->ClimateFileType;
+    NO3NH4_Rainfall = siteData->NO3NH4_Rainfall;
+    NH3_Atmosphere = siteData->NH3_Atmosphere;
+    BaseCO2 = siteData->BaseCO2;
+    ClimateFileNumber = siteData->ClimateFileNumber;
+
+    k=ClimateFileType;
+    int nn=ClimateFileNumber;
+    
+    for(int w=1; w<=ClimateFileNumber; w++) 
+    {
+        strcpy( ClimateFilename[w], siteData->ClimateFilenames[w-1] );
+    }
+
+    if1File = siteData->if1File;
+    CO2IncreaseRate = siteData->CO2IncreaseRate;
+
+    Soil_Texture = siteData->Soil_Texture;
+
+    FILE *fpi;
+    sprintf(fname, "%s\\lib_soil\\soil_%d", LIBRARY,  Soil_Texture);
+    fpi=fopen(fname, "r");
+    fscanf(fpi,"%s %s", &SoilName, notes );// NameNote);
+    fclose( fpi );
+
+    Soil_moiture = 0.5;
+    Soil_landuse = siteData->Soil_landuse;
+    Soil_Density = siteData->Soil_Density;
+    Soil_pH = siteData->Soil_pH;
+    Soil_OCatSurface = siteData->Soil_OCatSurface;
+    Soil_Clay = siteData->Soil_Clay;
+    Soil_BypassFlow = siteData->Soil_BypassFlow;
+    Soil_Litter = siteData->Soil_Litter;
+    Soil_humads = siteData->Soil_humads;
+    Soil_humus = siteData->Soil_humus;
+    Soil_NO3 = siteData->Soil_NO3;
+    Soil_NH4 = siteData->Soil_NH4;
+    PassiveCCN = siteData->PassiveCCN;
+    LateralInflux = siteData->LateralInflux;
+
+    if(LateralInflux<1.0)
+        LateralInflux = 1.0;
+
+    Fldcap = siteData->Fldcap;
+    Wiltpt = siteData->Wiltpt;
+    Sks = siteData->Sks;
+    Soil_Porosity = siteData->Soil_Porosity;
+    SOCa = siteData->SOCa;
+    SOCb = siteData->SOCb;
+    DClitter = siteData->DClitter;
+    DChumads = siteData->DChumads;
+    DChumus = siteData->DChumus;
+    HumadCN = siteData->HumadCN;
+    HumusCN = siteData->HumusCN;
+    PassiveC = siteData->PassiveC;
+    Soil_MicrobioIndex = siteData->Soil_MicrobioIndex;
+    HighestWT = siteData->HighestWT;
+    Soil_WaterObstructLayer = siteData->Soil_WaterObstructLayer;
+    slope = siteData->slope;
+    Soil_Quality = siteData->Soil_Quality;
+    SCSuse = siteData->SCSuse;
+
+    if(Sks<0.015)
+        Sks = 0.015;
+    if(HighestWT>1.0) 
+        HighestWT = 1.0;
+
+    // Read crop parameter
+    int ri, temp, yc, db_CycleYear[20], FCTT=0;
+    int db_Rotation_Number, FarmMode=0, FarmCropNumber;
+    char DB[300], FCT60[300], CropDB[300];
+    FILE *db, *cropdb;
+
+    FCTT++;
+    sprintf(FCT60, "%s_%d", INTERMANAGE, FCTT);
+    mkdir(FCT60);
+    
+    db_Rotation_Number = siteData->Rotation_number;
+        
+    sprintf(DB, "%s\\CropRotation.txt", FCT60);
+    db=fopen(DB, "w");
+    fprintf(db, "%d\n", db_Rotation_Number);
+    fclose(db);
+    
+    for (i=0;i<=db_Rotation_Number;i++)
+    {
+        int db_TotalYear;
+        int tilln, TillMonth, TillDay, TillMethod;
+        int manun, ManuMonth, ManuDay, ManuType, ManuMethod;
+        float ManuAmount, ManuCN, ManuN;
+
+        ri = siteData->db_RotationID[i];
+
+        db_TotalYear = siteData->db_RotateSpan[i];
+        db_CycleYear[i] = siteData->db_CycleSpan[i];
+
+        sprintf(DB, "%s\\CropRotation_%d.txt", FCT60, i+1);
+        db=fopen(DB, "w");
+        fprintf(db, "%d\n", i);
+        fprintf(db, "%d\n", db_TotalYear);
+        fprintf(db, "%d\n", db_CycleYear[i]);
+        fclose(db);
+            
+        for (j=0;j<=db_CycleYear[i];j++)
+        {
+            char WT_file[200];
+            int db_Type, db_Pmonth, db_Pday, db_Hmonth , db_Hday, db_Hyear, db_CoverCrop, db_PerennialCrop;
+            float db_Yield, db_Residue;
+            float db_GrowthReproductive(0.0);
+            float db_GrowthVegetative(0.0);
+            float db_PsnEfficiency, db_PsnMax, db_TreeAge;
+            float db_GrainFraction, db_LeafFraction, db_ShootFraction, db_RootFraction;
+            float db_GrainCN, db_LeafCN, db_ShootCN, db_RootCN;
+            float db_TDD, db_Water, db_OptT, db_Nfix, db_Vascularity;
+
+            sprintf(CropDB, "%s\\CropRotation_%d_%d.txt", FCT60, i+1, j+1);
+            cropdb=fopen(CropDB, "w");
+            if(cropdb==NULL) note(0, CropDB);
+            
+            cropn = siteData->db_YrCrops[i][j];
+
+            fprintf(cropdb, "%d\n", cropn);
+            
+            for (k=0;k<=cropn;k++) //crop type loop
+            {
+                db_Type = siteData->db_YrCropType[i][j][k];
+                db_Pmonth = siteData->db_PMonth[i][j][k];
+                db_Pday = siteData->db_PDay[i][j][k];
+                db_Hmonth = siteData->db_HMonth[i][j][k];
+                db_Hday = siteData->db_HDay[i][j][k];
+                db_Hyear = siteData->db_HYr[i][j][k];
+                db_Residue = siteData->db_Residue[i][j][k];
+                db_Yield = siteData->db_Yield[i][j][k];
+                db_LeafFraction = siteData->db_LeafFraction[i][j][k];
+                db_LeafCN = siteData->db_LeafCN[i][j][k];
+                db_PsnEfficiency = siteData->db_PsnEff[i][j][k];
+                db_PsnMax = siteData->db_PsnMax[i][j][k];
+                db_TreeAge = siteData->db_TreeAge[i][j][k];
+                db_CoverCrop = siteData->db_CoverCrop[i][j][k];
+                db_PerennialCrop = siteData->db_PerennialCrop[i][j][k];
+                db_GrainFraction = siteData->db_GrainFraction[i][j][k];
+                db_ShootFraction = siteData->db_ShootFraction[i][j][k];
+                db_RootFraction = siteData->db_RootFraction[i][j][k];
+                db_GrainCN = siteData->db_GrainCN[i][j][k];
+                db_ShootCN = siteData->db_ShootCN[i][j][k];
+                db_RootCN = siteData->db_RootCN[i][j][k];
+                db_TDD = siteData->db_TDD[i][j][k];
+                db_Water = siteData->db_Water[i][j][k];
+                db_OptT = siteData->db_OptT[i][j][k];
+                db_Nfix = siteData->db_Nfix[i][j][k];
+                db_Vascularity = siteData->db_Vascularity[i][j][k];
+
+                if(db_LeafFraction==0.0)
+                {
+                    db_LeafFraction = 0.5 * db_ShootFraction;
+                    db_ShootFraction = db_LeafFraction;
+                }
+
+                if(db_LeafCN==0.0)
+                {
+                    db_LeafCN = db_ShootCN;
+                }
+
+                fprintf(cropdb, "%d\n", k);
+                fprintf(cropdb, "%d\n", db_Type);
+                fprintf(cropdb, "%d  %d\n", db_Pmonth , db_Pday);
+                fprintf(cropdb, "%d  %d\n", db_Hmonth , db_Hday);
+                fprintf(cropdb, "%d\n", db_Hyear);
+                fprintf(cropdb, "%f\n", db_Residue);
+                fprintf(cropdb, "%f\n", db_Yield);
+                fprintf(cropdb, "%f %f %f %f %f\n", db_GrowthReproductive, db_GrowthVegetative, db_PsnEfficiency, db_PsnMax, db_TreeAge);
+                fprintf(cropdb, "%d\n", db_CoverCrop);
+                fprintf(cropdb, "%d\n", db_PerennialCrop);
+                fprintf(cropdb, "%f %f %f %f\n", db_GrainFraction, db_LeafFraction, db_ShootFraction, db_RootFraction);
+                fprintf(cropdb, "%f %f %f %f\n", db_GrainCN, db_LeafCN, db_ShootCN, db_RootCN);
+                fprintf(cropdb, "%f %f %f %f %f\n", db_TDD, db_Water, db_OptT, db_Nfix, db_Vascularity);
+                    
+            } //end of crop type loop
+
+            fclose(cropdb);
+            
+            //Tillage
+            sprintf(DB, "%s\\CropTill_%d_%d.txt", FCT60, i+1, j+1);
+            db=fopen(DB, "w");
+            if(db==NULL) note(0, DB);
+
+            tilln = siteData->Tillage_number[j];
+            
+            fprintf(db, "%d\n", tilln);
+
+            for (k=0;k<=tilln;k++) 
+            {
+                TillMonth = siteData->TillMonth[j][k];
+                TillDay = siteData->TillDay[j][k];
+                TillMethod = siteData->TillMethod[j][k];
+
+                fprintf(db, "%d  %d  %d\n", TillMonth, TillDay, TillMethod);
+            }			
+            fclose(db);
+
+            //Fertilization
+            int fertn, FertMonth, FertDay, FertMethod, FertOption;
+            float FertNitrate, FertAbi, FertUrea, FertAnh, FertNH4NO3, FertNH42SO4, FertNH42HPO4, FertDepth;
+            float DayRelease, NIefficiency, NIduration, UreaseEfficiency, UreaseDuration;
+
+            sprintf(DB, "%s\\CropFert_%d_%d.txt", FCT60, i+1, j+1);
+            db=fopen(DB, "w");
+            if(db==NULL) note(0, DB);			
+
+            fertn = siteData->Fert_number[j];
+
+            fprintf(db, "%d\n", fertn);
+
+            if(fertn!=-1)
+            {
+                for (k=0;k<=fertn;k++) 
+                {
+                    FertMonth = siteData->FertMonth[j][k];
+                    FertDay = siteData->FertDay[j][k];
+                    FertMethod = siteData->FertMethod[j][k];
+                    FertDepth = siteData->FertDepth[j][k];
+                    FertNitrate = siteData->FertNitrate[j][k];
+                    FertAbi = siteData->FertAbi[j][k];
+                    FertUrea = siteData->FertUrea[j][k];
+                    FertAnh = siteData->FertAnh[j][k];
+                    FertNH4NO3 = siteData->FertAmNi[j][k];
+                    FertNH42SO4 = siteData->NH42SO4[j][k];
+                    FertNH42HPO4 = siteData->NH42HPO4[j][k];
+
+                    fprintf(db, "%d %d %d\n", FertMonth, FertDay, FertMethod);
+                    fprintf(db, "%f %f %f %f %f %f %f %f\n", FertNitrate, FertAbi, FertUrea, FertAnh, FertNH4NO3, FertNH42SO4, FertNH42HPO4, FertDepth);
+                    
+                    DayRelease = siteData->DayRelease[j][k];
+                    NIefficiency = siteData->NIefficiency[j][k];
+                    NIduration = siteData->NIduration[j][k];
+                    UreaseEfficiency = siteData->UreaseEfficiency[j][k];
+                    UreaseDuration = siteData->UreaseDuration[j][k];
+                    
+                    fprintf(db, "%f %f %f %f %f\n", DayRelease, NIefficiency, NIduration, 
+                        UreaseEfficiency, UreaseDuration);
+                }
+
+                FertOption = siteData->FertOption[j];
+
+                fprintf(db, "%d\n", FertOption);
+            }
+            else
+            {
+                char Fertigation[200];
+                strcpy( Fertigation, siteData->FertigationFile );
+
+                fprintf(db, "%s\n", Fertigation);
+            }
+            fclose(db);
+
+            //Manure APPLICATION
+            sprintf(DB, "%s\\CropManu_%d_%d.txt", FCT60, i+1, j+1);
+            db=fopen(DB, "w");
+            if(db==NULL) note(0, DB);
+            
+            manun = siteData->Manure_number[j];
+                        
+            fprintf(db, "%d\n", manun);
+
+            for (k=0;k<=manun;k++) 
+            {
+                ManuMonth = siteData->ManuMonth[j][k];
+                ManuDay = siteData->ManuDay[j][k];
+                ManuAmount = siteData->ManuAmount[j][k];
+                ManuCN = siteData->ManuCN[j][k];
+                ManuType = siteData->ManuType[j][k];
+                ManuMethod = siteData->manu_method[j][k];
+
+                fprintf(db, "%d %d\n", ManuMonth, ManuDay);
+                fprintf(db, "%f %f %d %d\n", ManuAmount, ManuCN, ManuType, ManuMethod);
+            }
+            fclose(db);
+
+            //Plastic film	
+            int Filmn, FilmOption, FilmMonth1, FilmDay1, FilmMonth2, FilmDay2;
+            float CoverFraction;
+
+            sprintf(DB, "%s\\CropPlastic_%d_%d.txt", FCT60, i+1, j+1);
+            db=fopen(DB, "w");
+            if(db==NULL) note(0, DB);
+
+            Filmn = siteData->plastic_film[j];
+            FilmOption = siteData->WeedOption[j];
+
+            fprintf(db, "%d %d\n", Filmn, FilmOption);
+
+            for (k=0;k<=Filmn;k++) 
+            {
+                FilmMonth1 = siteData->WeedMonth1[j][k];
+                FilmDay1 = siteData->WeedDay1[j][k];
+
+                FilmMonth2 = siteData->WeedMonth2[j][k];
+                FilmDay2 = siteData->WeedDay2[j][k];
+
+                CoverFraction = siteData->CoverFraction[j][k];
+
+                fprintf(db, "%d %d\n", FilmMonth1, FilmDay1);
+                fprintf(db, "%d %d\n", FilmMonth2, FilmDay2);
+                fprintf(db, "%f\n", CoverFraction);				
+            }
+            fclose(db);
+
+            //Flooding
+            sprintf(DB, "%s\\CropFloo_%d_%d.txt", FCT60, i+1, j+1);
+            db=fopen(DB, "w");
+            if(db==NULL) note(0, DB);
+
+            floon = siteData->Flood_number[j];
+            FloodWaterN = siteData->FloodWaterN[j];
+            WaterControl = siteData->WaterControl[j];
+            WaterLeakRate = siteData->WaterLeakRate[j];
+            
+            fprintf(db, "%d %f %d %f\n", floon, FloodWaterN, WaterControl, WaterLeakRate);
+
+            for (k=0;k<=floon;k++) 
+            {
+                FlooMonth1 = siteData->FlooMonth1[j][k];
+                FlooDay1 = siteData->FlooDay1[j][k];
+
+                FlooMonth2 = siteData->FlooMonth2[j][k];
+                FlooDay2 = siteData->FlooDay2[j][k];
+
+                FlooN = siteData->FlooN[j][k];
+
+                ShallowFlood = siteData->ShallowFlood[j][k];
+                
+                fprintf(db, "%d %d\n", FlooMonth1, FlooDay1);
+                fprintf(db, "%d %d\n", FlooMonth2, FlooDay2);
+                fprintf(db, "%f\n", FlooN);
+                fprintf(db, "%d\n", ShallowFlood);
+            }
+
+            WaterGetherIndex = siteData->WaterGetherIndex[j];
+                
+            fprintf(db, "%f\n", WaterGetherIndex);				
+            
+            strcpy( WT_file, siteData->WT_file );
+            
+            fprintf(db, "%s\n", WT_file);
+
+            m_IniWT = siteData->m_IniWT[j];
+            m_LWTceasingGroungFlow = siteData->m_LWTceasingGroungFlow[j];
+            m_LWTceasingSurfFlow = siteData->m_LWTceasingSurfFlow[j];
+            m_WatershedIndex = siteData->m_WatershedIndex[j];
+            m_SurfOutflowIntensity = siteData->m_SurfOutflowIntensity[j];
+            m_GroundOutflowIntensity = siteData->m_GroundOutflowIntensity[j];
+
+            fprintf(db, "%f %f %f %f %f %f\n", m_IniWT, m_LWTceasingSurfFlow, m_LWTceasingGroungFlow, m_WatershedIndex, 
+                                                m_SurfOutflowIntensity, m_GroundOutflowIntensity);
+            
+            fclose(db);
+
+            //Irrigation
+            int irrin, IrriMode, IrriMonth, IrriDay, IrriMethod, jd;
+            float IrriIndex, IrriAmount;
+
+            sprintf(DB, "%s\\CropIrri_%d_%d.txt", FCT60, i+1, j+1);
+            db=fopen(DB, "w");
+            if(db==NULL) note(0, DB);
+
+            irrin = siteData->Irrigation_number[j];
+            IrriMode = siteData->IrrMode[j];
+            IrriIndex = siteData->IrrIndex[j];
+            IrriMethod = siteData->IrriMethod[i][j];
+
+            fprintf(db, "%d %d %f %d\n", irrin, IrriMode, IrriIndex, IrriMethod);
+
+            for (k=0;k<=irrin;k++) 
+            {
+                IrriMonth = siteData->IrriMonth[j][k];
+                IrriDay = siteData->IrriDay[j][k];
+                IrriAmount = siteData->IrriAmount[j][k];
+                IrriMethod = siteData->IrriMethod[j][k];
+
+
+                fprintf(db, "%d %d\n", IrriMonth, IrriDay);
+                fprintf(db, "%f %d\n", IrriAmount, IrriMethod);
+            }
+            fclose(db);
+
+            //Grazing
+            int grazn, GrazMonth1, GrazDay1, GrazMonth2, GrazDay2, Excreta;
+            float GrazHour, Dairy, Beef, Pig, Horse, Sheep, AddFeed, FeedCN;
+
+            sprintf(DB, "%s\\CropGraz_%d_%d.txt", FCT60, i+1, j+1);
+            db=fopen(DB, "w");
+            if(db==NULL) note(0, DB);
+            
+            grazn = siteData->Grazing_number[j];
+            
+            fprintf(db, "%d\n", grazn);
+
+            for (k=0;k<=grazn;k++) 
+            {
+                GrazMonth1 = siteData->GrazMonth1[j][k];
+                GrazDay1 = siteData->GrazDay1[j][k];
+
+                GrazMonth2 = siteData->GrazMonth2[j][k];
+                GrazDay2 = siteData->GrazDay2[j][k];
+
+                Dairy = siteData->Dairy[j][k];
+                Beef = siteData->Beef[j][k];
+                Pig = siteData->Pig[j][k];
+                Sheep = siteData->Sheep[j][k];
+                Horse = siteData->Horse[j][k];
+                GrazHour = siteData->GrazHour[j][k];
+                AddFeed = siteData->AddFeed[j][k];
+                FeedCN = siteData->FeedCN[j][k];
+                Excreta = siteData->Excreta[j][k];
+
+                fprintf(db, "%d %d\n", GrazMonth1, GrazDay1);
+                fprintf(db, "%d %d\n", GrazMonth2, GrazDay2);
+                fprintf(db, "%f\n", GrazHour);
+                fprintf(db, "%f %f %f %f %f %f %f %d\n", Dairy, Beef, Pig, Sheep, Horse, AddFeed, FeedCN, Excreta);
+            }
+            fclose(db);				
+
+            //Grass cutting
+            int cutn, CutMonth, CutDay, CutPart;
+            float CutAmount;
+
+            sprintf(DB, "%s\\GrassCut_%d_%d.txt", FCT60, i+1, j+1);
+            db=fopen(DB, "w");
+            if(db==NULL)
+                note(0, DB);
+        
+            cutn = siteData->Cut_number[j];
+
+            fprintf(db, "%d\n", cutn);
+
+            for (k=0;k<=cutn;k++) 
+            {
+
+                CutMonth = siteData->CutMonth[j][k];
+                CutDay = siteData->CutDay[j][k];
+                CutAmount = siteData->CutAmount[j][k];
+                CutPart = siteData->CutPart[j][k];
+                        
+                fprintf(db, "%d %d\n", CutMonth, CutDay);
+                fprintf(db, "%f %d\n", CutAmount, CutPart);		
+            }
+            fclose(db);	
+        }//end of a cycle
+    }//end of Rotation_numbe 
+
+    int CropModel, Unit;
+
+    CropModel = siteData->CropModel;
+
+    Unit = siteData->Units;
+
+    if(SCSuse==1)
+    {
+        float m_CN, m_RoughLand, m_RoughChannel, m_ChannelSlope, m_ChannelLength, m_LandManage;
+
+        m_CN = siteData->m_CN;
+        m_RoughLand = siteData->m_RoughLand;
+        m_RoughChannel = siteData->m_RoughChannel;
+        m_ChannelSlope = siteData->m_ChannelSlope;
+        m_ChannelLength = siteData->m_ChannelLength;
+        m_LandManage = siteData->m_LandManage;
+
+        char scs[300];
+        FILE *scspara;
+        sprintf(scs,"%s\\Inputs\\scspara", OUTPUT);
+        scspara = fopen(scs, "w");
+        if(scspara==NULL) note(1, scs);
+        fprintf(scspara, "%f %f %f %f %f %f\n", m_CN, m_RoughLand, m_RoughChannel, m_ChannelSlope, m_ChannelLength, m_LandManage);	
+        fclose(scspara);
+        
+    }
+    
+    if(Unit==0||Unit==1) Unit = Unit;
+    else Unit = 0;
+
+    char LB[300], CM[300];
+    FILE* ddb, *cm;
+
+    sprintf(LB,"%s\\UnitSystem", INTER);
+    ddb=fopen(LB, "w");
+    if(ddb==NULL) note(1, LB);
+    fprintf(ddb, "%d", Unit);
+    fclose(ddb);
+
+    sprintf(CM, "%s\\CropModel", INTER);
+    cm=fopen(CM, "w");
+    if(cm==NULL) note(0, CM);
+    fprintf(cm, "%d\n", CropModel);
+    fclose(cm);
+    
+}
+///////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
