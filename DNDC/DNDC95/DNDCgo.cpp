@@ -6,6 +6,7 @@
 #include "Source_main.h"
 #include <direct.h>
 #include <iostream>
+#include "DNDC_Interface.h"
 
 #include "RunPaths.h"
 

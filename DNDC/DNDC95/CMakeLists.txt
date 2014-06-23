@@ -9,6 +9,7 @@ set( PUBLIC_HEADERS ${HEADERS} )
 set( PRIVATE_SOURCES ${SOURCES} )
 
 add_definitions(-D_AFXDLL)
+add_definitions(-DDNDC95_DLL )
 set(CMAKE_MFC_FLAG 2)
 
 add_library( ${TARGET_NAME} SHARED ${PRIVATE_SOURCES} ${PRIVATE_HEADERS} )
@@ -27,7 +28,8 @@ install( FILES "C:/dev/leaf-models-public/DNDC/build-32-bit/DNDC95/Debug/${TARGE
     DESTINATION "C:/dev/leaf/external/DNDC_DLL/DNDC95/Win32/vc11" )
 
     install( 
-    FILES "C:/dev/leaf-models-public/DNDC/DNDC95/DNDCgo.h"
+    FILES "C:/dev/leaf-models-public/DNDC/DNDC95/DNDC_Interface.h"
+#    "C:/dev/leaf-models-public/DNDC/DNDC95/DNDCgo.h"
 #    "C:/dev/leaf-models-public/DNDC/DNDC95/StdAfx.h"
 #   "C:/dev/leaf-models-public/DNDC/DNDC95/Source_main.h"
     DESTINATION "C:/dev/leaf/external/DNDC_DLL/DNDC95/Win32/vc11" )
