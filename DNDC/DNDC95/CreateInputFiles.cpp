@@ -1,6 +1,5 @@
 #include <string>
 #include "stdafx.h"
-//#include "Dndcgo.h"
 #include "DNDC_Interface.h"
 #include "Source_main.h"
 #include "Dndc_tool.h"
