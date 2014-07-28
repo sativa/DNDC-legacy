@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #if defined( DNDC95_DLL )
     #define DNDC_EXPORTS __declspec( dllexport )
 #else
@@ -7,7 +9,8 @@
 #endif
 
 //DNDC_EXPORTS
- class DNDC_EXPORTS Site_BaseInformation
+ class DNDC_EXPORTS
+ Site_BaseInformation
 {
 public:
 
@@ -177,37 +180,46 @@ public:
 
 };
 
-DNDC_EXPORTS Site_BaseInformation* GetNewSitePtr();
+DNDC_EXPORTS
+std::shared_ptr< Site_BaseInformation > GetNewSitePtr();
 
-DNDC_EXPORTS void InitSiteData( Site_BaseInformation* siteData );
+DNDC_EXPORTS
+void InitSiteData( Site_BaseInformation* siteData );
 
-DNDC_EXPORTS void DeleteSitePtr( Site_BaseInformation* siteData );
+DNDC_EXPORTS
+void DeleteSitePtr( Site_BaseInformation* siteData );
 
-DNDC_EXPORTS void SaveDatatoFile(
-        const char* outputPath,
-        int mode,
-        Site_BaseInformation siteData );
+DNDC_EXPORTS
+void SaveDatatoFile(
+    const char* outputPath,
+    int mode,
+    Site_BaseInformation siteData );
 
-DNDC_EXPORTS void SetRootDirPaths(
+DNDC_EXPORTS
+void SetRootDirPaths(
     const char* rootPath,
     const char* outputPath,
     const char* interPath,
     const char* inputsPath,
     const char* intermanPath );
 
-DNDC_EXPORTS void SetLibPath(
+DNDC_EXPORTS
+void SetLibPath(
     const char* libPath );
 
-DNDC_EXPORTS void WriteInputFiles(
+DNDC_EXPORTS
+void WriteInputFiles(
     const char* InputFileName,
     char *BatchPass );
 
-DNDC_EXPORTS void WriteInputFiles(
+DNDC_EXPORTS
+void WriteInputFiles(
     Site_BaseInformation* siteData,
     char* BatchPass );
 
 
-DNDC_EXPORTS int Model_link(
+DNDC_EXPORTS
+int Model_link(
     int scale, char* cropping_system, int S_SoilYear, int S_ThisYear,
     int S_SimuYears, char* DatabaseName, char* r_Province, char* ScenarioName,
     double ha, int ProvinceOrder, int S_county, int CountyIDX, int landuse,

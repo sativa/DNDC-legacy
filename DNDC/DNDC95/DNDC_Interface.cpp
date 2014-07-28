@@ -2,9 +2,10 @@
 #include "RunPaths.h"
 
 ///////////////////////////////////////////////////////////////////////////////
-Site_BaseInformation* GetNewSitePtr()
+std::shared_ptr< Site_BaseInformation > GetNewSitePtr()
 {
-    return new Site_BaseInformation();
+    return std::shared_ptr< Site_BaseInformation >(
+        new Site_BaseInformation() );
 }
 ///////////////////////////////////////////////////////////////////////////////
 void DeleteSitePtr( Site_BaseInformation* siteData )
