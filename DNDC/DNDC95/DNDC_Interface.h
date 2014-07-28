@@ -209,7 +209,7 @@ void SetLibPath(
 
 DNDC_EXPORTS
 void WriteInputFiles(
-    const char* InputFileName,
+    const char* dndFileName,
     char *BatchPass );
 
 DNDC_EXPORTS
@@ -217,6 +217,8 @@ void WriteInputFiles(
     Site_BaseInformation* siteData,
     char* BatchPass );
 
+DNDC_EXPORTS
+int GetSimYearsFromDNDFile( const char* dndFileName );
 
 DNDC_EXPORTS
 int Model_link(

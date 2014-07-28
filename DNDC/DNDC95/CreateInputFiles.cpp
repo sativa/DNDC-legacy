@@ -225,7 +225,29 @@ void CreateBlankFiles(void)
     fclose(db);
 }
 ///////////////////////////////////////////////////////////////////////////////
-void ReadInputDatafromDND( const char *InputFileName)
+int GetSimYearsFromDNDFile( const char* dndFileName )
+{
+    int simYrs;
+    FILE *fp;
+
+    sprintf(ffname, "%s", dndFileName);
+
+    fp=fopen(ffname, "r");
+    if(fp==NULL) note(0, ffname);	
+
+    fscanf(fp,"%s", notes);	//"Input_Parameters:" 
+    fscanf(fp,"%s",notes); //"--------------------"
+    fscanf(fp,"%s",notes); //"Site_info:"
+    fscanf(fp,"%s",notes); //"Site_name:"
+    fscanf(fp,"%s",sitename);
+    fscanf(fp,"%s %d",notes, simYrs); //"Simulated_Year:"
+
+    fclose( fp );
+
+    return years;
+}
+///////////////////////////////////////////////////////////////////////////////
+void ReadInputDatafromDND( const char *InputFileName )
 {
     int  i, j, k;
     int floon, ShallowFlood, WaterControl, FlooMonth1, FlooDay1, FlooMonth2, FlooDay2;
