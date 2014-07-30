@@ -228,23 +228,22 @@ void CreateBlankFiles(void)
 int GetSimYearsFromDNDFile( const char* dndFileName )
 {
     int simYrs;
+    char tmp[200];
+    
     FILE *fp;
-
-    sprintf(ffname, "%s", dndFileName);
+    sprintf( ffname, "%s", dndFileName );
 
     fp=fopen(ffname, "r");
-    if(fp==NULL) note(0, ffname);	
-
-    fscanf(fp,"%s", notes);	//"Input_Parameters:" 
-    fscanf(fp,"%s",notes); //"--------------------"
-    fscanf(fp,"%s",notes); //"Site_info:"
-    fscanf(fp,"%s",notes); //"Site_name:"
-    fscanf(fp,"%s",sitename);
-    fscanf(fp,"%s %d",notes, simYrs); //"Simulated_Year:"
+    fscanf(fp,"%s", tmp);	//"Input_Parameters:" 
+    fscanf(fp,"%s", tmp); //"--------------------"
+    fscanf(fp,"%s", tmp); //"Site_info:"
+    fscanf(fp,"%s", tmp); //"Site_name:"
+    fscanf(fp,"%s", tmp);
+    fscanf(fp,"%s %d", tmp, &simYrs); //"Simulated_Year:"
 
     fclose( fp );
 
-    return years;
+    return simYrs;
 }
 ///////////////////////////////////////////////////////////////////////////////
 void ReadInputDatafromDND( const char *InputFileName )
@@ -580,8 +579,6 @@ void ReadInputDatafromDND( const char *InputFileName )
     fscanf(fp,"%f", &Soil_Quality);
     fscanf(fp,"%s %d", notes,&SCSuse);
 
-    
-    
     if(Sks<0.015) Sks = 0.015;
     if(HighestWT>1.0) HighestWT = 1.0;
 
