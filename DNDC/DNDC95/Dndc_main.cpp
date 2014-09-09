@@ -82,7 +82,7 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     float  whumus01=0.0, wno201=0.0, wno301=0.0, wnh401=0.0, wnh301=0.0, wurea01=0.0, day_clay_n01=0;
     float till_fact=0.0, w_no2=0.0, w_nh3=0.0, w_n2o=0.0, w_n2=0.0, ttoo[90];
     float w_no3=0.0, w_nh4=0.0, wurea=0.0, wpool_no=0.0, OverT=0.0, wpool_no2=0.0, day_clayn=0;
-    float dby_flux=0.0, jf=0.0, hrPE0=0.0, S_CO2IncreaseRate=0.0, AddC1=0.0, AddC2=0.0, AddC3=0.0, litco22=0.0, litco23=0.0, FM_C[7], FM_N[7], FM_H2O[7];;
+    float dby_flux=0.0, jf=0.0, hrPE0=0.0, S_CO2IncreaseRate=0.0, AddC1=0.0, AddC2=0.0, AddC3=0.0, litco22=0.0, litco23=0.0, FM_C[7], FM_N[7], FM_H2O[7];
     float FarmCropArea[10]={0.0,0.0}, FarmCropManureFraction[10]={0.0,0.0};
     
     int i=0, l=0, err_no=0, TTTFlag=0, tilq=0, junkd=0, ShallowFlood=0, SelectedCrops=0, SC[150], GlobeData=0, StartGridID=0;
@@ -1780,7 +1780,7 @@ int class_model::DNDC101go(MODEL_LINK_INFO* pLinkInfo, int MODE, int SoilYear, f
     float  whumus01, wno201, wno301, wnh401, wnh301, wurea01, day_clay_n01;
     float till_fact, w_no2, w_nh3, w_n2o, w_n2, ttoo[90];
     float w_no3, w_nh4, wurea, wpool_no, OverT, wpool_no2, day_clayn;
-    float dby_flux, jf, hrPE0, S_CO2IncreaseRate, AddC1, AddC2, AddC3, litco22, litco23, FM_C[7], FM_N[7], FM_H2O[7];;
+    float dby_flux, jf, hrPE0, S_CO2IncreaseRate, AddC1, AddC2, AddC3, litco22, litco23, FM_C[7], FM_N[7], FM_H2O[7];
     float FarmCropArea[10]={0.0,0.0}, FarmCropManureFraction[10]={0.0,0.0};
     
     int i, l, err_no, TTTFlag, tilq, junkd, ShallowFlood, SelectedCrops, SC[150], GlobeData, StartGridID;

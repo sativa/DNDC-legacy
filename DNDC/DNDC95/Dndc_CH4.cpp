@@ -27,7 +27,7 @@ float class_model::CH4_paddy(int MODE, int GN, float *temp, float *clay, int flo
     float Rt=8.31;//temperature coefficient 1
     float EA=87000.0; //temperature coefficient 2		 
     float ch4_eb=0.0;
-    float NewSumRootCO2, PeatDOC=0.0;;
+    float NewSumRootCO2, PeatDOC=0.0;
     float flood_pH;//, flux_co2=0.0;	 
     float w_anvf, w_hete_CO2=0.0, w_day_ch4=0.0;
         

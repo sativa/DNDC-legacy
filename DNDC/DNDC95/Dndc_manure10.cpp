@@ -755,7 +755,7 @@ if(jday==365)
 	w_clim0 = FGS;
 	dc.TextOut(25, 325, w_clim0);
 	FGS.Format("N2          %d", g_n2);
-	w_clim0 = FGS;;
+	w_clim0 = FGS;
 	dc.TextOut(25, 405, w_clim0);
 	FGS.Format("Biofuel_CH4          %d", g_dgch4);
 	w_clim0 = FGS;

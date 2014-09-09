@@ -438,7 +438,7 @@ public:
     float     yr_ini_water;
     float     yr_end_water;
     float     yr_DNassimN;
-    float	  day_nitrif[8], day_denitrif[8], day_decomp[8];;
+    float	  day_nitrif[8], day_denitrif[8], day_decomp[8];
     
     float     yr_prec_water;
     float     ini_snow_pack;

@@ -519,7 +519,7 @@ float class_model::manuring(int livestock, int scale, int FarmNumber, float *Far
 
                 float AddDoc = AddC * 0.1;
                 slurry_doc += AddDoc;
-                AddC3 = ((AddC-AddDoc)-rcnh*NewTotN) / (1.0 - rcnh/rcnrr);;
+                AddC3 = ((AddC-AddDoc)-rcnh*NewTotN) / (1.0 - rcnh/rcnrr);
                 AddHum = AddC - AddC3 - AddDoc;
                 AddC1 = 0.0;
                 AddC2 = 0.0;
@@ -817,7 +817,7 @@ float class_model::manuring(int livestock, int scale, int FarmNumber, float *Far
 
                 float AddDoc = AddC * 0.1;
                 slurry_doc += AddDoc;
-                AddC3 = ((AddC-AddDoc)-rcnh*NewTotN) / (1.0 - rcnh/rcnrr);;
+                AddC3 = ((AddC-AddDoc)-rcnh*NewTotN) / (1.0 - rcnh/rcnrr);
                 AddHum = AddC - AddC3 - AddDoc;
                 AddC1 = 0.0;
                 AddC2 = 0.0;
@@ -2311,7 +2311,7 @@ void class_model::crop_harvesting(int scale, int ccwc)
     inert_C[1] += dInertC;
 
     day_addC += dInertC;//(AddC1+AddC2+AddC3);
-    yr_addtc += dInertC;;//(AddC1+AddC2+AddC3);
+    yr_addtc += dInertC;//(AddC1+AddC2+AddC3);
     //day_inStubN += AddC1 / rcnrvl + AddC2 / rcnrl + AddC3 / rcnrr;
     //yr_addtn += day_inStubN;
 

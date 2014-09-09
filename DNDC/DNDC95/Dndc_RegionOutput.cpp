@@ -19,7 +19,7 @@ void class_model::write_globe_summary(int SoilYear, float ha, char* cropping_sys
 				char* DroughtYield, int SoilDataUse, int FFN)
 {
 	int i, SN, crop_ID[90]={0,0}, cropping_number=0;
-	char cropsystem[150][50], SSSS[200];;
+	char cropsystem[150][50], SSSS[200];
 
 	CString DWM[10]={"","Dry","Mid","Wet","NoRain0days","NoRain5days","NoRain10days","NoRain20days","NoRain30days","NoRain50days"};
 

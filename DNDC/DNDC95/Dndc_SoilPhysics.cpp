@@ -615,7 +615,7 @@ void class_model::hour_loop(float hrPE0, float* DayFlux, float* dby_flux, int Dr
                 dIT = 0.7 * day_IrriWater;
             }
 
-            dfIR = 1.0 - dIT;;
+            dfIR = 1.0 - dIT;
             surf_water += dfIR;	
 
             DayPT2 += dIT;
