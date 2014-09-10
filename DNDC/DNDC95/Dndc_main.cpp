@@ -19,6 +19,8 @@
 
 #include "RunPaths.h"
 
+#include <iostream>
+
 ///
 /*
 void WINAPI SetWorkingDir( const char* rootPath )
@@ -75,6 +77,8 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
                         int FarmField, char *BatchPass)
 #endif
 {
+    std::cout << "start" << std::endl;
+
     FILE   *fc=NULL, *fn=NULL, *fw=NULL, *fcrop=NULL, *fEh=NULL, *fday=NULL,*fpp=NULL,*fWT=NULL;
     FILE   *fNB=NULL, *fCB=NULL, *fLAI=NULL, *fs=NULL, *fg=NULL, *fma=NULL, *HSM=NULL, *fsp=NULL, *fmb=NULL, *fis=NULL;
     FILE   *ftf1=NULL,*ftf2=NULL,*ftf3=NULL,*ftf4=NULL,*ftf5=NULL,*ftf6=NULL, *fclim=NULL, *ftf=NULL;
@@ -102,6 +106,8 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     if(ddb==NULL) note(0, LB);
     fscanf(ddb, "%d", &m_unit);
     fclose(ddb);
+
+    std::cout << "test 1" << std::endl;
 
     char FCT20[400], FCT40[400];
     cwc = 1;
@@ -147,6 +153,8 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
         FILE *fmusle=NULL;
 #endif
 
+        std::cout << "test 2" << std::endl;
+        
     DailyCO2 = 0;
 
     for(int i1=1;i1<=55;i1++) SMC[i1]=0.0; 
@@ -161,6 +169,8 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     FILE *fertg;
     IFDAILY = 0;
     ViewMode = 0;
+
+    
 
     if(scale==1)
     {
@@ -253,6 +263,9 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
         }
     } 
     
+
+    std::cout << "test 3" << std::endl;
+
         CString txt,pro;
         txt=r_Country;
         int pos=txt.Find(',');
@@ -283,6 +296,8 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     char YR[250], YR2[250];
     //FILE *fout, *fout2;
     CString DMW[4]={"","dry","mid","wet"};
+
+    std::cout << "test 4" << std::endl;
 
     if(Batch==1)
     {
@@ -340,7 +355,7 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
         }
     }
     
-    
+    std::cout << "test 5" << std::endl;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifdef MANURE
@@ -382,7 +397,7 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     TotalManureCrops = 1;
     sprintf(FCT20, "%s\\Record\\Site", OUTPUT);
 #endif
-
+    std::cout << "test 6" << std::endl;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //for(int CL=1; CL<=TotalManureCrops; CL++)
@@ -398,6 +413,7 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     else
     {
         sprintf(site, "%d", CountyIDX);
+
 
         if(MonteCarlo==1) 
         {
@@ -416,6 +432,8 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     ftf=fopen(FTF, "r");
     if(ftf==NULL) note(0, FTF);	
 #endif
+
+    std::cout << "test 7" << std::endl;
 
     read_in_soil_parm(scale, SoilYear, MonteCarlo);
 
@@ -452,6 +470,8 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
 
     sprintf(FCT40,"%s", INPUTS);
 #endif	
+    
+    std::cout << "test 8" << std::endl;
 
     if(DroughtID==1)
     {
@@ -535,7 +555,7 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
 #endif
         }
     }
-    
+    std::cout << "test 9" << std::endl;
     
         
 #ifdef BALANCE
@@ -605,6 +625,8 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     if((year==1&&scale==1&&WinterCropFlag[1]==1)||(year==1&&scale==0&&Batch==3))
         read_in_cropini(MODE, GlobeData, FCT40);//only for region mode
 
+    std::cout << "test 10" << std::endl;
+
     PoolWater0 = WaterPool;
 
     read_in_irri(scale, IrriType, FCT40);//+
@@ -625,6 +647,8 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     if ( err_no ) return( err_no );
     
     read_in_plastic(FCT40);
+
+    std::cout << "test 11" << std::endl;
 
     if(fer_num==-1)
     {
@@ -657,6 +681,7 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
         fWT = fopen(F_WT, "r");
         if(fWT==NULL) note(0, F_WT);
     }
+    std::cout << "test 12" << std::endl;
 
     TTTFlag = 0;
    
@@ -682,11 +707,14 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     
     char Sday[250];
 
+    std::cout << "test 13" << std::endl;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Start daily loop
 for(jday=1; jday<=365; jday++)
 {
+    std::cout << "daily loop start" << std::endl;
+
     int junk;
     sprintf(Sday,"%d",jday);
 
@@ -813,7 +841,6 @@ for(jday=1; jday<=365; jday++)
             NoRainFlag = 0;
         }
     }
-    
     //ref_PAR = day_ref_par(jday, latitude);
 
     if(plastic_num>0&&plastic_flag==1)
@@ -941,7 +968,6 @@ for(jday=1; jday<=365; jday++)
 
         
     }
-
     // irrigating
     TTT = irrigating(scale, DayPET);//+
 
@@ -999,7 +1025,6 @@ for(jday=1; jday<=365; jday++)
         TTTFlag = 0;
         OverT = 0.0;
     }
-
     snowfall_snowpack();
 
     //flooding
@@ -1265,6 +1290,7 @@ for(jday=1; jday<=365; jday++)
         }
     }
     
+
     if(act_DayAT != DayPT2) 
     {
         water[1][10] += DayPT2 - act_DayAT;//??????????????????????
@@ -1567,7 +1593,6 @@ for(jday=1; jday<=365; jday++)
             }
         }
     }
-
 #ifdef HYDRO
     scs_runoff=0;
     sedyld=0;
@@ -1599,7 +1624,6 @@ for(jday=1; jday<=365; jday++)
         ::DispatchMessage(&message);
     }
 #endif
-
 } // daily loop end
 
 fclose( fday );
@@ -1648,7 +1672,7 @@ else
     }
 }
 
-
+std::cout << "test 14 << std::endl" << std::cout;
 if(fer_num==-1)
 {
     fclose(fertg);
@@ -1689,7 +1713,7 @@ if(scale==0 || SimuYears>1)
     err_no = write_out_cropini(scale );//+
     if ( err_no ) return( err_no );
 }
-
+std::cout << "test 15" << std::endl;
 if(scale==1)
 {
     if(SoilYear==999)
@@ -1762,7 +1786,7 @@ else
 fclose(fout2);
 fclose(ftf);
 #endif
-
+std::cout << "test 16" << std::endl;
 return(0);
 }
 

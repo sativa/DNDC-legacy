@@ -184,12 +184,6 @@ DNDC_EXPORTS
 std::shared_ptr< Site_BaseInformation > GetNewSitePtr();
 
 DNDC_EXPORTS
-void InitSiteData( Site_BaseInformation* siteData );
-
-DNDC_EXPORTS
-void DeleteSitePtr( Site_BaseInformation* siteData );
-
-DNDC_EXPORTS
 void SaveDatatoFile(
     const char* outputPath,
     int mode,

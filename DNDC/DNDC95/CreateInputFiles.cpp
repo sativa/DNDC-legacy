@@ -9,6 +9,8 @@
 #include <ctype.h>
 #include <stdio.h>
 
+#include <fstream>
+
 #include "RunPaths.h"
 
 const char* ROOTDIR;
@@ -3217,6 +3219,14 @@ int JulianDay(int month, int day)
 
 int FileCopy_1(char *source, char *dest)
 {
+    std::ifstream src( source, std::ios::binary);
+    std::ofstream dst( dest, std::ios::binary);
+
+    dst << src.rdbuf();
+
+    return 0;
+
+
     FILE *fpi,*fpo;
     long flen,rt,num,adr;
     char *p;

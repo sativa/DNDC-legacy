@@ -598,28 +598,29 @@ int class_model::write_out_cropini(int MODE )
     if (fp == NULL) note(1, F_INI); 
     fprintf(fp, "%d\n", IniCropNumbers);
     {
-    for(int i=1; i<=IniCropNumbers; i++)
-    {
-        fprintf(fp, "%d %d %f %f %f %f\n",crop[i], seed[i], plantn[i], PlantTakeN[i], demandn[i], lai[i]);
-        fprintf(fp, "%f %f %f %f %f\n", Leaf_Wt[i], Stem_Wt[i], Grain_Wt[i], Root_Wt[i], TDD[i]);
-        fprintf(fp, "%f %f\n", crop_trans[i], plantcn[i]);
-        //////////////////////////////////////////
-        fprintf(fp, "%d %s %d %d %f %d\n", 
-            crop[i], crop_name[i], 1, WCLeftDays[i], GrainYield[i], HarvestYear[i]);
-        fprintf(fp, "%d %d %f %f %d\n", 
-            jdseed[i], grow_days[i], left_perc[i], maxmn[i], 111);			
-        fprintf(fp, "%f %d %f %f %f\n", 
-               InitialBiomass[i], Transplant[i], GrowthReproductive[i],
-               PsnEfficiency[i], PsnMax[i]);
-        fprintf(fp, "%d\n", CoverCrop[i]);
-        fprintf(fp, "%d\n", PerennialFlag[i]);
-        fprintf(fp, "%f %f %f %f\n", grain[i], leaf[i], stem[i], root[i]);
-        fprintf(fp, "%f %f %f %f\n", base_graincn[i], base_leafcn[i], base_stemcn[i], base_rootcn[i]);//Brian
-        fprintf(fp, "%f %f %f %f %f\n", max_TDD[i], base_wreq[i], OptimumT[i], ini_N_fix[i], vascularity[i]);//Brian
-        fprintf(fp, "%f %d\n", PlantP[i], stem_age);
-        ///////////////////////////////////////////
+        for(int i=1; i<=IniCropNumbers; i++)
+        {
+            fprintf(fp, "%d %d %f %f %f %f\n",crop[i], seed[i], plantn[i], PlantTakeN[i], demandn[i], lai[i]);
+            fprintf(fp, "%f %f %f %f %f\n", Leaf_Wt[i], Stem_Wt[i], Grain_Wt[i], Root_Wt[i], TDD[i]);
+            fprintf(fp, "%f %f\n", crop_trans[i], plantcn[i]);
+            //////////////////////////////////////////
+            fprintf(fp, "%d %s %d %d %f %d\n", 
+                crop[i], crop_name[i], 1, WCLeftDays[i], GrainYield[i], HarvestYear[i]);
+            fprintf(fp, "%d %d %f %f %d\n", 
+                jdseed[i], grow_days[i], left_perc[i], maxmn[i], 111);			
+            fprintf(fp, "%f %d %f %f %f\n", 
+                InitialBiomass[i], Transplant[i], GrowthReproductive[i],
+                PsnEfficiency[i], PsnMax[i]);
+            fprintf(fp, "%d\n", CoverCrop[i]);
+            fprintf(fp, "%d\n", PerennialFlag[i]);
+            fprintf(fp, "%f %f %f %f\n", grain[i], leaf[i], stem[i], root[i]);
+            fprintf(fp, "%f %f %f %f\n", base_graincn[i], base_leafcn[i], base_stemcn[i], base_rootcn[i]);//Brian
+            fprintf(fp, "%f %f %f %f %f\n", max_TDD[i], base_wreq[i], OptimumT[i], ini_N_fix[i], vascularity[i]);//Brian
+            fprintf(fp, "%f %d\n", PlantP[i], stem_age);
+            ///////////////////////////////////////////
+        }
     }
-    }
+
     fclose( fp );
 
     return( 0 );

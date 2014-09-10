@@ -1090,7 +1090,7 @@ int class_model::read_in_soil_parm(int MODE, int SoilYear, int MonteCarlo)
             clay[i] = clay[1];
             wiltpt[i] = wiltpt[1];
             fldcap[i] = fldcap[1];
-            //sd[i] = sd[1];
+            sd[i] = sd[1];
             soil_ph[i] = soil_ph[1];
             st[i] = st[1];
             //mmm[i] = mmm[1];
@@ -1454,7 +1454,7 @@ void class_model::read_in_crop(int MODE, int GlobeData, CString FCT40)
     float jf;
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //Read initial crop status
-    sprintf(F_CROP, "%s\\INPUTS\\cropini-%d", OUTPUT, year);
+    sprintf(F_CROP, "%s\\Inputs\\cropini-%d", OUTPUT, year);
     fpp = fopen(F_CROP, "r");
     if(fpp==NULL) note(0, F_CROP);
    
@@ -2836,12 +2836,13 @@ int class_model::read_in_flood(int MODE, CString FCT40)
         wetland_flag = 0;
 
     //flood_pH = 7.0;
-
     fscanf(fp, "%d %f %f %f", &WaterControl, &WaterLeakRate, &WaterGetherIndex, &FloodWater_N);
-    fscanf(fp, "%s", WT_file);
+    //fscanf(fp, "%s", WT_file);
     fscanf(fp, "%f %f %f %f %f %f", &m_IniWT, &m_LWTceasingSurfFlow, &m_LWTceasingGroungFlow, &m_WatershedIndex, 
                                     &m_SurfOutflowIntensity, &m_GroundOutflowIntensity);
     fclose(fp);
+
+    WT_file = "None0.00000";
 
     WaterGetherIndex = 1.5;
     WaterLeakRate *= 0.001; //mm -> m
