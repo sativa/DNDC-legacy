@@ -248,6 +248,35 @@ int GetSimYearsFromDNDFile( const char* dndFileName )
     return simYrs;
 }
 ///////////////////////////////////////////////////////////////////////////////
+int GetCycleYearsFromDNDFile( const char* dndFileName )
+{
+    std::ifstream dndfile;
+    dndfile.open( dndFileName, std::ios::in );
+
+    /*
+    std::string tmpstr( "" );
+    while( 
+    */
+
+    int simYrs;
+    char tmp[200];
+    
+    FILE *fp;
+    sprintf( ffname, "%s", dndFileName );
+
+    fp=fopen(ffname, "r");
+    fscanf(fp,"%s", tmp);	//"Input_Parameters:" 
+    fscanf(fp,"%s", tmp); //"--------------------"
+    fscanf(fp,"%s", tmp); //"Site_info:"
+    fscanf(fp,"%s", tmp); //"Site_name:"
+    fscanf(fp,"%s", tmp);
+    fscanf(fp,"%s %d", tmp, &simYrs); //"Simulated_Year:"
+
+    fclose( fp );
+
+    return simYrs;
+}
+///////////////////////////////////////////////////////////////////////////////
 void ReadInputDatafromDND( const char *InputFileName )
 {
     int  i, j, k;

@@ -77,7 +77,6 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
                         int FarmField, char *BatchPass)
 #endif
 {
-    std::cout << "start" << std::endl;
 
     FILE   *fc=NULL, *fn=NULL, *fw=NULL, *fcrop=NULL, *fEh=NULL, *fday=NULL,*fpp=NULL,*fWT=NULL;
     FILE   *fNB=NULL, *fCB=NULL, *fLAI=NULL, *fs=NULL, *fg=NULL, *fma=NULL, *HSM=NULL, *fsp=NULL, *fmb=NULL, *fis=NULL;
@@ -106,8 +105,6 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     if(ddb==NULL) note(0, LB);
     fscanf(ddb, "%d", &m_unit);
     fclose(ddb);
-
-    std::cout << "test 1" << std::endl;
 
     char FCT20[400], FCT40[400];
     cwc = 1;
@@ -152,8 +149,6 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
         char DAYMUSLE[90];
         FILE *fmusle=NULL;
 #endif
-
-        std::cout << "test 2" << std::endl;
         
     DailyCO2 = 0;
 
@@ -264,8 +259,6 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     } 
     
 
-    std::cout << "test 3" << std::endl;
-
         CString txt,pro;
         txt=r_Country;
         int pos=txt.Find(',');
@@ -297,7 +290,6 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     //FILE *fout, *fout2;
     CString DMW[4]={"","dry","mid","wet"};
 
-    std::cout << "test 4" << std::endl;
 
     if(Batch==1)
     {
@@ -355,7 +347,6 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
         }
     }
     
-    std::cout << "test 5" << std::endl;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifdef MANURE
@@ -397,7 +388,7 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     TotalManureCrops = 1;
     sprintf(FCT20, "%s\\Record\\Site", OUTPUT);
 #endif
-    std::cout << "test 6" << std::endl;
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //for(int CL=1; CL<=TotalManureCrops; CL++)
@@ -432,8 +423,6 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     ftf=fopen(FTF, "r");
     if(ftf==NULL) note(0, FTF);	
 #endif
-
-    std::cout << "test 7" << std::endl;
 
     read_in_soil_parm(scale, SoilYear, MonteCarlo);
 
@@ -470,9 +459,6 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
 
     sprintf(FCT40,"%s", INPUTS);
 #endif	
-    
-    std::cout << "test 8" << std::endl;
-
     if(DroughtID==1)
     {
         if(year==2&&(drc>=1&&drc<=3)&&IrriType==0)
@@ -507,6 +493,7 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     {
         if (scale == 0 && day_file ==1)
         {
+            /*
             if(Batch==1) sprintf(FCT20, "%s", PassC1);
 
             sprintf(DAYclim, "%s\\Day_Climate_%d.%s", FCT20, year, CSV);
@@ -553,9 +540,9 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
             fis = fopen( DAYIS,"w" );
             if ( fis == NULL ) note(1,DAYIS);
 #endif
+            */
         }
     }
-    std::cout << "test 9" << std::endl;
     
         
 #ifdef BALANCE
@@ -625,7 +612,6 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     if((year==1&&scale==1&&WinterCropFlag[1]==1)||(year==1&&scale==0&&Batch==3))
         read_in_cropini(MODE, GlobeData, FCT40);//only for region mode
 
-    std::cout << "test 10" << std::endl;
 
     PoolWater0 = WaterPool;
 
@@ -647,9 +633,6 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     if ( err_no ) return( err_no );
     
     read_in_plastic(FCT40);
-
-    std::cout << "test 11" << std::endl;
-
     if(fer_num==-1)
     {
         char  FERT[180], WSD[200];
@@ -681,7 +664,6 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
         fWT = fopen(F_WT, "r");
         if(fWT==NULL) note(0, F_WT);
     }
-    std::cout << "test 12" << std::endl;
 
     TTTFlag = 0;
    
@@ -707,13 +689,11 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     
     char Sday[250];
 
-    std::cout << "test 13" << std::endl;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Start daily loop
 for(jday=1; jday<=365; jday++)
 {
-    std::cout << "daily loop start" << std::endl;
 
     int junk;
     sprintf(Sday,"%d",jday);
@@ -759,7 +739,6 @@ for(jday=1; jday<=365; jday++)
         
         ini_soil_water += (water[1][i] + ice[i] / 10000.0);
     }
-
 #ifdef BALANCE
     CheckBalance(1);//reserved //+
 #endif
@@ -802,7 +781,6 @@ for(jday=1; jday<=365; jday++)
     {
         MaxHalfHR = precipitation / 5.0;//estimated max half-hour precipitation, cm 
     }
-
     NoRainFlag = 0;
     if(DroughtID==1&&drc>=4)
     {
@@ -842,7 +820,6 @@ for(jday=1; jday<=365; jday++)
         }
     }
     //ref_PAR = day_ref_par(jday, latitude);
-
     if(plastic_num>0&&plastic_flag==1)
     {
         if(plastic_method==0)//greenhouse
@@ -904,7 +881,6 @@ for(jday=1; jday<=365; jday++)
         dT = 0.0;//degree C
         dR = 0.0;//changing fraction
     }
-    
     //DSRad = PAR;//MJ/m2/day
     //WDSAV = wind_speed;//m/s
     //TPAV = air_temp;
@@ -973,7 +949,6 @@ for(jday=1; jday<=365; jday++)
 
     // manuring
     manuring(livestock, scale, TotalManureCrops, FarmCropArea, FarmCropManureFraction, FarmField, ftf);
-
     if(MicrobioIndex > BaseMicroIndex)
         MicrobioIndex -= 0.01;
     else
@@ -1004,7 +979,6 @@ for(jday=1; jday<=365; jday++)
     stub_fall();
 
     soilCEC();
-
     // Soil climate
     // In case of heavy rainfall
     if (TTTFlag==1)
@@ -1048,7 +1022,6 @@ for(jday=1; jday<=365; jday++)
             if(SatuDays<0) SatuDays = 0;
         }
     }
-
     //if(WaterControl==1&&crop_flag==0)
     //	FloDays = 0;
 
@@ -1083,7 +1056,6 @@ for(jday=1; jday<=365; jday++)
     float DeepSoilT;
     if(temp[q]<0.0) DeepSoilT = 0.0;
     else DeepSoilT = temp[q];
-
     for(ccwc=1; ccwc<=CropNumbers; ccwc++)
     {
         if(seed[ccwc] > 0) seed[ccwc]++;
@@ -1126,7 +1098,6 @@ for(jday=1; jday<=365; jday++)
         if(crop[ccwc]==46) irri_close = 1;
         else irri_close = 0;
     }
-
     TodayPT = DayPT0;
 
     //Potential transpiration rate based soil water availability
@@ -1218,7 +1189,6 @@ for(jday=1; jday<=365; jday++)
             day_SumPT += 0.000000001;
         }
     //}
-
         TotalCropBiomass += (Grain_Wt[ccwc]+Leaf_Wt[ccwc]+Stem_Wt[ccwc]+Root_Wt[ccwc]);
 
         float ShootpBiomass = Leaf_Wt[ccwc] + Grain_Wt[ccwc];
@@ -1247,7 +1217,6 @@ for(jday=1; jday<=365; jday++)
             day_shoot_CO2[ccwc] = 0.0;
             day_stem_CO2[ccwc] = 0.0;
         }
-
         sum_shoot_CO2 += day_shoot_CO2[ccwc];
         sum_stem_CO2 += day_stem_CO2[ccwc];
 
@@ -1289,7 +1258,6 @@ for(jday=1; jday<=365; jday++)
             }		
         }
     }
-    
 
     if(act_DayAT != DayPT2) 
     {
@@ -1317,7 +1285,6 @@ for(jday=1; jday<=365; jday++)
 
     // Annual water budget 
     annu_water_budget(dby_flux);
-    
     NH4_HCO3();
 
     N2O_balloon(q, till_fact, sts, h, jday, flood_flag, FloDays, rainfall,
@@ -1421,7 +1388,6 @@ for(jday=1; jday<=365; jday++)
             }
         }
     }
-
     for ( l = 1; l <= q; l++ ) 
     {
             day_co2 += co2[l];
@@ -1452,7 +1418,6 @@ for(jday=1; jday<=365; jday++)
                 }
             }
     }
-
     soil_hete_CO2 = day_co2;// - day_root_resp;	
     Psn = dPlantBiomass + sum_shoot_CO2 + sum_stem_CO2 + day_root_resp;//day_RootCO2;
     EcoCO2 = soil_hete_CO2 + sum_shoot_CO2 + sum_stem_CO2 + day_root_resp;//day_RootCO2;
@@ -1478,11 +1443,10 @@ for(jday=1; jday<=365; jday++)
 
     // C/N pools at the end of each day 
     cn_pools(w_no3, w_nh4, w_nh3, wurea, wpool_no, w_n2o, w_n2);
-    
+
 #ifdef BALANCE
     CheckBalance(2); //reserved
 #endif
-
     if(DroughtID==1&&year==2&&(drc>=1&&drc<=3)&&IrriType==0)
     {
             // Write daily soil climate
@@ -1492,10 +1456,11 @@ for(jday=1; jday<=365; jday++)
     }
     else
     {
-        if (scale == 0&&day_file == 1)
+        if (scale == 0 && day_file == 1)
         {
             soc_distribution(CRB1, CRB2, newh );
 
+            /*
             write_out_dayClim(fclim, jday, site, year, air_temp, precipitation, wind_speed, PAR, humidity);
 
             // Write daily water budget
@@ -1519,7 +1484,7 @@ for(jday=1; jday<=365; jday++)
             write_out_daysp(fsp);
 
             write_out_daymicrobe(fmb);
-
+            
 #ifdef ISOTOPE
             write_out_dayisotope(fis);
 #endif
@@ -1533,7 +1498,7 @@ for(jday=1; jday<=365; jday++)
             //write_out_HrSoilMoist(HSM);
             //write_out_HrSoilN(HSM, T);
 #endif
-    
+            */
 #ifdef HYDRO
             if (jday==1)
             {
@@ -1544,6 +1509,7 @@ for(jday=1; jday<=365; jday++)
             fprintf(fmusle, "%3d,", jday);
             fprintf(fmusle, "%7.3f,%7.5f,%7.5f,%7.5f,%7.5f,%7.5f,%7.5f,%7.5f,%7.5f\n",day_runoff,sedyld,socmusle,sonmusle,nh4musle,no3musle,nh3musle,ureamusle,claynmusle);
 #endif
+
 
         }
         else
@@ -1593,6 +1559,7 @@ for(jday=1; jday<=365; jday++)
             }
         }
     }
+
 #ifdef HYDRO
     scs_runoff=0;
     sedyld=0;
@@ -1624,8 +1591,8 @@ for(jday=1; jday<=365; jday++)
         ::DispatchMessage(&message);
     }
 #endif
+    
 } // daily loop end
-
 fclose( fday );
 
 if(WaterControl==2) fclose(fWT);
@@ -1643,6 +1610,7 @@ else
 {
     if (scale == 0 && day_file == 1)
     {
+        /*
     fclose( fclim );
     fclose( fw );
     fclose( fs );
@@ -1653,6 +1621,7 @@ else
     fclose( fma );
     fclose( fsp );
     fclose( fmb );
+    */
 #ifdef ISOTOPE
     fclose( fis );
 #endif
@@ -1672,18 +1641,14 @@ else
     }
 }
 
-std::cout << "test 14 << std::endl" << std::cout;
 if(fer_num==-1)
 {
     fclose(fertg);
 }
-
     // SOC distribution in profile 
     soc_distribution(CRB1, CRB2, newh );
-
     // Write soil pools on day 365 
     write_out_soil_parm(scale, SoilYear, SimuYears);//+
-
     // Write annual reports
     //if(GlobeData==0) 
     if(DroughtID==0)
@@ -1692,8 +1657,7 @@ if(fer_num==-1)
         {
             write_out_annual_report(scale, ha, Batch, livestock, fout, fout2, FarmField, FarmCropArea, FarmCropManureFraction, drc, Pass, PassC1, PassL1);
         }
-    }	
-
+    }
 #ifdef DEGUI
 #else
     if(MonteCarlo==1)
@@ -1713,7 +1677,6 @@ if(scale==0 || SimuYears>1)
     err_no = write_out_cropini(scale );//+
     if ( err_no ) return( err_no );
 }
-std::cout << "test 15" << std::endl;
 if(scale==1)
 {
     if(SoilYear==999)
@@ -1725,10 +1688,13 @@ if(scale==1)
     else
     {
         if(DroughtID==0)
+        {
             write_globe_summary(SoilYear, ha, cropping_system, province, county, CountyIDX, 
                 r_Country, r_Scenario, LandOrder, year, StartYear, r_Province, 1, 
                 Batch, GlobeData, RRRRR, IrriType, country_ID, livestock, DroughtID, drc, 
                 f_region, DroughtYield, SoilDataUse, FFN);
+
+        }
         else
         {
             if(year==2)
@@ -1737,6 +1703,7 @@ if(scale==1)
                     r_Country, r_Scenario, LandOrder, year, StartYear, r_Province, 1, 
                     Batch, GlobeData, RRRRR, IrriType, country_ID, livestock, DroughtID, drc, 
                     f_region, DroughtYield, SoilDataUse, FFN);
+
             }
         }
 
@@ -1756,6 +1723,7 @@ else
     //Write annual water budget
     err_no = write_out_wb(Batch, Pass, PassC1);
     if ( err_no ) return( err_no );
+
 }
 
     MSG message;
@@ -1786,7 +1754,8 @@ else
 fclose(fout2);
 fclose(ftf);
 #endif
-std::cout << "test 16" << std::endl;
+
+
 return(0);
 }
 
