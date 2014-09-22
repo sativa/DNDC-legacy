@@ -493,7 +493,6 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
     {
         if (scale == 0 && day_file ==1)
         {
-            /*
             if(Batch==1) sprintf(FCT20, "%s", PassC1);
 
             sprintf(DAYclim, "%s\\Day_Climate_%d.%s", FCT20, year, CSV);
@@ -540,7 +539,6 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
             fis = fopen( DAYIS,"w" );
             if ( fis == NULL ) note(1,DAYIS);
 #endif
-            */
         }
     }
     
@@ -1460,7 +1458,6 @@ for(jday=1; jday<=365; jday++)
         {
             soc_distribution(CRB1, CRB2, newh );
 
-            /*
             write_out_dayClim(fclim, jday, site, year, air_temp, precipitation, wind_speed, PAR, humidity);
 
             // Write daily water budget
@@ -1498,7 +1495,7 @@ for(jday=1; jday<=365; jday++)
             //write_out_HrSoilMoist(HSM);
             //write_out_HrSoilN(HSM, T);
 #endif
-            */
+
 #ifdef HYDRO
             if (jday==1)
             {
@@ -1610,7 +1607,7 @@ else
 {
     if (scale == 0 && day_file == 1)
     {
-        /*
+
     fclose( fclim );
     fclose( fw );
     fclose( fs );
@@ -1621,7 +1618,7 @@ else
     fclose( fma );
     fclose( fsp );
     fclose( fmb );
-    */
+
 #ifdef ISOTOPE
     fclose( fis );
 #endif
