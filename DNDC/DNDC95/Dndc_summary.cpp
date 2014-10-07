@@ -3,6 +3,8 @@
 #include "Source_main.h"
 #include "Dndc_tool.h"
 
+#include <iostream>
+
 #ifdef MANURE 
 extern class_manure MData;
 #endif
@@ -320,6 +322,7 @@ void class_model::annu_accumu()
     day_irri_N = 0.0;
 
     yr_rainN += day_inRainN;
+
     day_inRainN = 0.0;
 
     yr_sln += day_inLitterN;
@@ -514,6 +517,7 @@ void class_model::MC_annu_accumu()
     day_irri_N = 0.0;
 
     yr_rainN += day_inRainN;
+
     day_inRainN = 0.0;
 
     yr_soilN_from_Nfixation += (day_soilN_from_Nfixation[1]+day_soilN_from_Nfixation[2]+day_soilN_from_Nfixation[3]);

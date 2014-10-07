@@ -2,7 +2,7 @@
 #include "RunPaths.h"
 
 ///////////////////////////////////////////////////////////////////////////////
-std::shared_ptr< Site_BaseInformation > GetNewSitePtr()
+std::shared_ptr< Site_BaseInformation > CreateNewSiteDataPtr()
 {
     return std::shared_ptr< Site_BaseInformation >(
         new Site_BaseInformation() );

@@ -8,7 +8,7 @@
     #define DNDC_EXPORTS __declspec( dllimport )
 #endif
 
-//DNDC_EXPORTS
+///
  class DNDC_EXPORTS
  Site_BaseInformation
 {
@@ -180,15 +180,18 @@ public:
 
 };
 
+///
 DNDC_EXPORTS
-std::shared_ptr< Site_BaseInformation > GetNewSitePtr();
+std::shared_ptr< Site_BaseInformation > CreateNewSiteDataPtr();
 
+///
 DNDC_EXPORTS
 void SaveDatatoFile(
     const char* outputPath,
     int mode,
     Site_BaseInformation siteData );
 
+///
 DNDC_EXPORTS
 void SetRootDirPaths(
     const char* rootPath,
@@ -197,23 +200,32 @@ void SetRootDirPaths(
     const char* inputsPath,
     const char* intermanPath );
 
+///
 DNDC_EXPORTS
 void SetLibPath(
     const char* libPath );
 
+///
 DNDC_EXPORTS
 void WriteInputFiles(
     const char* dndFileName,
     char *BatchPass );
 
+///
 DNDC_EXPORTS
 void WriteInputFiles(
     Site_BaseInformation* siteData,
     char* BatchPass );
 
+///
 DNDC_EXPORTS
 int GetSimYearsFromDNDFile( const char* dndFileName );
 
+///
+DNDC_EXPORTS
+int GetCycleYearsFromDNDFile( const char* dndFileName );
+
+///
 DNDC_EXPORTS
 int Model_link(
     int scale, char* cropping_system, int S_SoilYear, int S_ThisYear,

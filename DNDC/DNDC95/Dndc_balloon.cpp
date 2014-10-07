@@ -3,6 +3,7 @@
 #include "Dndc_tool.h"
 #include "Source_main.h"
 
+#include <iostream>
 
 #ifdef MANURE 
 extern class_manure MData;
@@ -216,6 +217,8 @@ void class_model::N2O_balloon(int GN, float till_fact,
        no3_w[1] += (rno3 * .025);
 
        day_inRainN += (rno3*0.05);
+
+       
     }
 
     if (l <= T && T <= rain_hrs)

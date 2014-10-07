@@ -10,6 +10,8 @@
 #include <stdio.h>
 
 #include <fstream>
+#include <iostream>
+#include <sstream>
 
 #include "RunPaths.h"
 
@@ -229,52 +231,52 @@ void CreateBlankFiles(void)
 ///////////////////////////////////////////////////////////////////////////////
 int GetSimYearsFromDNDFile( const char* dndFileName )
 {
-    int simYrs;
-    char tmp[200];
-    
-    FILE *fp;
-    sprintf( ffname, "%s", dndFileName );
+    int simyrs;
+    std::ifstream dndfile;
+    dndfile.open( dndFileName, std::ios::in );
 
-    fp=fopen(ffname, "r");
-    fscanf(fp,"%s", tmp);	//"Input_Parameters:" 
-    fscanf(fp,"%s", tmp); //"--------------------"
-    fscanf(fp,"%s", tmp); //"Site_info:"
-    fscanf(fp,"%s", tmp); //"Site_name:"
-    fscanf(fp,"%s", tmp);
-    fscanf(fp,"%s %d", tmp, &simYrs); //"Simulated_Year:"
+    std::string tmpstr( "Simulated_Year:" );
+    std::string line;
 
-    fclose( fp );
+    while( std::getline( dndfile, line ) )
+    {
+        if( line.find( tmpstr ) != line.npos )
+        {
+            std::size_t findpos = line.find( tmpstr );
+            line.erase(
+                line.begin() + findpos,
+                line.begin() + findpos + tmpstr.length() + 1 );
 
-    return simYrs;
+            break;
+        }
+    }
+    std::istringstream( line ) >> simyrs;
+    return simyrs;
 }
 ///////////////////////////////////////////////////////////////////////////////
 int GetCycleYearsFromDNDFile( const char* dndFileName )
 {
+    int cycleyrs;
     std::ifstream dndfile;
     dndfile.open( dndFileName, std::ios::in );
 
-    /*
-    std::string tmpstr( "" );
-    while( 
-    */
+    std::string tmpstr( "Years_Of_A_Cycle=" );
+    std::string line;
 
-    int simYrs;
-    char tmp[200];
-    
-    FILE *fp;
-    sprintf( ffname, "%s", dndFileName );
+    while( std::getline( dndfile, line ) )
+    {
+        if( line.find( tmpstr ) != line.npos )
+        {
+            std::size_t findpos = line.find( tmpstr );
+            line.erase(
+                line.begin() + findpos,
+                line.begin() + findpos + tmpstr.length() + 1 );
 
-    fp=fopen(ffname, "r");
-    fscanf(fp,"%s", tmp);	//"Input_Parameters:" 
-    fscanf(fp,"%s", tmp); //"--------------------"
-    fscanf(fp,"%s", tmp); //"Site_info:"
-    fscanf(fp,"%s", tmp); //"Site_name:"
-    fscanf(fp,"%s", tmp);
-    fscanf(fp,"%s %d", tmp, &simYrs); //"Simulated_Year:"
-
-    fclose( fp );
-
-    return simYrs;
+            break;
+        }
+    }
+    std::istringstream( line ) >> cycleyrs;
+    return cycleyrs;
 }
 ///////////////////////////////////////////////////////////////////////////////
 void ReadInputDatafromDND( const char *InputFileName )
@@ -3160,7 +3162,10 @@ void ReadCropPara_2(int *v_CropID, char v_CropName[95][100], float *v_max_biomas
     FILE *fCrop;
     sprintf(CCrop, "%s\\lib_crop\\Crop_parameters.txt", LIBRARY);//, CropType);
     fCrop = fopen(CCrop, "r");
-    if(fCrop==NULL) note(0, CCrop);
+    if(fCrop==NULL)
+    {
+        note(0, CCrop);
+    }
     else
     {
         fgets(text, 300, fCrop);
@@ -3168,6 +3173,7 @@ void ReadCropPara_2(int *v_CropID, char v_CropName[95][100], float *v_max_biomas
         for(int i=0; i<=90; i++)
         {
             fscanf(fCrop, "%d %s", &v_CropID[i], v_CropName[i]);
+
             fscanf(fCrop, "%f %f %f %f %f %f %f %f %f %f %f %f %f %f", &v_max_biomass_C[i], 
                 &v_grain_fraction[i], &v_leaf_fraction[i], &v_leafstem_fraction[i], &v_root_fraction[i], 
                 &v_GrainCN[i], &v_LeafCN[i], &v_ShootCN[i], &v_RootCN[i],
@@ -3175,7 +3181,7 @@ void ReadCropPara_2(int *v_CropID, char v_CropName[95][100], float *v_max_biomas
             fscanf(fCrop, "%d", &v_Perennial[i]);//, &v_TreeAge[i]);
         }
         fclose(fCrop);
-    }	
+    }
 }
 
 
