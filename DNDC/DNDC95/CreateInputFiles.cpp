@@ -2668,7 +2668,7 @@ for(int MFFC=1; MFFC<=FarmCrops; MFFC++)
     fscanf(db, "%d", &n);
     for(int i2=1; i2<=n; i2++)
         {
-            fscanf(db, "%d %d", &ManuMonth[i], &ManuDay[i2]);
+            fscanf(db, "%d %d", &ManuMonth[i2], &ManuDay[i2]);
             fscanf(db, "%f %f %d %d", &ManuAmount[i2], &ManuCN[i2], &ManuType[i2], &ManuMethod[i2]);
         }
     fclose(db);
@@ -2681,7 +2681,7 @@ for(int MFFC=1; MFFC<=FarmCrops; MFFC++)
     for (int i3=1; i3<=n;i3++) 
     {
         day = JulianDay(ManuMonth[i3], ManuDay[i3]);
-        
+
         fprintf(fp,"%d %f %f %d %d\n", day, ManuAmount[i3], ManuCN[i3], ManuType[i3], ManuMethod[i3]);
     }
     fclose (fp);
