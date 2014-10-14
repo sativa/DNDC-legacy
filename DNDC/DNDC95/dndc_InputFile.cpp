@@ -558,11 +558,12 @@ for(int CSL=1; CSL<=TotalManureCrops; CSL++)
             */
             fprintf(fpo,"    Manure_number=          %d\n",IData.Manure_number[j] );
             for (int k = 0; k < IData.Manure_number[j];k++) {
-                fprintf(fpo,"      Manure_ID=            %d\n",k); 
+                fprintf(fpo,"      Manure_ID=            %d\n",k+1); 
                 fprintf(fpo,"        Month/Day=          %d %d\n",IData.ManuMonth[j][k], IData.ManuDay[j][k]);
                 fprintf(fpo,"        Amount/C|N_ratio=   %f %f\n",IData.ManuAmount[j][k], IData.ManuCN[j][k]);
                 fprintf(fpo,"        Type=               %d\n", IData.ManuType[j][k]);
                 fprintf(fpo,"        Method=             %d\n", IData.manu_method[j][k]);
+
             }
             /*
             int PlasticM1, PlasticD1,PlasticM2, PlasticD2;
