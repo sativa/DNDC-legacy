@@ -471,7 +471,7 @@ bool fexists(const char *filename)
 {
     using namespace std;
     ifstream ifile(filename);
-    return ifile;
+    return ifile.good();
 }
 
 bool fexists(const wchar_t *filename)
