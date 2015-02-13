@@ -24,11 +24,11 @@ if( CMAKE_CL_64 )
     install( FILES "C:/dev/leaf-models-public/DNDC/install-64-bit/${TARGET_NAME}.pdb"
     "C:/dev/leaf-models-public/DNDC/install-64-bit/${TARGET_NAME}.dll"
     "C:/dev/leaf-models-public/DNDC/install-64-bit/${TARGET_NAME}.lib"
-    DESTINATION "C:/dev/leaf/external/DNDC_DLL/DNDC95/x64/vc11" )
+    DESTINATION "C:/dev/leaf/external/DNDC_DLL/DNDC95/x64/vc12" )
 
     install( 
     FILES "C:/dev/leaf-models-public/DNDC/DNDC95/DNDC_Interface.h"
-    DESTINATION "C:/dev/leaf/external/DNDC_DLL/DNDC95/x64/vc11" )
+    DESTINATION "C:/dev/leaf/external/DNDC_DLL/DNDC95/x64/vc12" )
     
     return()
 endif()
@@ -39,9 +39,9 @@ DESTINATION "C:/dev/leaf-models-public/DNDC/install-32-bit" )
 install( FILES "C:/dev/leaf-models-public/DNDC/install-32-bit/${TARGET_NAME}.pdb"
 "C:/dev/leaf-models-public/DNDC/install-32-bit/${TARGET_NAME}.dll"
 "C:/dev/leaf-models-public/DNDC/install-32-bit/${TARGET_NAME}.lib"
-DESTINATION "C:/dev/leaf/external/DNDC_DLL/DNDC95/Win32/vc11" )
+DESTINATION "C:/dev/leaf/external/DNDC_DLL/DNDC95/Win32/vc12" )
 
 install( 
 FILES "C:/dev/leaf-models-public/DNDC/DNDC95/DNDC_Interface.h"
-DESTINATION "C:/dev/leaf/external/DNDC_DLL/DNDC95/Win32/vc11" )
+DESTINATION "C:/dev/leaf/external/DNDC_DLL/DNDC95/Win32/vc12" )
     
