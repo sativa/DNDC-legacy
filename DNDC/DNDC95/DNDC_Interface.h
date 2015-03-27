@@ -219,14 +219,6 @@ void WriteInputFiles(
 
 ///
 DNDC_EXPORTS
-int GetSimYearsFromDNDFile( const char* dndFileName );
-
-///
-DNDC_EXPORTS
-int GetCycleYearsFromDNDFile( const char* dndFileName );
-
-///
-DNDC_EXPORTS
 int Model_link(
     int scale, char* cropping_system, int S_SoilYear, int S_ThisYear,
     int S_SimuYears, char* DatabaseName, char* r_Province, char* ScenarioName,
