@@ -100,7 +100,7 @@ int class_model::DNDC100go(int MODE, int SoilYear, float ha,
 
     FILE *fout, *fout2=NULL;
     FILE* ddb;
-    sprintf(LB,"%sResult\\inter\\UnitSystem", ROOTDIR);
+    sprintf(LB,"%s\\Result\\inter\\UnitSystem", ROOTDIR);
     ddb=fopen(LB, "r");
     if(ddb==NULL) note(0, LB);
     fscanf(ddb, "%d", &m_unit);
