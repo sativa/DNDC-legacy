@@ -229,31 +229,6 @@ void CreateBlankFiles(void)
     fclose(db);
 }
 ///////////////////////////////////////////////////////////////////////////////
-int GetSimYearsFromDNDFile( const char* dndFileName )
-{
-    int simyrs;
-    std::ifstream dndfile;
-    dndfile.open( dndFileName, std::ios::in );
-
-    std::string tmpstr( "Simulated_Year:" );
-    std::string line;
-
-    while( std::getline( dndfile, line ) )
-    {
-        if( line.find( tmpstr ) != line.npos )
-        {
-            std::size_t findpos = line.find( tmpstr );
-            line.erase(
-                line.begin() + findpos,
-                line.begin() + findpos + tmpstr.length() + 1 );
-
-            break;
-        }
-    }
-    std::istringstream( line ) >> simyrs;
-    return simyrs;
-}
-///////////////////////////////////////////////////////////////////////////////
 int GetCycleYearsFromDNDFile( const char* dndFileName )
 {
     int cycleyrs;
