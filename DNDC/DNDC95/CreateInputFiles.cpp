@@ -861,12 +861,13 @@ void ReadInputDatafromDND( const char *InputFileName )
 
             for (k=1;k<=manun;k++) 
             {
-                fscanf(fp,"%s %d", notes,&temp);
-                fscanf(fp,"%s %d %d", notes,&ManuMonth, &ManuDay);
-                fscanf(fp,"%s %f %f", notes,&ManuAmount, &ManuCN);
-                fscanf(fp,"%s %d", notes, &ManuType);
+                //fscanf(fp,"%s %d", notes,&temp);//Manure_ID
+                //std::cout << temp << std::endl;
+                fscanf(fp,"%s %d %d", notes,&ManuMonth, &ManuDay);//Month/Day
+                fscanf(fp,"%s %f %f", notes,&ManuAmount, &ManuCN);//Amount/CN ratio
+                fscanf(fp,"%s %d", notes, &ManuType);//Type
                 fscanf(fp,"%s", notes);
-                fscanf(fp,"%d",&ManuMethod);
+                fscanf(fp,"%d",&ManuMethod);//Method
 
                 fprintf(db, "%d %d\n", ManuMonth, ManuDay);
                 fprintf(db, "%f %f %d %d\n", ManuAmount, ManuCN, ManuType, ManuMethod);
