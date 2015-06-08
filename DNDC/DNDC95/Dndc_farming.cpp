@@ -2,6 +2,7 @@
 #include "Dndcgo.h"
 #include "Source_main.h"
 #include "Dndc_tool.h"
+#include <iostream>
 
 /*void AddFarmManure(int adp, float CFT, float *MAC, float *MAN, float *MAP, float GoField[3][25],
                    float *rcvl, float *rcl, float * rcr, float * CRB1, float * CRB2, float * crhl, float * crhr, float * dphum, float * nh4, float * no3, float * no2, float * no, float *
@@ -1820,7 +1821,6 @@ float class_model::tilling(int* tilq_p, float *CRB1, float* CRB2,
     float urea_xyz=0.0, nh3_xyz=0.0, NH4HCO3_xyz=0.0, OrgP_xyz=0.0, AdsP_xyz=0.0, LabP_xyz=0.0;	
     float AddC, AddCN, AddC1, AddC2, AddC3, dInertC, harvest_AddC;
 
-   
     tilq = *tilq_p;
     for (oz=1; oz<=til_num; oz++)
     {
@@ -1895,7 +1895,8 @@ float class_model::tilling(int* tilq_p, float *CRB1, float* CRB2,
 
             /////////////////////////////////////////////////////////////////
             till_flag = 1;
-            
+
+            //tillage depth
             tilld = til_dept[oz];
 
             tilq = (int)(til_dept[oz] / h[1])+1;//????
@@ -1903,6 +1904,7 @@ float class_model::tilling(int* tilq_p, float *CRB1, float* CRB2,
             
             if(tilq>0) 
             {				
+                //variable initialization
                 rcvl_xyz=0.0;
                 rcl_xyz=0.0;
                 rcr_xyz=0.0;
@@ -1924,8 +1926,10 @@ float class_model::tilling(int* tilq_p, float *CRB1, float* CRB2,
                 AdsP_xyz=0.0;
                 LabP_xyz=0.0;
 
+                //summation loop
                 for ( l = 1; l <= tilq; l++ )
                 {
+                    //array size is 110 = MAXSOILLAYER
                     rcvl_xyz += rcvl[l];
                     rcl_xyz += rcl[l];
                     rcr_xyz += rcr[l];
@@ -1948,6 +1952,7 @@ float class_model::tilling(int* tilq_p, float *CRB1, float* CRB2,
                     LabP_xyz += LabP[l];
                 }
 
+                //if residue exists?
                 if ((stub1+stub2+stub3) > 0.0 )
                 {
                     yr_addtc += (stub1 + stub2 + stub3);
@@ -1964,8 +1969,10 @@ float class_model::tilling(int* tilq_p, float *CRB1, float* CRB2,
                     }
                     else
                     {
+                        //
                         if(tilq<5)
                         {
+                            //
                             float qst = 0.2;
                             rcvl_xyz += ((1.0-qst)*stub1);
                             rcl_xyz += ((1.0-qst)*stub2);
@@ -1979,6 +1986,10 @@ float class_model::tilling(int* tilq_p, float *CRB1, float* CRB2,
                         }
                         else
                         {
+                            //adding grain + leaf + stem stubble to pools?
+                            //rcvl = rc very liable?
+                            //rcl = rc liable?
+                            //rcr = rc resistance
                             rcvl_xyz += stub1;
                             rcl_xyz += stub2;
                             rcr_xyz += stub3;
@@ -1996,7 +2007,8 @@ float class_model::tilling(int* tilq_p, float *CRB1, float* CRB2,
                     stub3 = 0.0;
                     stubP = 0.0;
                 }
-            
+
+                //setting to average?
                 rcvl[1] = rcvl_xyz / tilq;
                 rcl[1] = rcl_xyz / tilq;
                 rcr[1] = rcr_xyz / tilq;
@@ -2022,6 +2034,8 @@ float class_model::tilling(int* tilq_p, float *CRB1, float* CRB2,
 
                 float CFT=0.0;// 0.0001*air_temp;
                 if(CFT<0.0) CFT=0.0;
+
+
                 for ( l = 1; l <= tilq; l++ )
                 {
                     rcvl[l] = rcvl[1];
@@ -2050,13 +2064,14 @@ float class_model::tilling(int* tilq_p, float *CRB1, float* CRB2,
                     dphum[l] -= dHumus;
                     crhr[l] += dHumus;
                 }
-                
+
                 if ( tilld < 0.00001 ) till_fact = 1.0;
-                else if ( fabs(tilld - 0.05) < 0.00001 ) till_fact = 1.5;//3.0;//4.5;//3
-                else if ( fabs(tilld - 0.1) < 0.00001 ) till_fact = 2.0;//4.0;//5.0;//4
-                else if ( fabs(tilld - 0.2) < 0.00001 ) till_fact = 2.5;//5.0;//7.0;//5
-                else if ( fabs(tilld - 0.3) < 0.00001 ) till_fact = 3.0;//6.0;//9.0;//6
+                else if ( fabs(tilld - 0.05) < 0.00001 ) till_fact = 6.0;//1.5;//3.0;//4.5;//3
+                else if ( fabs(tilld - 0.1) < 0.00001 ) till_fact = 7.0;//2.0;//4.0;//5.0;//4
+                else if ( fabs(tilld - 0.2) < 0.00001 ) till_fact = 9.0;//2.5;//5.0;//7.0;//5
+                else if ( fabs(tilld - 0.3) < 0.00001 ) till_fact = 11.0;//3.0;//6.0;//9.0;//6
                 else till_fact = 1.0;
+
             }
         }
     }
