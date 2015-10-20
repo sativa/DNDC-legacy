@@ -943,7 +943,7 @@ int class_model::multi_yr_record(int MODE, int Batch, float EndSOC, char *Pass, 
         fprintf(fp, "\n"); 
         
         fprintf(fp, "%-5s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s,%-11s\n",	
-            "Year","GrainC1","LeafC1","StemC1","RootC1","GrainC2","LeafC2","StemC2","RootC2","GrainC3","LeafC3","StemC3","RootC3","SOC 0-10cm","SOC 10-20cm","SOC 20-30cm","SOC 30-40cm","SOC 40-50cm","SOC 0-10cm","SOC 10-20cm","SOC 20-30cm","SOC 30-40cm","SOC 40-50cm",
+            "Year","GrainC1","LeafC1","StemC1","RootC1","GrainC2","LeafC2","StemC2","RootC2","GrainC3","LeafC3","StemC3","RootC3","SOC 0-10cm frac","SOC 10-20cm frac","SOC 20-30cm frac","SOC 30-40cm frac","SOC 40-50cm frac","SOC 0-10cm","SOC 10-20cm","SOC 20-30cm","SOC 30-40cm","SOC 40-50cm",
             "IniSOC","End_SOC","dSOC","LitterC_input","RootC_input","ManureC_input",
             "Soil-CO2","Leach_DOC","CH4","IniSON","IniSIN","EndSON","EndSIN",
             "dSN","Atmo_N_input","Fertilizer_N_input","Manure_N_input","Litter_N_input","N_fixation",
