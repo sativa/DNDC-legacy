@@ -528,8 +528,22 @@ void ReadInputDatafromDND( const char *InputFileName )
     
     for(int w=1; w<=ClimateFileNumber; w++) 
     {
-        fscanf(fp,"%d", &j);		
-        fscanf(fp,"%s", ClimateFilename[w]);	
+        char tmpstr[ 400 ];
+        fscanf( fp,"%d", &j );		
+        fscanf( fp,"%s", tmpstr );
+
+        //look for a full path instead of a relative path
+        if( tmpstr[0] == 'C' && tmpstr[1] == ':' )
+        {
+            strcpy( ClimateFilename[w], tmpstr );
+        }
+        else
+        {
+            strcat( ClimateFilename[w], ROOTDIR );
+            strcat( ClimateFilename[w], "\\" );
+            strcat( ClimateFilename[w], tmpstr );
+        }
+
     }
 
     fscanf(fp,"%s", notes);
